@@ -139,6 +139,9 @@ jobs:
               counter=1
               for file in $mp3_files; do
                   filename=$(basename "$file")
+                  # 从文件名提取日期 (格式: daily_brief_YYYYMMDD_HHMMSS.mp3)
+                  file_date=$(echo "$filename" | sed 's/daily_brief_\([0-9]\{4\}\)\([0-9]\{2\}\)\([0-9]\{2\}\)_.*/\1年\2月\3日/')
+                  file_time=$(echo "$filename" | sed 's/daily_brief_[0-9]\{8\}_\([0-9]\{2\}\)\([0-9]\{2\}\).*/\1:\2/')
                   if [ $counter -eq 1 ]; then
                       title="📢 最新AI每日简报"
                   else
@@ -146,6 +149,7 @@ jobs:
                   fi
                   echo "              <li class=\"audio-item\">" >> output/audio/index.html
                   echo "                  <div class=\"audio-title\">$title</div>" >> output/audio/index.html
+                  echo "                  <div style=\"color: #666; font-size: 14px; margin-bottom: 10px;\">📅 生成时间：$file_date $file_time</div>" >> output/audio/index.html
                   echo "                  <audio controls>" >> output/audio/index.html
                   echo "                      <source src=\"$filename\" type=\"audio/mpeg\">" >> output/audio/index.html
                   echo "                      您的浏览器不支持音频播放。" >> output/audio/index.html
