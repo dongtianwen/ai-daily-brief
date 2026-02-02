@@ -1,4 +1,6 @@
 name: AI Daily Brief
+# AI Daily Brief Bot - 自动生成AI技术简报音频
+# 每天早上8点（北京时间）自动执行，生成音频文件并部署到GitHub Pages
 
 on:
   # 定时任务：每天早上8点执行
