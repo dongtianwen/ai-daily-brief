@@ -1,0 +1,1343 @@
+2026-02-01 22:19:26 | INFO     | __main__:main:415 - 🐛 强制开启 DEBUG 模式
+2026-02-01 22:19:26 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 22:19:26 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 22:19:26 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-01 22:19:26 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 22:19:26 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 22:19:26 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 22:19:26 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 22:19:26 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 22:19:33 | INFO     | scraper:fetch:129 - [GitHub] 成功抓取 10 个项目
+2026-02-01 22:19:33 | INFO     | scraper:fetch:145 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 22:19:36 | INFO     | __main__:main:415 - 🐛 强制开启 DEBUG 模式
+2026-02-01 22:19:36 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 22:19:36 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 22:19:36 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-01 22:19:36 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 22:19:36 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 22:19:36 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 22:19:36 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 22:19:36 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 22:19:36 | INFO     | scraper:fetch:184 - [HuggingFace] 成功抓取 4 篇论文
+2026-02-01 22:19:36 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.CL
+2026-02-01 22:19:38 | INFO     | scraper:fetch:129 - [GitHub] 成功抓取 10 个项目
+2026-02-01 22:19:38 | INFO     | scraper:fetch:145 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 22:19:40 | INFO     | __main__:main:415 - 🐛 强制开启 DEBUG 模式
+2026-02-01 22:19:40 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 22:19:40 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 22:19:40 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-01 22:19:40 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 22:19:40 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 22:19:40 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 22:19:40 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 22:19:40 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 22:19:41 | INFO     | scraper:fetch:184 - [HuggingFace] 成功抓取 4 篇论文
+2026-02-01 22:19:41 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.CL
+2026-02-01 22:19:41 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.AI
+2026-02-01 22:19:42 | INFO     | scraper:fetch:129 - [GitHub] 成功抓取 10 个项目
+2026-02-01 22:19:42 | INFO     | scraper:fetch:145 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 22:19:43 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.AI
+2026-02-01 22:19:44 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.LG
+2026-02-01 22:19:45 | INFO     | scraper:fetch:184 - [HuggingFace] 成功抓取 4 篇论文
+2026-02-01 22:19:45 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.CL
+2026-02-01 22:19:45 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.LG
+2026-02-01 22:19:46 | INFO     | scraper:fetch:251 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 22:19:46 | INFO     | scraper:fetch_all_sources:284 - [Scraper] 总计抓取 29 条数据
+2026-02-01 22:19:46 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 29 条
+2026-02-01 22:19:46 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 22:19:46 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 22:19:46 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 22:19:46 | INFO     | processor:process:203 - [Processor] 开始处理 29 条内容
+2026-02-01 22:19:47 | INFO     | scraper:fetch:251 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 22:19:47 | INFO     | scraper:fetch_all_sources:284 - [Scraper] 总计抓取 29 条数据
+2026-02-01 22:19:47 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 29 条
+2026-02-01 22:19:47 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 22:19:47 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 22:19:47 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 22:19:48 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.AI
+2026-02-01 22:19:48 | INFO     | processor:process:203 - [Processor] 开始处理 29 条内容
+2026-02-01 22:19:52 | INFO     | processor:_call_glm_for_scoring:123 - [GLM] 成功获取评分响应
+2026-02-01 22:19:52 | INFO     | processor:process:232 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 22:19:52 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 22:19:52 | INFO     | __main__:step_2_process:134 -   1. [9.0] microsoft/agent-lightning
+2026-02-01 22:19:52 | INFO     | __main__:step_2_process:134 -   2. [8.7] Exploring Reasoning Reward Model for Agents
+2026-02-01 22:19:52 | INFO     | __main__:step_2_process:134 -   3. [8.5] DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:19:52 | INFO     | __main__:step_2_process:134 -   4. [8.4] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:19:52 | INFO     | __main__:step_2_process:134 -   5. [8.2] Stable-Video-Infinity
+2026-02-01 22:19:52 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 22:19:52 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 22:19:52 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 22:19:52 | INFO     | writer:write:258 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 22:19:53 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.LG
+2026-02-01 22:19:54 | INFO     | scraper:fetch:251 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 22:19:54 | INFO     | scraper:fetch_all_sources:284 - [Scraper] 总计抓取 29 条数据
+2026-02-01 22:19:54 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 29 条
+2026-02-01 22:19:54 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 22:19:54 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 22:19:54 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 22:19:55 | INFO     | processor:process:203 - [Processor] 开始处理 29 条内容
+2026-02-01 22:19:55 | INFO     | processor:_call_glm_for_scoring:123 - [GLM] 成功获取评分响应
+2026-02-01 22:19:55 | INFO     | processor:process:232 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 22:19:55 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 22:19:55 | INFO     | __main__:step_2_process:134 -   1. [9.0] microsoft/agent-lightning
+2026-02-01 22:19:55 | INFO     | __main__:step_2_process:134 -   2. [8.7] Exploring Reasoning Reward Model for Agents
+2026-02-01 22:19:55 | INFO     | __main__:step_2_process:134 -   3. [8.6] DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:19:55 | INFO     | __main__:step_2_process:134 -   4. [8.4] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:19:55 | INFO     | __main__:step_2_process:134 -   5. [8.3] vita-epfl/Stable-Video-Infinity
+2026-02-01 22:19:55 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 22:19:55 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 22:19:55 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 22:19:56 | INFO     | writer:_call_glm_for_writing:165 - [Writer] 成功生成播客讲稿
+2026-02-01 22:19:56 | INFO     | writer:write:271 - [Writer] 生成完成，共 303 字符
+2026-02-01 22:19:56 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 303 字符
+2026-02-01 22:19:56 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 22:19:56 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 22:19:56 | INFO     | __main__:step_3_write:176 - 大家好，今天我们来聊聊近期AI领域的热门动态。微软推出的Agent-Lightning项目获得了超过1.2万星标，这是一个专注于AI Agent训练的创新工具。在arXiv上，一篇关于Agent强化学习奖励模型的研究引起了关注，它解决了强化学习中的关键问题。同时，DynaWeb项目探索了大语言模型与强化学习结合的Web Agent技术。另一篇论文提出了创新的混合线性注意力架构，有效解决了长上下文建...
+2026-02-01 22:19:56 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 22:19:56 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 22:19:56 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 22:19:56 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 22:19:56 | INFO     | __main__:step_4_audio:208 - [Step 4/5] DEBUG 模式: 跳过语音合成
+2026-02-01 22:19:56 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 22:19:56 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 22:19:56 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 22:19:56 | INFO     | notifier:send_notification:377 - [Notifier] DEBUG 模式: 只打印消息，不实际发送
+2026-02-01 22:19:56 | INFO     | notifier:send_notification:378 - ==================================================
+2026-02-01 22:19:56 | INFO     | notifier:send_notification:379 - 【图文卡片预览】
+2026-02-01 22:19:56 | INFO     | notifier:send_notification:381 - 标题: 🤖 AI每日技术简报 - 02月01日
+2026-02-01 22:19:56 | INFO     | notifier:send_notification:383 - 内容预览:
+2026-02-01 22:19:56 | INFO     | notifier:send_notification:385 -   1. microsoft/agent-lightning
+2026-02-01 22:19:56 | INFO     | notifier:send_notification:385 -   2. Exploring Reasoning Reward Model for Agents
+2026-02-01 22:19:56 | INFO     | notifier:send_notification:385 -   3. DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:19:56 | INFO     | notifier:send_notification:385 -   4. Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:19:56 | INFO     | notifier:send_notification:385 -   5. Stable-Video-Infinity
+2026-02-01 22:19:56 | INFO     | notifier:send_notification:386 - ==================================================
+2026-02-01 22:19:56 | INFO     | notifier:send_notification:387 - 【语音文件】
+2026-02-01 22:19:56 | INFO     | notifier:send_notification:388 - 路径: 无
+2026-02-01 22:19:56 | INFO     | notifier:send_notification:389 - ==================================================
+2026-02-01 22:19:56 | INFO     | __main__:step_5_notify:273 - [Step 5/5] 消息推送完成
+2026-02-01 22:19:56 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 22:19:56 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 22:19:56 | INFO     | __main__:run:341 - ⏱️  执行时间: 29.75 秒
+2026-02-01 22:19:56 | INFO     | __main__:run:342 - 🎯 整体状态: 成功
+2026-02-01 22:19:56 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 22:19:56 | INFO     | writer:write:258 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 22:19:59 | INFO     | writer:_call_glm_for_writing:165 - [Writer] 成功生成播客讲稿
+2026-02-01 22:19:59 | INFO     | writer:write:271 - [Writer] 生成完成，共 265 字符
+2026-02-01 22:19:59 | WARNING  | writer:write:274 - [Writer] 讲稿过短 (265 字符)，可能不符合预期
+2026-02-01 22:19:59 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 265 字符
+2026-02-01 22:19:59 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 22:19:59 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 22:19:59 | INFO     | __main__:step_3_write:176 - 大家好，今天带来几项AI前沿研究。微软新发布的agent-lightning项目，专为AI智能体开发打造，已获得超1.2万星标，潜力巨大。另外，Archive上两篇智能体研究值得关注：一篇探索推理奖励模型，解决强化学习训练难题；另一篇DynaWeb结合大语言模型与强化学习，提升网页智能体能力。还有一篇关于混合线性注意力架构的研究，创新解决了超长上下文建模问题。最后，Stable-Video-Inf...
+2026-02-01 22:19:59 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 22:19:59 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 22:19:59 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 22:19:59 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 22:19:59 | INFO     | __main__:step_4_audio:208 - [Step 4/5] DEBUG 模式: 跳过语音合成
+2026-02-01 22:19:59 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 22:19:59 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 22:19:59 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 22:19:59 | INFO     | notifier:send_notification:377 - [Notifier] DEBUG 模式: 只打印消息，不实际发送
+2026-02-01 22:19:59 | INFO     | notifier:send_notification:378 - ==================================================
+2026-02-01 22:19:59 | INFO     | notifier:send_notification:379 - 【图文卡片预览】
+2026-02-01 22:19:59 | INFO     | notifier:send_notification:381 - 标题: 🤖 AI每日技术简报 - 02月01日
+2026-02-01 22:19:59 | INFO     | notifier:send_notification:383 - 内容预览:
+2026-02-01 22:19:59 | INFO     | notifier:send_notification:385 -   1. microsoft/agent-lightning
+2026-02-01 22:19:59 | INFO     | notifier:send_notification:385 -   2. Exploring Reasoning Reward Model for Agents
+2026-02-01 22:19:59 | INFO     | notifier:send_notification:385 -   3. DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:19:59 | INFO     | notifier:send_notification:385 -   4. Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:19:59 | INFO     | notifier:send_notification:385 -   5. vita-epfl/Stable-Video-Infinity
+2026-02-01 22:19:59 | INFO     | notifier:send_notification:386 - ==================================================
+2026-02-01 22:19:59 | INFO     | notifier:send_notification:387 - 【语音文件】
+2026-02-01 22:19:59 | INFO     | notifier:send_notification:388 - 路径: 无
+2026-02-01 22:19:59 | INFO     | notifier:send_notification:389 - ==================================================
+2026-02-01 22:19:59 | INFO     | __main__:step_5_notify:273 - [Step 5/5] 消息推送完成
+2026-02-01 22:19:59 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 22:19:59 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 22:19:59 | INFO     | __main__:run:341 - ⏱️  执行时间: 23.25 秒
+2026-02-01 22:19:59 | INFO     | __main__:run:342 - 🎯 整体状态: 成功
+2026-02-01 22:19:59 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 22:20:01 | INFO     | processor:_call_glm_for_scoring:123 - [GLM] 成功获取评分响应
+2026-02-01 22:20:01 | INFO     | processor:process:232 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 22:20:01 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 22:20:01 | INFO     | __main__:step_2_process:134 -   1. [9.0] microsoft/agent-lightning
+2026-02-01 22:20:01 | INFO     | __main__:step_2_process:134 -   2. [8.7] Exploring Reasoning Reward Model for Agents
+2026-02-01 22:20:01 | INFO     | __main__:step_2_process:134 -   3. [8.5] DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:20:01 | INFO     | __main__:step_2_process:134 -   4. [8.4] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:20:01 | INFO     | __main__:step_2_process:134 -   5. [8.3] vita-epfl/Stable-Video-Infinity
+2026-02-01 22:20:01 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 22:20:01 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 22:20:01 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 22:20:01 | INFO     | __main__:main:415 - 🐛 强制开启 DEBUG 模式
+2026-02-01 22:20:01 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 22:20:01 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 22:20:01 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-01 22:20:01 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 22:20:01 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 22:20:01 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 22:20:01 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 22:20:01 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 22:20:01 | INFO     | writer:write:258 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 22:20:05 | INFO     | scraper:fetch:129 - [GitHub] 成功抓取 10 个项目
+2026-02-01 22:20:05 | INFO     | scraper:fetch:145 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 22:20:06 | INFO     | writer:_call_glm_for_writing:165 - [Writer] 成功生成播客讲稿
+2026-02-01 22:20:06 | INFO     | writer:write:271 - [Writer] 生成完成，共 288 字符
+2026-02-01 22:20:06 | WARNING  | writer:write:274 - [Writer] 讲稿过短 (288 字符)，可能不符合预期
+2026-02-01 22:20:06 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 288 字符
+2026-02-01 22:20:06 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 22:20:06 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 22:20:06 | INFO     | __main__:step_3_write:176 - 大家好，今天来聊聊几个AI领域的最新动态。微软推出的Agent-Lightning项目已获得超过1.2万星标，专注于AI Agent训练，实用性极高。在Archive上，一篇关于推理奖励模型的研究解决了Agent强化学习中奖励稀疏性问题，另一项DynaWeb研究则提出了基于模型的强化学习方法，训练AI助手与实时互联网交互。还有一项研究解决了Transformer在长上下文中的性能问题，提出了高效蒸...
+2026-02-01 22:20:06 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 22:20:06 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 22:20:06 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 22:20:06 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 22:20:06 | INFO     | __main__:step_4_audio:208 - [Step 4/5] DEBUG 模式: 跳过语音合成
+2026-02-01 22:20:06 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 22:20:06 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 22:20:06 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 22:20:06 | INFO     | notifier:send_notification:377 - [Notifier] DEBUG 模式: 只打印消息，不实际发送
+2026-02-01 22:20:06 | INFO     | notifier:send_notification:378 - ==================================================
+2026-02-01 22:20:06 | INFO     | notifier:send_notification:379 - 【图文卡片预览】
+2026-02-01 22:20:06 | INFO     | notifier:send_notification:381 - 标题: 🤖 AI每日技术简报 - 02月01日
+2026-02-01 22:20:06 | INFO     | notifier:send_notification:383 - 内容预览:
+2026-02-01 22:20:06 | INFO     | notifier:send_notification:385 -   1. microsoft/agent-lightning
+2026-02-01 22:20:06 | INFO     | notifier:send_notification:385 -   2. Exploring Reasoning Reward Model for Agents
+2026-02-01 22:20:06 | INFO     | notifier:send_notification:385 -   3. DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:20:06 | INFO     | notifier:send_notification:385 -   4. Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:20:06 | INFO     | notifier:send_notification:385 -   5. vita-epfl/Stable-Video-Infinity
+2026-02-01 22:20:06 | INFO     | notifier:send_notification:386 - ==================================================
+2026-02-01 22:20:06 | INFO     | notifier:send_notification:387 - 【语音文件】
+2026-02-01 22:20:06 | INFO     | notifier:send_notification:388 - 路径: 无
+2026-02-01 22:20:06 | INFO     | notifier:send_notification:389 - ==================================================
+2026-02-01 22:20:06 | INFO     | __main__:step_5_notify:273 - [Step 5/5] 消息推送完成
+2026-02-01 22:20:06 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 22:20:06 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 22:20:06 | INFO     | __main__:run:341 - ⏱️  执行时间: 26.46 秒
+2026-02-01 22:20:06 | INFO     | __main__:run:342 - 🎯 整体状态: 成功
+2026-02-01 22:20:06 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 22:20:07 | INFO     | scraper:fetch:184 - [HuggingFace] 成功抓取 4 篇论文
+2026-02-01 22:20:07 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.CL
+2026-02-01 22:20:10 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.AI
+2026-02-01 22:20:12 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.LG
+2026-02-01 22:20:13 | INFO     | scraper:fetch:251 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 22:20:13 | INFO     | scraper:fetch_all_sources:284 - [Scraper] 总计抓取 29 条数据
+2026-02-01 22:20:13 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 29 条
+2026-02-01 22:20:13 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 22:20:13 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 22:20:13 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 22:20:14 | INFO     | processor:process:203 - [Processor] 开始处理 29 条内容
+2026-02-01 22:20:33 | INFO     | processor:_call_glm_for_scoring:123 - [GLM] 成功获取评分响应
+2026-02-01 22:20:33 | INFO     | processor:process:232 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 22:20:33 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 22:20:33 | INFO     | __main__:step_2_process:134 -   1. [9.0] microsoft/agent-lightning
+2026-02-01 22:20:33 | INFO     | __main__:step_2_process:134 -   2. [8.7] Exploring Reasoning Reward Model for Agents
+2026-02-01 22:20:33 | INFO     | __main__:step_2_process:134 -   3. [8.5] DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:20:33 | INFO     | __main__:step_2_process:134 -   4. [8.4] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:20:33 | INFO     | __main__:step_2_process:134 -   5. [8.3] RedSage: A Cybersecurity Generalist LLM
+2026-02-01 22:20:33 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 22:20:33 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 22:20:33 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 22:20:33 | INFO     | writer:write:258 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 22:20:35 | INFO     | writer:_call_glm_for_writing:165 - [Writer] 成功生成播客讲稿
+2026-02-01 22:20:35 | INFO     | writer:write:271 - [Writer] 生成完成，共 295 字符
+2026-02-01 22:20:35 | WARNING  | writer:write:274 - [Writer] 讲稿过短 (295 字符)，可能不符合预期
+2026-02-01 22:20:35 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 295 字符
+2026-02-01 22:20:35 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 22:20:35 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 22:20:35 | INFO     | __main__:step_3_write:176 - 大家好，今天和大家分享几个AI领域的最新进展。微软推出的Agent-Lightning项目引起了广泛关注，它是一个专门训练AI Agent的框架，已有超过1.2万星标。在Archive上，一篇关于Agent强化学习奖励模型的研究也值得关注，它为AI Agent提供了新的推理能力。另外，DynaWeb研究聚焦于基于大语言模型的网页智能体，通过强化学习让AI能更好地操作网页。在架构创新方面，一篇关于混...
+2026-02-01 22:20:35 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 22:20:35 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 22:20:35 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 22:20:35 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 22:20:35 | INFO     | __main__:step_4_audio:208 - [Step 4/5] DEBUG 模式: 跳过语音合成
+2026-02-01 22:20:35 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 22:20:35 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 22:20:35 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 22:20:35 | INFO     | notifier:send_notification:377 - [Notifier] DEBUG 模式: 只打印消息，不实际发送
+2026-02-01 22:20:35 | INFO     | notifier:send_notification:378 - ==================================================
+2026-02-01 22:20:35 | INFO     | notifier:send_notification:379 - 【图文卡片预览】
+2026-02-01 22:20:35 | INFO     | notifier:send_notification:381 - 标题: 🤖 AI每日技术简报 - 02月01日
+2026-02-01 22:20:35 | INFO     | notifier:send_notification:383 - 内容预览:
+2026-02-01 22:20:35 | INFO     | notifier:send_notification:385 -   1. microsoft/agent-lightning
+2026-02-01 22:20:35 | INFO     | notifier:send_notification:385 -   2. Exploring Reasoning Reward Model for Agents
+2026-02-01 22:20:35 | INFO     | notifier:send_notification:385 -   3. DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:20:35 | INFO     | notifier:send_notification:385 -   4. Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:20:35 | INFO     | notifier:send_notification:385 -   5. RedSage: A Cybersecurity Generalist LLM
+2026-02-01 22:20:35 | INFO     | notifier:send_notification:386 - ==================================================
+2026-02-01 22:20:35 | INFO     | notifier:send_notification:387 - 【语音文件】
+2026-02-01 22:20:35 | INFO     | notifier:send_notification:388 - 路径: 无
+2026-02-01 22:20:35 | INFO     | notifier:send_notification:389 - ==================================================
+2026-02-01 22:20:35 | INFO     | __main__:step_5_notify:273 - [Step 5/5] 消息推送完成
+2026-02-01 22:20:35 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 22:20:35 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 22:20:35 | INFO     | __main__:run:341 - ⏱️  执行时间: 34.17 秒
+2026-02-01 22:20:35 | INFO     | __main__:run:342 - 🎯 整体状态: 成功
+2026-02-01 22:20:35 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 22:20:38 | INFO     | __main__:main:415 - 🐛 强制开启 DEBUG 模式
+2026-02-01 22:20:38 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 22:20:38 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 22:20:38 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-01 22:20:38 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 22:20:38 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 22:20:38 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 22:20:38 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 22:20:38 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 22:20:41 | INFO     | scraper:fetch:129 - [GitHub] 成功抓取 10 个项目
+2026-02-01 22:20:41 | INFO     | scraper:fetch:145 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 22:20:44 | INFO     | scraper:fetch:184 - [HuggingFace] 成功抓取 4 篇论文
+2026-02-01 22:20:44 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.CL
+2026-02-01 22:20:46 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.AI
+2026-02-01 22:20:48 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.LG
+2026-02-01 22:20:50 | INFO     | scraper:fetch:251 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 22:20:50 | INFO     | scraper:fetch_all_sources:284 - [Scraper] 总计抓取 29 条数据
+2026-02-01 22:20:50 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 29 条
+2026-02-01 22:20:50 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 22:20:50 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 22:20:50 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 22:20:50 | INFO     | processor:process:203 - [Processor] 开始处理 29 条内容
+2026-02-01 22:20:56 | INFO     | processor:_call_glm_for_scoring:123 - [GLM] 成功获取评分响应
+2026-02-01 22:20:56 | INFO     | processor:process:232 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 22:20:56 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 22:20:56 | INFO     | __main__:step_2_process:134 -   1. [9.0] microsoft/agent-lightning
+2026-02-01 22:20:56 | INFO     | __main__:step_2_process:134 -   2. [8.7] Exploring Reasoning Reward Model for Agents
+2026-02-01 22:20:56 | INFO     | __main__:step_2_process:134 -   3. [8.5] DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:20:56 | INFO     | __main__:step_2_process:134 -   4. [8.4] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:20:56 | INFO     | __main__:step_2_process:134 -   5. [8.3] RedSage: A Cybersecurity Generalist LLM
+2026-02-01 22:20:56 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 22:20:56 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 22:20:56 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 22:20:57 | INFO     | writer:write:258 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 22:20:59 | INFO     | writer:_call_glm_for_writing:165 - [Writer] 成功生成播客讲稿
+2026-02-01 22:20:59 | INFO     | writer:write:271 - [Writer] 生成完成，共 265 字符
+2026-02-01 22:20:59 | WARNING  | writer:write:274 - [Writer] 讲稿过短 (265 字符)，可能不符合预期
+2026-02-01 22:20:59 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 265 字符
+2026-02-01 22:20:59 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 22:20:59 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 22:20:59 | INFO     | __main__:step_3_write:176 - 嘿，各位AI爱好者，今天带来几则精彩的技术分享。微软推出的Agent-Lightning框架已经获得了超过1.2万星标，成为了训练AI Agent的利器。最新研究探索了Agent强化学习中的推理奖励模型，解决了中间推理质量评估难题，对AI Agent发展意义重大。DynaWeb则展示了基于大语言模型的Web Agent，成功解决了与真实互联网交互的挑战。另外，混合线性注意力架构在长上下文建模上取得...
+2026-02-01 22:20:59 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 22:20:59 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 22:20:59 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 22:20:59 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 22:20:59 | INFO     | __main__:step_4_audio:208 - [Step 4/5] DEBUG 模式: 跳过语音合成
+2026-02-01 22:20:59 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 22:20:59 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 22:20:59 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 22:20:59 | INFO     | notifier:send_notification:377 - [Notifier] DEBUG 模式: 只打印消息，不实际发送
+2026-02-01 22:20:59 | INFO     | notifier:send_notification:378 - ==================================================
+2026-02-01 22:20:59 | INFO     | notifier:send_notification:379 - 【图文卡片预览】
+2026-02-01 22:20:59 | INFO     | notifier:send_notification:381 - 标题: 🤖 AI每日技术简报 - 02月01日
+2026-02-01 22:20:59 | INFO     | notifier:send_notification:383 - 内容预览:
+2026-02-01 22:20:59 | INFO     | notifier:send_notification:385 -   1. microsoft/agent-lightning
+2026-02-01 22:20:59 | INFO     | notifier:send_notification:385 -   2. Exploring Reasoning Reward Model for Agents
+2026-02-01 22:20:59 | INFO     | notifier:send_notification:385 -   3. DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:20:59 | INFO     | notifier:send_notification:385 -   4. Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:20:59 | INFO     | notifier:send_notification:385 -   5. RedSage: A Cybersecurity Generalist LLM
+2026-02-01 22:20:59 | INFO     | notifier:send_notification:386 - ==================================================
+2026-02-01 22:20:59 | INFO     | notifier:send_notification:387 - 【语音文件】
+2026-02-01 22:20:59 | INFO     | notifier:send_notification:388 - 路径: 无
+2026-02-01 22:20:59 | INFO     | notifier:send_notification:389 - ==================================================
+2026-02-01 22:20:59 | INFO     | __main__:step_5_notify:273 - [Step 5/5] 消息推送完成
+2026-02-01 22:20:59 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 22:20:59 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 22:20:59 | INFO     | __main__:run:341 - ⏱️  执行时间: 20.46 秒
+2026-02-01 22:20:59 | INFO     | __main__:run:342 - 🎯 整体状态: 成功
+2026-02-01 22:20:59 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 22:21:07 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 22:21:07 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 22:21:07 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-01 22:21:07 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 22:21:07 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 22:21:07 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 22:21:07 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 22:21:07 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 22:21:10 | INFO     | scraper:fetch:129 - [GitHub] 成功抓取 10 个项目
+2026-02-01 22:21:10 | INFO     | scraper:fetch:145 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 22:21:12 | INFO     | scraper:fetch:184 - [HuggingFace] 成功抓取 4 篇论文
+2026-02-01 22:21:12 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.CL
+2026-02-01 22:21:15 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.AI
+2026-02-01 22:21:17 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.LG
+2026-02-01 22:21:19 | INFO     | scraper:fetch:251 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 22:21:19 | INFO     | scraper:fetch_all_sources:284 - [Scraper] 总计抓取 29 条数据
+2026-02-01 22:21:19 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 29 条
+2026-02-01 22:21:19 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 22:21:19 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 22:21:19 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 22:21:19 | INFO     | processor:process:203 - [Processor] 开始处理 29 条内容
+2026-02-01 22:21:24 | INFO     | processor:_call_glm_for_scoring:123 - [GLM] 成功获取评分响应
+2026-02-01 22:21:24 | INFO     | processor:process:232 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 22:21:24 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 22:21:24 | INFO     | __main__:step_2_process:134 -   1. [9.0] microsoft/agent-lightning
+2026-02-01 22:21:24 | INFO     | __main__:step_2_process:134 -   2. [8.7] Exploring Reasoning Reward Model for Agents
+2026-02-01 22:21:24 | INFO     | __main__:step_2_process:134 -   3. [8.6] DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:21:24 | INFO     | __main__:step_2_process:134 -   4. [8.4] RedSage: A Cybersecurity Generalist LLM
+2026-02-01 22:21:24 | INFO     | __main__:step_2_process:134 -   5. [8.3] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:21:24 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 22:21:24 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 22:21:24 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 22:21:25 | INFO     | writer:write:258 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 22:21:27 | INFO     | writer:_call_glm_for_writing:165 - [Writer] 成功生成播客讲稿
+2026-02-01 22:21:27 | INFO     | writer:write:271 - [Writer] 生成完成，共 251 字符
+2026-02-01 22:21:27 | WARNING  | writer:write:274 - [Writer] 讲稿过短 (251 字符)，可能不符合预期
+2026-02-01 22:21:27 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 251 字符
+2026-02-01 22:21:27 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 22:21:27 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 22:21:27 | INFO     | __main__:step_3_write:176 - 大家好，今天我们来看看最新的AI技术动态。微软推出了Agent-Lightning，这是一个专注于AI Agent训练的创新项目，已经获得了超过1.2万星标，值得关注。
+
+在学术研究方面，一篇关于Agent强化学习的论文提出了推理奖励模型，而DynaWeb则探索了基于模型的Web Agent强化学习方法，这两项研究都展示了AI在复杂任务中的潜力。
+
+网络安全领域，RedSage作为通用大语言模型，...
+2026-02-01 22:21:27 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 22:21:27 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 22:21:27 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 22:21:27 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 22:21:27 | INFO     | __main__:step_4_audio:208 - [Step 4/5] DEBUG 模式: 跳过语音合成
+2026-02-01 22:21:27 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 22:21:27 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 22:21:27 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 22:21:27 | INFO     | notifier:send_notification:377 - [Notifier] DEBUG 模式: 只打印消息，不实际发送
+2026-02-01 22:21:27 | INFO     | notifier:send_notification:378 - ==================================================
+2026-02-01 22:21:27 | INFO     | notifier:send_notification:379 - 【图文卡片预览】
+2026-02-01 22:21:27 | INFO     | notifier:send_notification:381 - 标题: 🤖 AI每日技术简报 - 02月01日
+2026-02-01 22:21:27 | INFO     | notifier:send_notification:383 - 内容预览:
+2026-02-01 22:21:27 | INFO     | notifier:send_notification:385 -   1. microsoft/agent-lightning
+2026-02-01 22:21:27 | INFO     | notifier:send_notification:385 -   2. Exploring Reasoning Reward Model for Agents
+2026-02-01 22:21:27 | INFO     | notifier:send_notification:385 -   3. DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:21:27 | INFO     | notifier:send_notification:385 -   4. RedSage: A Cybersecurity Generalist LLM
+2026-02-01 22:21:27 | INFO     | notifier:send_notification:385 -   5. Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:21:27 | INFO     | notifier:send_notification:386 - ==================================================
+2026-02-01 22:21:27 | INFO     | notifier:send_notification:387 - 【语音文件】
+2026-02-01 22:21:27 | INFO     | notifier:send_notification:388 - 路径: 无
+2026-02-01 22:21:27 | INFO     | notifier:send_notification:389 - ==================================================
+2026-02-01 22:21:27 | INFO     | __main__:step_5_notify:273 - [Step 5/5] 消息推送完成
+2026-02-01 22:21:27 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 22:21:27 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 22:21:27 | INFO     | __main__:run:341 - ⏱️  执行时间: 20.43 秒
+2026-02-01 22:21:27 | INFO     | __main__:run:342 - 🎯 整体状态: 成功
+2026-02-01 22:21:27 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 22:25:26 | INFO     | __main__:main:415 - 🐛 强制开启 DEBUG 模式
+2026-02-01 22:25:26 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 22:25:26 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 22:25:26 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-01 22:25:26 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 22:25:26 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 22:25:26 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 22:25:26 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 22:25:26 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 22:25:31 | INFO     | scraper:fetch:129 - [GitHub] 成功抓取 10 个项目
+2026-02-01 22:25:31 | INFO     | scraper:fetch:145 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 22:25:33 | INFO     | scraper:fetch:184 - [HuggingFace] 成功抓取 4 篇论文
+2026-02-01 22:25:33 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.CL
+2026-02-01 22:25:36 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.AI
+2026-02-01 22:25:46 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.LG
+2026-02-01 22:25:48 | INFO     | scraper:fetch:251 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 22:25:48 | INFO     | scraper:fetch_all_sources:284 - [Scraper] 总计抓取 29 条数据
+2026-02-01 22:25:48 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 29 条
+2026-02-01 22:25:48 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 22:25:48 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 22:25:48 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 22:25:49 | INFO     | processor:process:203 - [Processor] 开始处理 29 条内容
+2026-02-01 22:25:53 | INFO     | processor:_call_glm_for_scoring:123 - [GLM] 成功获取评分响应
+2026-02-01 22:25:53 | INFO     | processor:process:232 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 22:25:53 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 22:25:53 | INFO     | __main__:step_2_process:134 -   1. [9.0] microsoft/agent-lightning
+2026-02-01 22:25:53 | INFO     | __main__:step_2_process:134 -   2. [8.4] Exploring Reasoning Reward Model for Agents
+2026-02-01 22:25:53 | INFO     | __main__:step_2_process:134 -   3. [8.2] DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:25:53 | INFO     | __main__:step_2_process:134 -   4. [8.0] vita-epfl/Stable-Video-Infinity
+2026-02-01 22:25:53 | INFO     | __main__:step_2_process:134 -   5. [7.8] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:25:53 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 22:25:53 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 22:25:53 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 22:25:54 | INFO     | writer:write:258 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 22:25:56 | INFO     | writer:_call_glm_for_writing:165 - [Writer] 成功生成播客讲稿
+2026-02-01 22:25:56 | INFO     | writer:write:271 - [Writer] 生成完成，共 269 字符
+2026-02-01 22:25:56 | WARNING  | writer:write:274 - [Writer] 讲稿过短 (269 字符)，可能不符合预期
+2026-02-01 22:25:56 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 269 字符
+2026-02-01 22:25:56 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 22:25:56 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 22:25:56 | INFO     | __main__:step_3_write:176 - 大家好，今天和大家分享几个AI领域的最新动态。微软推出的Agent Lightning项目引起了广泛关注，它是一个专门训练AI智能体的框架，已经获得了超过1.2万个星标。另外，两篇关于强化学习与智能体的arXiv论文也值得关注，它们分别探索了推理奖励模型和基于模型的Web智能体学习。视频生成领域也有新突破，Stable Video Infinity能够生成无限长度的视频。最后，一篇关于混合线性注意...
+2026-02-01 22:25:56 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 22:25:56 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 22:25:56 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 22:25:56 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 22:25:56 | INFO     | __main__:step_4_audio:208 - [Step 4/5] DEBUG 模式: 跳过语音合成
+2026-02-01 22:25:56 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 22:25:56 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 22:25:56 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 22:25:56 | INFO     | notifier:send_notification:377 - [Notifier] DEBUG 模式: 只打印消息，不实际发送
+2026-02-01 22:25:56 | INFO     | notifier:send_notification:378 - ==================================================
+2026-02-01 22:25:56 | INFO     | notifier:send_notification:379 - 【图文卡片预览】
+2026-02-01 22:25:56 | INFO     | notifier:send_notification:381 - 标题: 🤖 AI每日技术简报 - 02月01日
+2026-02-01 22:25:56 | INFO     | notifier:send_notification:383 - 内容预览:
+2026-02-01 22:25:56 | INFO     | notifier:send_notification:385 -   1. microsoft/agent-lightning
+2026-02-01 22:25:56 | INFO     | notifier:send_notification:385 -   2. Exploring Reasoning Reward Model for Agents
+2026-02-01 22:25:56 | INFO     | notifier:send_notification:385 -   3. DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:25:56 | INFO     | notifier:send_notification:385 -   4. vita-epfl/Stable-Video-Infinity
+2026-02-01 22:25:56 | INFO     | notifier:send_notification:385 -   5. Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:25:56 | INFO     | notifier:send_notification:386 - ==================================================
+2026-02-01 22:25:56 | INFO     | notifier:send_notification:387 - 【语音文件】
+2026-02-01 22:25:56 | INFO     | notifier:send_notification:388 - 路径: 无
+2026-02-01 22:25:56 | INFO     | notifier:send_notification:389 - ==================================================
+2026-02-01 22:25:56 | INFO     | __main__:step_5_notify:273 - [Step 5/5] 消息推送完成
+2026-02-01 22:25:56 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 22:25:56 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 22:25:56 | INFO     | __main__:run:341 - ⏱️  执行时间: 29.80 秒
+2026-02-01 22:25:56 | INFO     | __main__:run:342 - 🎯 整体状态: 成功
+2026-02-01 22:25:56 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 22:28:01 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 22:28:01 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 22:28:01 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-01 22:28:01 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 22:28:01 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 22:28:01 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 22:28:01 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 22:28:01 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 22:28:04 | INFO     | scraper:fetch:129 - [GitHub] 成功抓取 10 个项目
+2026-02-01 22:28:04 | INFO     | scraper:fetch:145 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 22:28:06 | INFO     | scraper:fetch:184 - [HuggingFace] 成功抓取 4 篇论文
+2026-02-01 22:28:06 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.CL
+2026-02-01 22:28:09 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.AI
+2026-02-01 22:28:12 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.LG
+2026-02-01 22:28:14 | INFO     | scraper:fetch:251 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 22:28:14 | INFO     | scraper:fetch_all_sources:284 - [Scraper] 总计抓取 29 条数据
+2026-02-01 22:28:14 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 29 条
+2026-02-01 22:28:14 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 22:28:14 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 22:28:14 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 22:28:15 | INFO     | processor:process:203 - [Processor] 开始处理 29 条内容
+2026-02-01 22:28:20 | INFO     | processor:_call_glm_for_scoring:123 - [GLM] 成功获取评分响应
+2026-02-01 22:28:20 | INFO     | processor:process:232 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 22:28:20 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 22:28:20 | INFO     | __main__:step_2_process:134 -   1. [9.6] microsoft/agent-lightning
+2026-02-01 22:28:20 | INFO     | __main__:step_2_process:134 -   2. [9.0] Exploring Reasoning Reward Model for Agents
+2026-02-01 22:28:20 | INFO     | __main__:step_2_process:134 -   3. [8.8] DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:28:20 | INFO     | __main__:step_2_process:134 -   4. [8.4] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:28:20 | INFO     | __main__:step_2_process:134 -   5. [8.2] RedSage: A Cybersecurity Generalist LLM
+2026-02-01 22:28:20 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 22:28:20 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 22:28:20 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 22:28:21 | INFO     | writer:write:258 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 22:28:23 | INFO     | writer:_call_glm_for_writing:165 - [Writer] 成功生成播客讲稿
+2026-02-01 22:28:23 | INFO     | writer:write:271 - [Writer] 生成完成，共 270 字符
+2026-02-01 22:28:23 | WARNING  | writer:write:274 - [Writer] 讲稿过短 (270 字符)，可能不符合预期
+2026-02-01 22:28:23 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 270 字符
+2026-02-01 22:28:23 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 22:28:23 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 22:28:23 | INFO     | __main__:step_3_write:176 - 大家好，今天我们来聊聊几个AI领域的最新进展。微软推出了Agent-Lightning框架，这是一个强大的AI Agent训练工具，已经获得了超过1.2万个星标，影响力很大。另外，Archive上有三篇重要论文：一篇探索了Agent强化学习中的推理奖励模型，另一篇DynaWeb提出了基于强化学习的Web智能体模型，还有一篇RedSage网络安全通用大模型。最后，一篇关于混合线性注意力架构的论文解决...
+2026-02-01 22:28:23 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 22:28:23 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 22:28:23 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 22:28:23 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 22:28:23 | INFO     | __main__:step_4_audio:208 - [Step 4/5] DEBUG 模式: 跳过语音合成
+2026-02-01 22:28:23 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 22:28:23 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 22:28:23 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 22:28:23 | INFO     | notifier:send_notification:377 - [Notifier] DEBUG 模式: 只打印消息，不实际发送
+2026-02-01 22:28:23 | INFO     | notifier:send_notification:378 - ==================================================
+2026-02-01 22:28:23 | INFO     | notifier:send_notification:379 - 【图文卡片预览】
+2026-02-01 22:28:23 | INFO     | notifier:send_notification:381 - 标题: 🤖 AI每日技术简报 - 02月01日
+2026-02-01 22:28:23 | INFO     | notifier:send_notification:383 - 内容预览:
+2026-02-01 22:28:23 | INFO     | notifier:send_notification:385 -   1. microsoft/agent-lightning
+2026-02-01 22:28:23 | INFO     | notifier:send_notification:385 -   2. Exploring Reasoning Reward Model for Agents
+2026-02-01 22:28:23 | INFO     | notifier:send_notification:385 -   3. DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 22:28:23 | INFO     | notifier:send_notification:385 -   4. Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:28:23 | INFO     | notifier:send_notification:385 -   5. RedSage: A Cybersecurity Generalist LLM
+2026-02-01 22:28:23 | INFO     | notifier:send_notification:386 - ==================================================
+2026-02-01 22:28:23 | INFO     | notifier:send_notification:387 - 【语音文件】
+2026-02-01 22:28:23 | INFO     | notifier:send_notification:388 - 路径: 无
+2026-02-01 22:28:23 | INFO     | notifier:send_notification:389 - ==================================================
+2026-02-01 22:28:23 | INFO     | __main__:step_5_notify:273 - [Step 5/5] 消息推送完成
+2026-02-01 22:28:23 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 22:28:23 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 22:28:23 | INFO     | __main__:run:341 - ⏱️  执行时间: 22.69 秒
+2026-02-01 22:28:23 | INFO     | __main__:run:342 - 🎯 整体状态: 成功
+2026-02-01 22:28:23 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 22:31:48 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 22:31:48 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 22:31:48 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-01 22:31:48 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 22:31:48 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 22:31:48 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 22:31:48 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 22:31:48 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 22:31:51 | INFO     | scraper:fetch:129 - [GitHub] 成功抓取 10 个项目
+2026-02-01 22:31:51 | INFO     | scraper:fetch:145 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 22:31:54 | INFO     | scraper:fetch:184 - [HuggingFace] 成功抓取 4 篇论文
+2026-02-01 22:31:54 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.CL
+2026-02-01 22:31:57 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.AI
+2026-02-01 22:31:59 | INFO     | scraper:fetch:205 - [arXiv] 开始抓取 cs.LG
+2026-02-01 22:32:01 | INFO     | scraper:fetch:251 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 22:32:01 | INFO     | scraper:fetch_all_sources:284 - [Scraper] 总计抓取 29 条数据
+2026-02-01 22:32:01 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 29 条
+2026-02-01 22:32:01 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 22:32:01 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 22:32:01 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 22:32:01 | INFO     | processor:process:203 - [Processor] 开始处理 29 条内容
+2026-02-01 22:32:08 | INFO     | processor:_call_glm_for_scoring:123 - [GLM] 成功获取评分响应
+2026-02-01 22:32:08 | INFO     | processor:process:232 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 22:32:08 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 22:32:08 | INFO     | __main__:step_2_process:134 -   1. [9.0] microsoft/agent-lightning
+2026-02-01 22:32:08 | INFO     | __main__:step_2_process:134 -   2. [8.7] Exploring Reasoning Reward Model for Agents
+2026-02-01 22:32:08 | INFO     | __main__:step_2_process:134 -   3. [8.7] Exploring Reasoning Reward Model for Agents
+2026-02-01 22:32:08 | INFO     | __main__:step_2_process:134 -   4. [8.5] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:32:08 | INFO     | __main__:step_2_process:134 -   5. [8.5] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 22:32:08 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 22:32:08 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 22:32:08 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 22:32:09 | INFO     | writer:write:258 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 22:32:12 | INFO     | writer:_call_glm_for_writing:165 - [Writer] 成功生成播客讲稿
+2026-02-01 22:32:12 | INFO     | writer:write:271 - [Writer] 生成完成，共 243 字符
+2026-02-01 22:32:12 | WARNING  | writer:write:274 - [Writer] 讲稿过短 (243 字符)，可能不符合预期
+2026-02-01 22:32:12 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 243 字符
+2026-02-01 22:32:12 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 22:32:12 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 22:32:12 | INFO     | __main__:step_3_write:176 - 大家好，今天带来几则AI前沿资讯。微软推出Agent-Lightning项目，专注于AI Agent训练方法，已获超1.2万星标，值得关注。Archive上有两篇关于Agent强化学习的研究，聚焦推理奖励模型，有望提升AI智能体的复杂推理能力。另外，一篇关于混合线性注意力机制的论文提出了解决长上下文建模的创新架构，通过结合Transformer和RNN优势，为大语言模型处理超长文本提供了新思路。这...
+2026-02-01 22:32:12 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 22:32:12 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 22:32:12 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 22:32:12 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 22:32:12 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 244 字符
+2026-02-01 22:32:12 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-01 22:32:16 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260201_223212.mp3
+2026-02-01 22:32:16 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 286704 bytes
+2026-02-01 22:32:16 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260201_223212.mp3
+2026-02-01 22:32:16 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 22:32:16 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 22:32:16 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 22:32:17 | INFO     | notifier:_get_access_token:90 - [WeCom] Access Token 获取成功
+2026-02-01 22:32:18 | ERROR    | notifier:send_text_card:184 - [WeCom] 图文卡片发送失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769956338614672381402091], from ip: 27.37.46.131, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-01 22:32:18 | ERROR    | __main__:step_5_notify:279 - [Step 5/5] 消息推送异常: '<' not supported between instances of 'datetime.datetime' and 'float'
+2026-02-01 22:32:18 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 22:32:18 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 22:32:18 | INFO     | __main__:run:341 - ⏱️  执行时间: 29.05 秒
+2026-02-01 22:32:18 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-01 22:32:18 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 23:02:53 | INFO     | __main__:main:415 - 🐛 强制开启 DEBUG 模式
+2026-02-01 23:02:53 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 23:02:53 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 23:02:53 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-01 23:02:53 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 23:02:53 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 23:02:53 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 23:02:53 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 23:02:53 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 23:02:56 | INFO     | scraper:fetch:146 - [GitHub] 成功抓取 10 个项目
+2026-02-01 23:02:56 | INFO     | scraper:fetch:162 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 23:02:58 | INFO     | scraper:fetch:201 - [HuggingFace] 成功抓取 4 篇论文
+2026-02-01 23:02:58 | INFO     | scraper:fetch:222 - [arXiv] 开始抓取 cs.CL
+2026-02-01 23:03:01 | INFO     | scraper:fetch:222 - [arXiv] 开始抓取 cs.AI
+2026-02-01 23:03:03 | INFO     | scraper:fetch:222 - [arXiv] 开始抓取 cs.LG
+2026-02-01 23:03:05 | INFO     | scraper:fetch:268 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 23:03:05 | INFO     | scraper:fetch_all_sources:301 - [Scraper] 总计抓取 29 条数据
+2026-02-01 23:03:05 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 29 条
+2026-02-01 23:03:05 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 23:03:05 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 23:03:05 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 23:03:05 | INFO     | processor:process:206 - [Processor] 开始处理 29 条内容
+2026-02-01 23:03:21 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-01 23:03:21 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 23:03:21 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 23:03:21 | INFO     | __main__:step_2_process:134 -   1. [9.6] microsoft/agent-lightning
+2026-02-01 23:03:21 | INFO     | __main__:step_2_process:134 -   2. [9.4] vita-epfl/Stable-Video-Infinity
+2026-02-01 23:03:21 | INFO     | __main__:step_2_process:134 -   3. [9.2] m-bain/whisperX
+2026-02-01 23:03:21 | INFO     | __main__:step_2_process:134 -   4. [9.0] Exploring Reasoning Reward Model for Agents
+2026-02-01 23:03:21 | INFO     | __main__:step_2_process:134 -   5. [8.8] DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 23:03:21 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 23:03:21 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 23:03:21 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 23:03:21 | INFO     | writer:write:262 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 23:03:24 | INFO     | writer:_call_glm_for_writing:169 - [Writer] 成功生成播客讲稿
+2026-02-01 23:03:24 | INFO     | writer:write:275 - [Writer] 生成完成，共 337 字符
+2026-02-01 23:03:24 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 337 字符
+2026-02-01 23:03:24 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 23:03:24 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 23:03:24 | INFO     | __main__:step_3_write:176 - 大家好！今天我们来看看几个热门的AI项目。首先是微软的Agent-Lightning，这是一个训练AI代理的强大工具，能让AI代理更高效地学习和完成任务。接着是Stable Video Infinity，这是一个创新视频生成技术，可以创建无限长度的视频，通过错误回收机制确保内容连贯性。WhisperX则是一个令人惊叹的语音识别工具，能提供单词级别的时间戳，甚至能区分不同说话者。在研究方面，探索推理...
+2026-02-01 23:03:24 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 23:03:24 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 23:03:24 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 23:03:24 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 23:03:24 | INFO     | __main__:step_4_audio:208 - [Step 4/5] DEBUG 模式: 跳过语音合成
+2026-02-01 23:03:24 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 23:03:24 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 23:03:24 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 23:03:24 | INFO     | notifier:send_notification:377 - [Notifier] DEBUG 模式: 只打印消息，不实际发送
+2026-02-01 23:03:24 | INFO     | notifier:send_notification:378 - ==================================================
+2026-02-01 23:03:24 | INFO     | notifier:send_notification:379 - 【图文卡片预览】
+2026-02-01 23:03:24 | INFO     | notifier:send_notification:381 - 标题: 🤖 AI每日技术简报 - 02月01日
+2026-02-01 23:03:24 | INFO     | notifier:send_notification:383 - 内容预览:
+2026-02-01 23:03:24 | INFO     | notifier:send_notification:385 -   1. microsoft/agent-lightning
+2026-02-01 23:03:24 | INFO     | notifier:send_notification:385 -   2. vita-epfl/Stable-Video-Infinity
+2026-02-01 23:03:24 | INFO     | notifier:send_notification:385 -   3. m-bain/whisperX
+2026-02-01 23:03:24 | INFO     | notifier:send_notification:385 -   4. Exploring Reasoning Reward Model for Agents
+2026-02-01 23:03:24 | INFO     | notifier:send_notification:385 -   5. DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 23:03:24 | INFO     | notifier:send_notification:386 - ==================================================
+2026-02-01 23:03:24 | INFO     | notifier:send_notification:387 - 【语音文件】
+2026-02-01 23:03:24 | INFO     | notifier:send_notification:388 - 路径: 无
+2026-02-01 23:03:24 | INFO     | notifier:send_notification:389 - ==================================================
+2026-02-01 23:03:24 | INFO     | __main__:step_5_notify:273 - [Step 5/5] 消息推送完成
+2026-02-01 23:03:24 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 23:03:24 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 23:03:24 | INFO     | __main__:run:341 - ⏱️  执行时间: 31.07 秒
+2026-02-01 23:03:24 | INFO     | __main__:run:342 - 🎯 整体状态: 成功
+2026-02-01 23:03:24 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 23:05:24 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 23:05:24 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 23:05:24 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-01 23:05:24 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 23:05:24 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 23:05:24 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 23:05:24 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 23:05:24 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 23:05:27 | INFO     | scraper:fetch:146 - [GitHub] 成功抓取 10 个项目
+2026-02-01 23:05:27 | INFO     | scraper:fetch:162 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 23:05:29 | INFO     | scraper:fetch:201 - [HuggingFace] 成功抓取 4 篇论文
+2026-02-01 23:05:29 | INFO     | scraper:fetch:222 - [arXiv] 开始抓取 cs.CL
+2026-02-01 23:05:32 | INFO     | scraper:fetch:222 - [arXiv] 开始抓取 cs.AI
+2026-02-01 23:05:35 | INFO     | scraper:fetch:222 - [arXiv] 开始抓取 cs.LG
+2026-02-01 23:05:37 | INFO     | scraper:fetch:268 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 23:05:37 | INFO     | scraper:fetch_all_sources:301 - [Scraper] 总计抓取 29 条数据
+2026-02-01 23:05:37 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 29 条
+2026-02-01 23:05:37 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 23:05:37 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 23:05:37 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 23:05:37 | INFO     | processor:process:206 - [Processor] 开始处理 29 条内容
+2026-02-01 23:05:43 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-01 23:05:43 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 23:05:43 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 23:05:43 | INFO     | __main__:step_2_process:134 -   1. [9.6] microsoft/agent-lightning
+2026-02-01 23:05:43 | INFO     | __main__:step_2_process:134 -   2. [9.6] vita-epfl/Stable-Video-Infinity
+2026-02-01 23:05:43 | INFO     | __main__:step_2_process:134 -   3. [9.6] m-bain/whisperX
+2026-02-01 23:05:43 | INFO     | __main__:step_2_process:134 -   4. [9.6] Exploring Reasoning Reward Model for Agents
+2026-02-01 23:05:43 | INFO     | __main__:step_2_process:134 -   5. [9.6] DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 23:05:43 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 23:05:43 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 23:05:43 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 23:05:43 | INFO     | writer:write:262 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 23:05:47 | INFO     | writer:_call_glm_for_writing:169 - [Writer] 成功生成播客讲稿
+2026-02-01 23:05:47 | INFO     | writer:write:275 - [Writer] 生成完成，共 331 字符
+2026-02-01 23:05:47 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 331 字符
+2026-02-01 23:05:47 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 23:05:47 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 23:05:47 | INFO     | __main__:step_3_write:176 - 大家好！今天我们来聊聊几个热门的AI项目。首先是微软的Agent-Lightning，这个项目专注于AI Agent训练，已经获得了超过1.2万个星标，是微软在智能代理领域的重要贡献。接着是来自EPFL的Stable Video Infinity，这是一个能在ICLR 2026上发表的视频生成项目，能够创造出无限长度的视频，非常令人兴奋。第三个是WhisperX，一个功能强大的语音识别工具，拥有近...
+2026-02-01 23:05:47 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 23:05:47 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 23:05:47 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 23:05:47 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 23:05:47 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 335 字符
+2026-02-01 23:05:47 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-01 23:05:52 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260201_230547.mp3
+2026-02-01 23:05:52 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 377856 bytes
+2026-02-01 23:05:52 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260201_230547.mp3
+2026-02-01 23:05:52 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 23:05:52 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 23:05:52 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 23:05:53 | INFO     | notifier:_get_access_token:90 - [WeCom] Access Token 获取成功
+2026-02-01 23:05:53 | ERROR    | notifier:send_text_card:184 - [WeCom] 图文卡片发送失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769958354189711448449791], from ip: 27.37.46.131, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-01 23:05:53 | ERROR    | __main__:step_5_notify:279 - [Step 5/5] 消息推送异常: '<' not supported between instances of 'datetime.datetime' and 'float'
+2026-02-01 23:05:53 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 23:05:53 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 23:05:53 | INFO     | __main__:run:341 - ⏱️  执行时间: 29.03 秒
+2026-02-01 23:05:53 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-01 23:05:53 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 23:16:02 | INFO     | __main__:main:415 - 🐛 强制开启 DEBUG 模式
+2026-02-01 23:16:02 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 23:16:02 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 23:16:02 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-01 23:16:02 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 23:16:02 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 23:16:02 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 23:16:02 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 23:16:02 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 23:16:04 | INFO     | scraper:fetch:153 - [GitHub] 成功抓取 10 个项目
+2026-02-01 23:16:04 | INFO     | scraper:fetch:169 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 23:16:07 | INFO     | scraper:fetch:208 - [HuggingFace] 成功抓取 4 篇论文
+2026-02-01 23:16:07 | INFO     | scraper:fetch:229 - [arXiv] 开始抓取 cs.CL
+2026-02-01 23:16:09 | INFO     | scraper:fetch:229 - [arXiv] 开始抓取 cs.AI
+2026-02-01 23:16:11 | INFO     | scraper:fetch:229 - [arXiv] 开始抓取 cs.LG
+2026-02-01 23:16:13 | INFO     | scraper:fetch:275 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 23:16:13 | INFO     | scraper:fetch_all_sources:308 - [Scraper] 总计抓取 29 条数据
+2026-02-01 23:16:13 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 29 条
+2026-02-01 23:16:13 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 23:16:13 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 23:16:13 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 23:16:13 | INFO     | processor:process:206 - [Processor] 开始处理 29 条内容
+2026-02-01 23:16:58 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-01 23:16:58 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 23:16:58 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 23:16:58 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-01 23:16:58 | INFO     | __main__:step_2_process:134 -   2. [9.2] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 23:16:58 | INFO     | __main__:step_2_process:134 -   3. [8.8] UEval: A Benchmark for Unified Multimodal Generation
+2026-02-01 23:16:58 | INFO     | __main__:step_2_process:134 -   4. [8.7] Exploring Reasoning Reward Model for Agents
+2026-02-01 23:16:58 | INFO     | __main__:step_2_process:134 -   5. [8.6] DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 23:16:58 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 23:16:58 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 23:16:58 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 23:16:58 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 23:17:04 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-01 23:17:04 | INFO     | writer:write:276 - [Writer] 生成完成，共 911 字符
+2026-02-01 23:17:04 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 911 字符
+2026-02-01 23:17:04 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 23:17:04 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 23:17:04 | INFO     | __main__:step_3_write:176 - 大家好，欢迎收听本期AI技术前沿。今天我们来聊聊几个最新的AI研究进展。
+
+首先是RedSage，这是一个专门针对网络安全领域的通用大语言模型。网络安全操作需要支持多种工作流程的助手LLM，但又不能暴露敏感数据。现有解决方案要么依赖专有云服务，要么性能不足。RedSage巧妙地解决了这一矛盾，它通过本地部署和优化，既保护了数据安全，又提供了强大的分析能力，这对企业级安全应用来说意义重大。
+
+接下来...
+2026-02-01 23:17:04 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 23:17:04 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 23:17:04 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 23:17:04 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 23:17:04 | INFO     | __main__:step_4_audio:208 - [Step 4/5] DEBUG 模式: 跳过语音合成
+2026-02-01 23:17:04 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 23:17:04 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 23:17:04 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 23:17:04 | INFO     | notifier:send_notification:377 - [Notifier] DEBUG 模式: 只打印消息，不实际发送
+2026-02-01 23:17:04 | INFO     | notifier:send_notification:378 - ==================================================
+2026-02-01 23:17:04 | INFO     | notifier:send_notification:379 - 【图文卡片预览】
+2026-02-01 23:17:04 | INFO     | notifier:send_notification:381 - 标题: 🤖 AI每日技术简报 - 02月01日
+2026-02-01 23:17:04 | INFO     | notifier:send_notification:383 - 内容预览:
+2026-02-01 23:17:04 | INFO     | notifier:send_notification:385 -   1. RedSage: A Cybersecurity Generalist LLM
+2026-02-01 23:17:04 | INFO     | notifier:send_notification:385 -   2. Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 23:17:04 | INFO     | notifier:send_notification:385 -   3. UEval: A Benchmark for Unified Multimodal Generation
+2026-02-01 23:17:04 | INFO     | notifier:send_notification:385 -   4. Exploring Reasoning Reward Model for Agents
+2026-02-01 23:17:04 | INFO     | notifier:send_notification:385 -   5. DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 23:17:04 | INFO     | notifier:send_notification:386 - ==================================================
+2026-02-01 23:17:04 | INFO     | notifier:send_notification:387 - 【语音文件】
+2026-02-01 23:17:04 | INFO     | notifier:send_notification:388 - 路径: 无
+2026-02-01 23:17:04 | INFO     | notifier:send_notification:389 - ==================================================
+2026-02-01 23:17:04 | INFO     | __main__:step_5_notify:273 - [Step 5/5] 消息推送完成
+2026-02-01 23:17:04 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 23:17:04 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 23:17:04 | INFO     | __main__:run:341 - ⏱️  执行时间: 62.63 秒
+2026-02-01 23:17:04 | INFO     | __main__:run:342 - 🎯 整体状态: 成功
+2026-02-01 23:17:04 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 23:18:08 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 23:18:08 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 23:18:08 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-01 23:18:08 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 23:18:08 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 23:18:08 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 23:18:08 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 23:18:08 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 23:18:11 | INFO     | scraper:fetch:153 - [GitHub] 成功抓取 10 个项目
+2026-02-01 23:18:11 | INFO     | scraper:fetch:169 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 23:18:14 | INFO     | scraper:fetch:208 - [HuggingFace] 成功抓取 4 篇论文
+2026-02-01 23:18:14 | INFO     | scraper:fetch:229 - [arXiv] 开始抓取 cs.CL
+2026-02-01 23:18:17 | INFO     | scraper:fetch:229 - [arXiv] 开始抓取 cs.AI
+2026-02-01 23:18:19 | INFO     | scraper:fetch:229 - [arXiv] 开始抓取 cs.LG
+2026-02-01 23:18:20 | INFO     | scraper:fetch:275 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 23:18:20 | INFO     | scraper:fetch_all_sources:308 - [Scraper] 总计抓取 29 条数据
+2026-02-01 23:18:20 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 29 条
+2026-02-01 23:18:20 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 23:18:20 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 23:18:20 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 23:18:21 | INFO     | processor:process:206 - [Processor] 开始处理 29 条内容
+2026-02-01 23:18:37 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-01 23:18:37 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 23:18:37 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 23:18:37 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-01 23:18:37 | INFO     | __main__:step_2_process:134 -   2. [9.2] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 23:18:37 | INFO     | __main__:step_2_process:134 -   3. [9.0] DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-01 23:18:37 | INFO     | __main__:step_2_process:134 -   4. [8.8] Stable Video Infinity: Infinite-Length Video Generation with Error Recycling
+2026-02-01 23:18:37 | INFO     | __main__:step_2_process:134 -   5. [8.5] WhisperX: Automatic Speech Recognition with Word-level Timestamps (& Diarization)
+2026-02-01 23:18:37 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 23:18:37 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 23:18:37 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 23:18:38 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 23:18:44 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-01 23:18:44 | INFO     | writer:write:276 - [Writer] 生成完成，共 756 字符
+2026-02-01 23:18:44 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 756 字符
+2026-02-01 23:18:44 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 23:18:44 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 23:18:44 | INFO     | __main__:step_3_write:176 - 大家好，欢迎收听今天的AI技术播客！今天我要和大家分享五个最新的AI技术突破。
+
+首先介绍RedSage，这是一个专门为网络安全领域设计的大语言模型。传统的LLM在处理敏感数据时存在隐私风险，而RedSage通过本地化部署和领域特定训练，既保护了数据安全又提升了专业能力。对于企业安全团队来说，这意味着可以在不泄露敏感信息的情况下，获得强大的AI辅助分析能力，大大提升了安全响应效率。
+
+接下来是Hy...
+2026-02-01 23:18:44 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 23:18:44 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 23:18:44 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 23:18:44 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 23:18:44 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 774 字符
+2026-02-01 23:18:44 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-01 23:18:53 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260201_231844.mp3
+2026-02-01 23:18:53 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 897120 bytes
+2026-02-01 23:18:53 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260201_231844.mp3
+2026-02-01 23:18:53 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 23:18:53 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 23:18:53 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 23:18:53 | INFO     | notifier:_get_access_token:90 - [WeCom] Access Token 获取成功
+2026-02-01 23:18:54 | ERROR    | notifier:send_text_card:184 - [WeCom] 图文卡片发送失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769959135194172126066490], from ip: 27.37.46.131, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-01 23:18:54 | ERROR    | __main__:step_5_notify:279 - [Step 5/5] 消息推送异常: '<' not supported between instances of 'datetime.datetime' and 'float'
+2026-02-01 23:18:54 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 23:18:54 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 23:18:54 | INFO     | __main__:run:341 - ⏱️  执行时间: 45.98 秒
+2026-02-01 23:18:54 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-01 23:18:54 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 23:25:19 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 23:25:19 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 23:25:19 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-01 23:25:19 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 23:25:19 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 23:25:19 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 23:25:19 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 23:25:19 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 23:25:21 | INFO     | scraper:fetch:178 - [GitHub] 成功抓取 10 个项目
+2026-02-01 23:25:21 | INFO     | scraper:fetch:194 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 23:25:23 | INFO     | scraper:fetch:256 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-01 23:25:23 | INFO     | scraper:fetch:277 - [arXiv] 开始抓取 cs.CL
+2026-02-01 23:25:26 | INFO     | scraper:fetch:277 - [arXiv] 开始抓取 cs.AI
+2026-02-01 23:25:28 | INFO     | scraper:fetch:277 - [arXiv] 开始抓取 cs.LG
+2026-02-01 23:25:31 | INFO     | scraper:fetch:346 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 23:25:31 | INFO     | scraper:fetch_all_sources:379 - [Scraper] 总计抓取 25 条数据
+2026-02-01 23:25:31 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 25 条
+2026-02-01 23:25:31 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 23:25:31 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 23:25:31 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 23:25:32 | INFO     | processor:process:206 - [Processor] 开始处理 25 条内容
+2026-02-01 23:25:55 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-01 23:25:55 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 23:25:55 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 23:25:55 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-01 23:25:55 | INFO     | __main__:step_2_process:134 -   2. [9.2] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 23:25:55 | INFO     | __main__:step_2_process:134 -   3. [8.8] Exploring Reasoning Reward Model for Agents
+2026-02-01 23:25:55 | INFO     | __main__:step_2_process:134 -   4. [8.4] yt-dlp/yt-dlp
+2026-02-01 23:25:55 | INFO     | __main__:step_2_process:134 -   5. [8.0] paperless-ngx/paperless-ngx
+2026-02-01 23:25:55 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 23:25:55 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 23:25:55 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 23:25:56 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 23:26:02 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-01 23:26:02 | INFO     | writer:write:276 - [Writer] 生成完成，共 753 字符
+2026-02-01 23:26:02 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 753 字符
+2026-02-01 23:26:02 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 23:26:02 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 23:26:02 | INFO     | __main__:step_3_write:176 - 大家好，欢迎收听本期AI技术精选！今天我们来看看几个值得关注的项目。
+
+首先是来自Archive的RedSage，这是一个专门针对网络安全领域的大语言模型。传统网络安全工作流程需要处理敏感数据，而现有解决方案要么依赖专有系统，要么面临隐私风险。RedSage通过领域特定的训练方法，既保护了敏感信息，又提供了强大的安全分析能力。这个模型可以协助安全分析师进行威胁检测、事件响应和漏洞分析，大大提高了安...
+2026-02-01 23:26:02 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 23:26:02 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 23:26:02 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 23:26:02 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 23:26:02 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 767 字符
+2026-02-01 23:26:02 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-01 23:26:09 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260201_232602.mp3
+2026-02-01 23:26:09 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 908064 bytes
+2026-02-01 23:26:09 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260201_232602.mp3
+2026-02-01 23:26:09 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 23:26:09 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 23:26:09 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 23:26:10 | INFO     | notifier:_get_access_token:90 - [WeCom] Access Token 获取成功
+2026-02-01 23:26:10 | ERROR    | notifier:send_text_card:184 - [WeCom] 图文卡片发送失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769959571557773864310048], from ip: 27.37.46.131, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-01 23:26:10 | ERROR    | __main__:step_5_notify:279 - [Step 5/5] 消息推送异常: '<' not supported between instances of 'datetime.datetime' and 'float'
+2026-02-01 23:26:10 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 23:26:10 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 23:26:10 | INFO     | __main__:run:341 - ⏱️  执行时间: 51.63 秒
+2026-02-01 23:26:10 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-01 23:26:10 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 23:26:38 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 23:26:38 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 23:26:38 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-01 23:26:38 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 23:26:38 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 23:26:38 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 23:26:38 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 23:26:38 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 23:26:40 | INFO     | scraper:fetch:178 - [GitHub] 成功抓取 10 个项目
+2026-02-01 23:26:40 | INFO     | scraper:fetch:194 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 23:26:43 | INFO     | scraper:fetch:256 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-01 23:26:43 | INFO     | scraper:fetch:277 - [arXiv] 开始抓取 cs.CL
+2026-02-01 23:26:45 | INFO     | scraper:fetch:277 - [arXiv] 开始抓取 cs.AI
+2026-02-01 23:26:47 | INFO     | scraper:fetch:277 - [arXiv] 开始抓取 cs.LG
+2026-02-01 23:26:49 | INFO     | scraper:fetch:346 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 23:26:49 | INFO     | scraper:fetch_all_sources:379 - [Scraper] 总计抓取 25 条数据
+2026-02-01 23:26:49 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 25 条
+2026-02-01 23:26:49 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 23:26:49 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 23:26:49 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 23:26:49 | INFO     | processor:process:206 - [Processor] 开始处理 25 条内容
+2026-02-01 23:26:56 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-01 23:26:56 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 23:26:56 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 23:26:56 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-01 23:26:56 | INFO     | __main__:step_2_process:134 -   2. [9.2] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 23:26:56 | INFO     | __main__:step_2_process:134 -   3. [8.8] Exploring Reasoning Reward Model for Agents
+2026-02-01 23:26:56 | INFO     | __main__:step_2_process:134 -   4. [8.4] microsoft/agent-lightning
+2026-02-01 23:26:56 | INFO     | __main__:step_2_process:134 -   5. [8.2] vita-epfl/Stable-Video-Infinity
+2026-02-01 23:26:56 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 23:26:56 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 23:26:56 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 23:26:57 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 23:27:03 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-01 23:27:03 | INFO     | writer:write:276 - [Writer] 生成完成，共 704 字符
+2026-02-01 23:27:03 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 704 字符
+2026-02-01 23:27:03 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 23:27:03 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 23:27:03 | INFO     | __main__:step_3_write:176 - 大家好，今天为大家带来几项最新的AI技术突破。首先，来自Archive的RedSage是一个网络安全领域的专业大语言模型，它解决了现有方案中敏感数据暴露和领域适应性差的问题。这个模型通过专门设计的架构，能够在不泄露企业安全数据的前提下，支持网络安全操作的多样化工作流程，为企业级应用提供了安全可靠的AI助手。
+
+第二项研究同样来自Archive，提出了一种混合线性注意力机制，专门针对Transfor...
+2026-02-01 23:27:03 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 23:27:03 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 23:27:03 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 23:27:03 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 23:27:03 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 717 字符
+2026-02-01 23:27:03 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-01 23:27:14 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260201_232703.mp3
+2026-02-01 23:27:14 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 836928 bytes
+2026-02-01 23:27:14 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260201_232703.mp3
+2026-02-01 23:27:14 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 23:27:14 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 23:27:14 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 23:27:15 | INFO     | notifier:_get_access_token:91 - [WeCom] Access Token 获取成功
+2026-02-01 23:27:16 | ERROR    | notifier:send_text_card:185 - [WeCom] 图文卡片发送失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769959636378853814484386], from ip: 27.37.46.131, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-01 23:27:16 | ERROR    | notifier:_upload_media:134 - [WeCom] 媒体上传失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769959637176914280622347], from ip: 27.37.46.131, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-01 23:27:16 | ERROR    | __main__:step_5_notify:275 - [Step 5/5] 消息推送失败: {'success': False, 'voice_sent': False, 'card_sent': False, 'errors': ['图文卡片发送失败', '语音消息发送失败']}
+2026-02-01 23:27:16 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 23:27:16 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 23:27:16 | INFO     | __main__:run:341 - ⏱️  执行时间: 38.14 秒
+2026-02-01 23:27:16 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-01 23:27:16 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 23:28:32 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 23:28:32 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 23:28:32 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-01 23:28:32 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 23:28:32 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 23:28:32 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 23:28:32 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 23:28:32 | INFO     | scraper:fetch:69 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 23:28:34 | INFO     | scraper:fetch:178 - [GitHub] 成功抓取 10 个项目
+2026-02-01 23:28:34 | INFO     | scraper:fetch:194 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 23:28:36 | INFO     | scraper:fetch:256 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-01 23:28:36 | INFO     | scraper:fetch:277 - [arXiv] 开始抓取 cs.CL
+2026-02-01 23:28:39 | INFO     | scraper:fetch:277 - [arXiv] 开始抓取 cs.AI
+2026-02-01 23:28:41 | INFO     | scraper:fetch:277 - [arXiv] 开始抓取 cs.LG
+2026-02-01 23:28:43 | INFO     | scraper:fetch:346 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 23:28:43 | INFO     | scraper:fetch_all_sources:379 - [Scraper] 总计抓取 25 条数据
+2026-02-01 23:28:43 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 25 条
+2026-02-01 23:28:43 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 23:28:43 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 23:28:43 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 23:28:44 | INFO     | processor:process:206 - [Processor] 开始处理 25 条内容
+2026-02-01 23:28:51 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-01 23:28:51 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 23:28:51 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 23:28:51 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-01 23:28:51 | INFO     | __main__:step_2_process:134 -   2. [9.2] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 23:28:51 | INFO     | __main__:step_2_process:134 -   3. [8.7] yt-dlp/yt-dlp
+2026-02-01 23:28:51 | INFO     | __main__:step_2_process:134 -   4. [8.5] paperless-ngx/paperless-ngx
+2026-02-01 23:28:51 | INFO     | __main__:step_2_process:134 -   5. [8.4] m-bain/whisperX
+2026-02-01 23:28:51 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 23:28:51 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 23:28:51 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 23:28:51 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 23:28:56 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-01 23:28:56 | INFO     | writer:write:276 - [Writer] 生成完成，共 786 字符
+2026-02-01 23:28:56 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 786 字符
+2026-02-01 23:28:56 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 23:28:56 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 23:28:56 | INFO     | __main__:step_3_write:176 - 大家好，欢迎收听今天的AI技术播客。首先让我们看看RedSage，这是一个专为网络安全领域设计的大语言模型。它巧妙地解决了网络安全操作中敏感数据暴露的问题，同时支持多种工作流程。这个创新点在于它能在不泄露敏感信息的前提下，为安全专家提供强大的辅助功能，这对于企业安全团队来说价值巨大，特别是在当前数据安全日益重要的背景下。
+
+接下来是Hybrid Linear Attention研究，它为Trans...
+2026-02-01 23:28:56 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 23:28:56 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 23:28:56 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 23:28:56 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 23:28:56 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 798 字符
+2026-02-01 23:28:56 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-01 23:29:03 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260201_232856.mp3
+2026-02-01 23:29:03 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 943200 bytes
+2026-02-01 23:29:03 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260201_232856.mp3
+2026-02-01 23:29:03 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 23:29:03 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 23:29:03 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 23:29:04 | INFO     | notifier:_get_access_token:91 - [WeCom] Access Token 获取成功
+2026-02-01 23:29:04 | ERROR    | notifier:send_text_card:185 - [WeCom] 图文卡片发送失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769959745437730692696825], from ip: 27.37.46.131, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-01 23:29:05 | ERROR    | notifier:_upload_media:134 - [WeCom] 媒体上传失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769959746390122305656893], from ip: 27.37.46.131, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-01 23:29:05 | ERROR    | __main__:step_5_notify:275 - [Step 5/5] 消息推送失败: {'success': False, 'voice_sent': False, 'card_sent': False, 'errors': ['图文卡片发送失败', '语音消息发送失败']}
+2026-02-01 23:29:05 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 23:29:05 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 23:29:05 | INFO     | __main__:run:341 - ⏱️  执行时间: 33.75 秒
+2026-02-01 23:29:05 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-01 23:29:05 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 23:37:29 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 23:37:29 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 23:37:29 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-01 23:37:29 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 23:37:29 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 23:37:29 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 23:37:29 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 23:37:29 | INFO     | scraper:fetch:247 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 23:37:31 | INFO     | scraper:fetch:356 - [GitHub] 成功抓取 10 个项目
+2026-02-01 23:37:31 | INFO     | scraper:fetch:372 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 23:37:34 | INFO     | scraper:fetch:434 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-01 23:37:34 | INFO     | scraper:fetch:455 - [arXiv] 开始抓取 cs.CL
+2026-02-01 23:37:37 | INFO     | scraper:fetch:455 - [arXiv] 开始抓取 cs.AI
+2026-02-01 23:37:39 | INFO     | scraper:fetch:455 - [arXiv] 开始抓取 cs.LG
+2026-02-01 23:37:40 | INFO     | scraper:fetch:524 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 23:37:40 | INFO     | scraper:_fetch_jiqizhixin:93 - [ChinaAI] 开始抓取机器之心: https://www.jiqizhixin.com/
+2026-02-01 23:37:41 | INFO     | scraper:_fetch_36kr:146 - [ChinaAI] 开始抓取36氪: https://www.36kr.com/information/ai
+2026-02-01 23:37:42 | ERROR    | scraper:_fetch_36kr:185 - [ChinaAI] 抓取36氪失败: 404 Client Error: Not Found for url: https://www.36kr.com/error
+2026-02-01 23:37:42 | INFO     | scraper:_fetch_huxiu:194 - [ChinaAI] 开始抓取虎嗅网: https://www.huxiu.com/channel/106.html
+2026-02-01 23:37:42 | INFO     | scraper:fetch:81 - [ChinaAI] 成功抓取 1 条国内AI资讯
+2026-02-01 23:37:42 | INFO     | scraper:fetch_all_sources:558 - [Scraper] 总计抓取 26 条数据
+2026-02-01 23:37:42 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 26 条
+2026-02-01 23:37:42 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 23:37:42 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 23:37:42 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 23:37:43 | INFO     | processor:process:206 - [Processor] 开始处理 26 条内容
+2026-02-01 23:37:49 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-01 23:37:49 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 23:37:49 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 23:37:49 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-01 23:37:49 | INFO     | __main__:step_2_process:134 -   2. [9.2] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 23:37:49 | INFO     | __main__:step_2_process:134 -   3. [8.8] yt-dlp/yt-dlp
+2026-02-01 23:37:49 | INFO     | __main__:step_2_process:134 -   4. [8.5] paperless-ngx/paperless-ngx
+2026-02-01 23:37:49 | INFO     | __main__:step_2_process:134 -   5. [8.7] Exploring Reasoning Reward Model for Agents
+2026-02-01 23:37:49 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 23:37:49 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 23:37:49 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 23:37:49 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 23:37:55 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-01 23:37:55 | INFO     | writer:write:276 - [Writer] 生成完成，共 842 字符
+2026-02-01 23:37:55 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 842 字符
+2026-02-01 23:37:55 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 23:37:55 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 23:37:55 | INFO     | __main__:step_3_write:176 - 大家好，欢迎收听今天的AI技术播客！今天我们要聊几个非常有趣的项目。
+
+首先，来自Archive的RedSage是一个专门针对网络安全领域的大语言模型。现有的网络安全助手要么依赖专有模型，要么存在隐私风险。RedSage通过在本地部署和领域自适应技术，既保护了敏感数据，又能在各种安全工作流程中提供支持。这个模型特别之处在于它获得了1.2倍的权重，表明它在LLM领域有很强的创新性和实用性，对于企业安...
+2026-02-01 23:37:55 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 23:37:55 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 23:37:55 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 23:37:55 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 23:37:55 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 855 字符
+2026-02-01 23:37:55 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-01 23:38:06 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260201_233755.mp3
+2026-02-01 23:38:06 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 1005120 bytes
+2026-02-01 23:38:06 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260201_233755.mp3
+2026-02-01 23:38:06 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 23:38:06 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 23:38:06 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 23:38:06 | INFO     | notifier:_get_access_token:91 - [WeCom] Access Token 获取成功
+2026-02-01 23:38:07 | ERROR    | notifier:send_text_card:185 - [WeCom] 图文卡片发送失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769960288593751639846358], from ip: 27.37.46.131, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-01 23:38:08 | ERROR    | notifier:_upload_media:134 - [WeCom] 媒体上传失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769960288201851253124478], from ip: 27.37.46.131, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-01 23:38:08 | ERROR    | __main__:step_5_notify:275 - [Step 5/5] 消息推送失败: {'success': False, 'voice_sent': False, 'card_sent': False, 'errors': ['图文卡片发送失败', '语音消息发送失败']}
+2026-02-01 23:38:08 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 23:38:08 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 23:38:08 | INFO     | __main__:run:341 - ⏱️  执行时间: 38.89 秒
+2026-02-01 23:38:08 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-01 23:38:08 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 23:41:29 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 23:41:29 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 23:41:29 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-01 23:41:29 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 23:41:29 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 23:41:29 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 23:41:29 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 23:41:29 | INFO     | scraper:fetch:359 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 23:41:32 | INFO     | scraper:fetch:468 - [GitHub] 成功抓取 10 个项目
+2026-02-01 23:41:32 | INFO     | scraper:fetch:484 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 23:41:35 | INFO     | scraper:fetch:546 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-01 23:41:35 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.CL
+2026-02-01 23:41:37 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.AI
+2026-02-01 23:41:39 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.LG
+2026-02-01 23:41:41 | INFO     | scraper:fetch:636 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 23:41:41 | INFO     | scraper:_fetch_baidu_developer:99 - [ChinaAI] 开始抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-01 23:41:42 | ERROR    | scraper:_fetch_baidu_developer:141 - [ChinaAI] 抓取百度开发者社区失败: 500 Server Error: Internal Server Error for url: https://ai.baidu.com/tech/
+2026-02-01 23:41:42 | INFO     | scraper:_fetch_aliyun_developer:150 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-01 23:41:43 | INFO     | scraper:_fetch_tencent_cloud:201 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-01 23:41:44 | INFO     | scraper:_fetch_huawei_cloud:252 - [ChinaAI] 开始抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-01 23:41:45 | INFO     | scraper:_fetch_csdn:303 - [ChinaAI] 开始抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-01 23:41:46 | ERROR    | scraper:_fetch_csdn:345 - [ChinaAI] 抓取CSDN失败: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-01 23:41:46 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 2 条国内AI资讯
+2026-02-01 23:41:46 | INFO     | scraper:fetch_all_sources:670 - [Scraper] 总计抓取 27 条数据
+2026-02-01 23:41:46 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-01 23:41:46 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 23:41:46 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 23:41:46 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 23:41:47 | INFO     | processor:process:206 - [Processor] 开始处理 27 条内容
+2026-02-01 23:41:52 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-01 23:41:52 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 23:41:52 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 23:41:52 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-01 23:41:52 | INFO     | __main__:step_2_process:134 -   2. [9.2] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 23:41:52 | INFO     | __main__:step_2_process:134 -   3. [8.8] Exploring Reasoning Reward Model for Agents
+2026-02-01 23:41:52 | INFO     | __main__:step_2_process:134 -   4. [8.7] microsoft/agent-lightning
+2026-02-01 23:41:52 | INFO     | __main__:step_2_process:134 -   5. [8.5] vita-epfl/Stable-Video-Infinity
+2026-02-01 23:41:52 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 23:41:52 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 23:41:52 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 23:41:53 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 23:42:08 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-01 23:42:08 | INFO     | writer:write:276 - [Writer] 生成完成，共 997 字符
+2026-02-01 23:42:08 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 997 字符
+2026-02-01 23:42:08 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 23:42:08 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 23:42:08 | INFO     | __main__:step_3_write:176 - 大家好，今天为大家带来五篇AI领域的精选研究。
+
+首先是来自Archive的RedSage，这是一款专门为网络安全领域打造的大语言模型。传统的网络安全操作需要支持多种工作流程的AI助手，但现有解决方案要么依赖专有模型，要么存在数据隐私风险。RedSage通过在本地部署的领域特定模型解决了这个问题，它不仅能理解网络安全的专业术语和流程，还能在不暴露敏感数据的情况下提供实时分析。这项研究的重要性在于，...
+2026-02-01 23:42:08 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 23:42:08 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 23:42:08 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 23:42:08 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 23:42:08 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 1011 字符
+2026-02-01 23:42:08 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-01 23:42:16 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260201_234208.mp3
+2026-02-01 23:42:16 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 1206144 bytes
+2026-02-01 23:42:16 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260201_234208.mp3
+2026-02-01 23:42:16 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 23:42:16 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 23:42:16 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 23:42:17 | INFO     | notifier:_get_access_token:91 - [WeCom] Access Token 获取成功
+2026-02-01 23:42:18 | ERROR    | notifier:send_text_card:185 - [WeCom] 图文卡片发送失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769960539598870079567438], from ip: 27.37.46.131, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-01 23:42:19 | ERROR    | notifier:_upload_media:134 - [WeCom] 媒体上传失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769960540494182196655851], from ip: 27.37.46.131, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-01 23:42:19 | ERROR    | __main__:step_5_notify:275 - [Step 5/5] 消息推送失败: {'success': False, 'voice_sent': False, 'card_sent': False, 'errors': ['图文卡片发送失败', '语音消息发送失败']}
+2026-02-01 23:42:19 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 23:42:19 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 23:42:19 | INFO     | __main__:run:341 - ⏱️  执行时间: 49.46 秒
+2026-02-01 23:42:19 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-01 23:42:19 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-01 23:45:08 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-01 23:45:08 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-01 23:45:08 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-01 23:45:08 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-01 23:45:08 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-01 23:45:08 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-01 23:45:08 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-01 23:45:08 | INFO     | scraper:fetch:359 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-01 23:45:11 | INFO     | scraper:fetch:468 - [GitHub] 成功抓取 10 个项目
+2026-02-01 23:45:11 | INFO     | scraper:fetch:484 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-01 23:45:14 | INFO     | scraper:fetch:546 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-01 23:45:14 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.CL
+2026-02-01 23:45:17 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.AI
+2026-02-01 23:45:19 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.LG
+2026-02-01 23:45:20 | INFO     | scraper:fetch:636 - [arXiv] 成功抓取 15 篇论文
+2026-02-01 23:45:20 | INFO     | scraper:_fetch_baidu_developer:99 - [ChinaAI] 开始抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-01 23:45:21 | ERROR    | scraper:_fetch_baidu_developer:141 - [ChinaAI] 抓取百度开发者社区失败: 500 Server Error: Internal Server Error for url: https://ai.baidu.com/tech/
+2026-02-01 23:45:21 | INFO     | scraper:_fetch_aliyun_developer:150 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-01 23:45:23 | INFO     | scraper:_fetch_tencent_cloud:201 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-01 23:45:24 | INFO     | scraper:_fetch_huawei_cloud:252 - [ChinaAI] 开始抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-01 23:45:24 | INFO     | scraper:_fetch_csdn:303 - [ChinaAI] 开始抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-01 23:45:26 | ERROR    | scraper:_fetch_csdn:345 - [ChinaAI] 抓取CSDN失败: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-01 23:45:26 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 2 条国内AI资讯
+2026-02-01 23:45:26 | INFO     | scraper:fetch_all_sources:670 - [Scraper] 总计抓取 27 条数据
+2026-02-01 23:45:26 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-01 23:45:26 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-01 23:45:26 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-01 23:45:26 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-01 23:45:26 | INFO     | processor:process:206 - [Processor] 开始处理 27 条内容
+2026-02-01 23:45:31 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-01 23:45:31 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-01 23:45:31 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-01 23:45:31 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-01 23:45:31 | INFO     | __main__:step_2_process:134 -   2. [9.2] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-01 23:45:31 | INFO     | __main__:step_2_process:134 -   3. [9.0] Exploring Reasoning Reward Model for Agents
+2026-02-01 23:45:31 | INFO     | __main__:step_2_process:134 -   4. [8.8] m-bain/whisperX
+2026-02-01 23:45:31 | INFO     | __main__:step_2_process:134 -   5. [8.7] UEval: A Benchmark for Unified Multimodal Generation
+2026-02-01 23:45:31 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-01 23:45:31 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-01 23:45:31 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-01 23:45:32 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-01 23:45:40 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-01 23:45:40 | INFO     | writer:write:276 - [Writer] 生成完成，共 646 字符
+2026-02-01 23:45:40 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 646 字符
+2026-02-01 23:45:40 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-01 23:45:40 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-01 23:45:40 | INFO     | __main__:step_3_write:176 - 大家好，今天为大家带来五则精选AI技术新闻。首先是RedSage，这是一款专为网络安全领域打造的大语言模型。它巧妙解决了现有方案中敏感数据暴露和领域适应性差的痛点，通过双重权重提升技术，既能保护企业安全数据，又能适应不同网络安全工作流程，为安全团队提供了强大的AI助手。
+
+接下来是Hybrid Linear Attention Done Right，这项研究针对Transformer架构在处理长上...
+2026-02-01 23:45:40 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-01 23:45:40 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-01 23:45:40 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-01 23:45:40 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-01 23:45:40 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 660 字符
+2026-02-01 23:45:40 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-01 23:45:46 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260201_234540.mp3
+2026-02-01 23:45:46 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 774288 bytes
+2026-02-01 23:45:46 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260201_234540.mp3
+2026-02-01 23:45:46 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-01 23:45:46 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-01 23:45:46 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-01 23:45:47 | INFO     | notifier:_get_access_token:91 - [WeCom] Access Token 获取成功
+2026-02-01 23:45:48 | ERROR    | notifier:send_text_card:185 - [WeCom] 图文卡片发送失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769960749199953488459769], from ip: 27.37.46.131, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-01 23:45:49 | ERROR    | notifier:_upload_media:134 - [WeCom] 媒体上传失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769960750557773342775362], from ip: 27.37.46.131, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-01 23:45:49 | ERROR    | __main__:step_5_notify:275 - [Step 5/5] 消息推送失败: {'success': False, 'voice_sent': False, 'card_sent': False, 'errors': ['图文卡片发送失败', '语音消息发送失败']}
+2026-02-01 23:45:49 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-01 23:45:49 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-01 23:45:49 | INFO     | __main__:run:341 - ⏱️  执行时间: 40.86 秒
+2026-02-01 23:45:49 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-01 23:45:49 | INFO     | __main__:run:343 - ============================================================
+

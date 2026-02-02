@@ -1,0 +1,690 @@
+2026-02-02 06:57:26 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-02 06:57:26 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-02 06:57:26 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-02 06:57:26 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-02 06:57:26 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-02 06:57:26 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-02 06:57:26 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-02 06:57:26 | INFO     | scraper:fetch:359 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-02 06:57:30 | INFO     | scraper:fetch:468 - [GitHub] 成功抓取 10 个项目
+2026-02-02 06:57:30 | INFO     | scraper:fetch:484 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-02 06:57:32 | INFO     | scraper:fetch:546 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-02 06:57:32 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.CL
+2026-02-02 06:57:36 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.AI
+2026-02-02 06:57:38 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.LG
+2026-02-02 06:57:41 | INFO     | scraper:fetch:636 - [arXiv] 成功抓取 15 篇论文
+2026-02-02 06:57:41 | INFO     | scraper:_fetch_baidu_developer:99 - [ChinaAI] 开始抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-02 06:57:42 | ERROR    | scraper:_fetch_baidu_developer:141 - [ChinaAI] 抓取百度开发者社区失败: 500 Server Error: Internal Server Error for url: https://ai.baidu.com/tech/
+2026-02-02 06:57:42 | INFO     | scraper:_fetch_aliyun_developer:150 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-02 06:57:43 | INFO     | scraper:_fetch_tencent_cloud:201 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-02 06:57:44 | INFO     | scraper:_fetch_huawei_cloud:252 - [ChinaAI] 开始抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-02 06:57:45 | INFO     | scraper:_fetch_csdn:303 - [ChinaAI] 开始抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-02 06:57:46 | ERROR    | scraper:_fetch_csdn:345 - [ChinaAI] 抓取CSDN失败: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-02 06:57:46 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 2 条国内AI资讯
+2026-02-02 06:57:46 | INFO     | scraper:fetch_all_sources:670 - [Scraper] 总计抓取 27 条数据
+2026-02-02 06:57:46 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-02 06:57:46 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-02 06:57:46 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-02 06:57:46 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-02 06:57:47 | INFO     | processor:process:206 - [Processor] 开始处理 27 条内容
+2026-02-02 06:57:51 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-02 06:57:51 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-02 06:57:51 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-02 06:57:51 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-02 06:57:51 | INFO     | __main__:step_2_process:134 -   2. [9.2] UEval: A Benchmark for Unified Multimodal Generation
+2026-02-02 06:57:51 | INFO     | __main__:step_2_process:134 -   3. [9.0] Exploring Reasoning Reward Model for Agents
+2026-02-02 06:57:51 | INFO     | __main__:step_2_process:134 -   4. [8.8] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-02 06:57:51 | INFO     | __main__:step_2_process:134 -   5. [8.7] microsoft/agent-lightning
+2026-02-02 06:57:51 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-02 06:57:51 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-02 06:57:51 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-02 06:57:51 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-02 06:57:55 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-02 06:57:55 | INFO     | writer:write:276 - [Writer] 生成完成，共 775 字符
+2026-02-02 06:57:55 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 775 字符
+2026-02-02 06:57:55 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-02 06:57:55 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-02 06:57:55 | INFO     | __main__:step_3_write:176 - 大家好，今天为大家带来几则AI领域的最新研究进展。
+
+首先，我们来看RedSage，这是一款专门针对网络安全领域的通用大语言模型。网络安全操作需要能够支持多种工作流程的助手LLM，同时不暴露敏感数据。现有解决方案要么依赖专有模型，要么存在隐私风险。RedSage通过本地化部署和领域特定训练，有效解决了这些问题，为企业提供了安全可靠的AI辅助工具，其创新之处在于将通用大模型与专业领域知识完美结合。
+...
+2026-02-02 06:57:55 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-02 06:57:55 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-02 06:57:55 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-02 06:57:55 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-02 06:57:55 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 787 字符
+2026-02-02 06:57:55 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-02 06:58:07 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260202_065755.mp3
+2026-02-02 06:58:07 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 942048 bytes
+2026-02-02 06:58:07 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260202_065755.mp3
+2026-02-02 06:58:07 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-02 06:58:07 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-02 06:58:07 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-02 06:58:08 | INFO     | notifier:_get_access_token:91 - [WeCom] Access Token 获取成功
+2026-02-02 06:58:09 | ERROR    | notifier:send_text_card:185 - [WeCom] 图文卡片发送失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769986689427490668468556], from ip: 27.37.46.53, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-02 06:58:10 | ERROR    | notifier:_upload_media:134 - [WeCom] 媒体上传失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769986690442852112918690], from ip: 27.37.46.53, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-02 06:58:10 | ERROR    | __main__:step_5_notify:275 - [Step 5/5] 消息推送失败: {'success': False, 'voice_sent': False, 'card_sent': False, 'errors': ['图文卡片发送失败', '语音消息发送失败']}
+2026-02-02 06:58:10 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-02 06:58:10 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-02 06:58:10 | INFO     | __main__:run:341 - ⏱️  执行时间: 43.43 秒
+2026-02-02 06:58:10 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-02 06:58:10 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-02 07:24:07 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-02 07:24:07 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-02 07:24:07 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-02 07:24:07 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-02 07:24:07 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-02 07:24:07 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-02 07:24:07 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-02 07:24:07 | INFO     | scraper:fetch:359 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-02 07:24:10 | INFO     | scraper:fetch:468 - [GitHub] 成功抓取 10 个项目
+2026-02-02 07:24:10 | INFO     | scraper:fetch:484 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-02 07:24:13 | INFO     | scraper:fetch:546 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-02 07:24:13 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.CL
+2026-02-02 07:24:16 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.AI
+2026-02-02 07:24:18 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.LG
+2026-02-02 07:24:20 | INFO     | scraper:fetch:636 - [arXiv] 成功抓取 15 篇论文
+2026-02-02 07:24:20 | INFO     | scraper:_fetch_baidu_developer:99 - [ChinaAI] 开始抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-02 07:24:21 | ERROR    | scraper:_fetch_baidu_developer:141 - [ChinaAI] 抓取百度开发者社区失败: 500 Server Error: Internal Server Error for url: https://ai.baidu.com/tech/
+2026-02-02 07:24:21 | INFO     | scraper:_fetch_aliyun_developer:150 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-02 07:24:22 | INFO     | scraper:_fetch_tencent_cloud:201 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-02 07:24:23 | INFO     | scraper:_fetch_huawei_cloud:252 - [ChinaAI] 开始抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-02 07:24:24 | INFO     | scraper:_fetch_csdn:303 - [ChinaAI] 开始抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-02 07:24:25 | ERROR    | scraper:_fetch_csdn:345 - [ChinaAI] 抓取CSDN失败: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-02 07:24:25 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 2 条国内AI资讯
+2026-02-02 07:24:25 | INFO     | scraper:fetch_all_sources:670 - [Scraper] 总计抓取 27 条数据
+2026-02-02 07:24:25 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-02 07:24:25 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-02 07:24:25 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-02 07:24:25 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-02 07:24:26 | INFO     | processor:process:206 - [Processor] 开始处理 27 条内容
+2026-02-02 07:24:30 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-02 07:24:30 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-02 07:24:30 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-02 07:24:30 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-02 07:24:30 | INFO     | __main__:step_2_process:134 -   2. [9.0] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-02 07:24:30 | INFO     | __main__:step_2_process:134 -   3. [8.8] yt-dlp/yt-dlp
+2026-02-02 07:24:30 | INFO     | __main__:step_2_process:134 -   4. [8.7] Exploring Reasoning Reward Model for Agents
+2026-02-02 07:24:30 | INFO     | __main__:step_2_process:134 -   5. [8.5] m-bain/whisperX
+2026-02-02 07:24:30 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-02 07:24:30 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-02 07:24:30 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-02 07:24:31 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-02 07:24:35 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-02 07:24:35 | INFO     | writer:write:276 - [Writer] 生成完成，共 813 字符
+2026-02-02 07:24:35 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 813 字符
+2026-02-02 07:24:35 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-02 07:24:35 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-02 07:24:35 | INFO     | __main__:step_3_write:176 - 大家好，今天为大家带来五则精选AI技术新闻。首先，来自Archive的RedSage项目，这是一个网络安全领域的专业大语言模型。传统LLM在处理敏感数据时存在隐私风险，而RedSage通过本地化部署和领域特定训练，在不暴露敏感信息的前提下支持多种网络安全工作流程，为企业安全团队提供了强大的AI助手，同时解决了数据隐私和领域适应性的双重挑战。
+
+接下来是Archive上的另一项研究，关于混合线性注意...
+2026-02-02 07:24:35 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-02 07:24:35 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-02 07:24:35 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-02 07:24:35 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-02 07:24:35 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 823 字符
+2026-02-02 07:24:35 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-02 07:24:44 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260202_072435.mp3
+2026-02-02 07:24:44 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 976320 bytes
+2026-02-02 07:24:44 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260202_072435.mp3
+2026-02-02 07:24:44 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-02 07:24:44 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-02 07:24:44 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-02 07:24:44 | ERROR    | notifier:_get_access_token:94 - [WeCom] 获取 Token 失败: {'errcode': 40001, 'errmsg': 'invalid credential, hint: [1769988285547534211194528], from ip: 27.37.46.53, more info at https://open.work.weixin.qq.com/devtool/query?e=40001'}
+2026-02-02 07:24:45 | ERROR    | notifier:_get_access_token:94 - [WeCom] 获取 Token 失败: {'errcode': 40001, 'errmsg': 'invalid credential, hint: [1769988285603991559549325], from ip: 27.37.46.53, more info at https://open.work.weixin.qq.com/devtool/query?e=40001'}
+2026-02-02 07:24:45 | ERROR    | __main__:step_5_notify:275 - [Step 5/5] 消息推送失败: {'success': False, 'voice_sent': False, 'card_sent': False, 'errors': ['图文卡片发送失败', '语音消息发送失败']}
+2026-02-02 07:24:45 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-02 07:24:45 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-02 07:24:45 | INFO     | __main__:run:341 - ⏱️  执行时间: 37.79 秒
+2026-02-02 07:24:45 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-02 07:24:45 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-02 07:49:00 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-02 07:49:00 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-02 07:49:00 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-02 07:49:00 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-02 07:49:00 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-02 07:49:00 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-02 07:49:00 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-02 07:49:00 | INFO     | scraper:fetch:359 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-02 07:49:03 | INFO     | scraper:fetch:468 - [GitHub] 成功抓取 10 个项目
+2026-02-02 07:49:03 | INFO     | scraper:fetch:484 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-02 07:49:06 | INFO     | scraper:fetch:546 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-02 07:49:06 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.CL
+2026-02-02 07:49:20 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.AI
+2026-02-02 07:49:23 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.LG
+2026-02-02 07:49:26 | INFO     | scraper:fetch:636 - [arXiv] 成功抓取 15 篇论文
+2026-02-02 07:49:26 | INFO     | scraper:_fetch_baidu_developer:99 - [ChinaAI] 开始抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-02 07:49:27 | ERROR    | scraper:_fetch_baidu_developer:141 - [ChinaAI] 抓取百度开发者社区失败: 500 Server Error: Internal Server Error for url: https://ai.baidu.com/tech/
+2026-02-02 07:49:27 | INFO     | scraper:_fetch_aliyun_developer:150 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-02 07:49:28 | INFO     | scraper:_fetch_tencent_cloud:201 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-02 07:49:29 | INFO     | scraper:_fetch_huawei_cloud:252 - [ChinaAI] 开始抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-02 07:49:30 | INFO     | scraper:_fetch_csdn:303 - [ChinaAI] 开始抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-02 07:49:31 | ERROR    | scraper:_fetch_csdn:345 - [ChinaAI] 抓取CSDN失败: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-02 07:49:31 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 2 条国内AI资讯
+2026-02-02 07:49:31 | INFO     | scraper:fetch_all_sources:670 - [Scraper] 总计抓取 27 条数据
+2026-02-02 07:49:31 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-02 07:49:31 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-02 07:49:31 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-02 07:49:31 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-02 07:49:32 | INFO     | processor:process:206 - [Processor] 开始处理 27 条内容
+2026-02-02 07:49:37 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-02 07:49:37 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-02 07:49:37 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-02 07:49:37 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-02 07:49:37 | INFO     | __main__:step_2_process:134 -   2. [9.2] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-02 07:49:37 | INFO     | __main__:step_2_process:134 -   3. [8.8] Exploring Reasoning Reward Model for Agents
+2026-02-02 07:49:37 | INFO     | __main__:step_2_process:134 -   4. [8.4] microsoft/agent-lightning
+2026-02-02 07:49:37 | INFO     | __main__:step_2_process:134 -   5. [8.2] m-bain/whisperX
+2026-02-02 07:49:37 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-02 07:49:37 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-02 07:49:37 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-02 07:49:38 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-02 07:49:41 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-02 07:49:41 | INFO     | writer:write:276 - [Writer] 生成完成，共 675 字符
+2026-02-02 07:49:41 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 675 字符
+2026-02-02 07:49:41 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-02 07:49:41 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-02 07:49:41 | INFO     | __main__:step_3_write:176 - 大家好，今天我们来聊聊几项最新的AI技术突破。首先，RedSage是一个专门为网络安全领域设计的大语言模型，它巧妙地解决了现有方案中敏感数据暴露的问题。这个模型通过优化领域适应性和安全性，在不牺牲性能的前提下，为网络安全团队提供了一个可靠的助手，特别适合处理敏感数据的场景。
+
+接下来是Hybrid Linear Attention研究，这项工作针对Transformer架构在处理长文本时的性能瓶颈...
+2026-02-02 07:49:41 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-02 07:49:41 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-02 07:49:41 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-02 07:49:41 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-02 07:49:41 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 689 字符
+2026-02-02 07:49:41 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-02 07:49:49 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260202_074941.mp3
+2026-02-02 07:49:49 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 799200 bytes
+2026-02-02 07:49:49 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260202_074941.mp3
+2026-02-02 07:49:49 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-02 07:49:49 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-02 07:49:49 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-02 07:49:50 | ERROR    | notifier:_get_access_token:94 - [WeCom] 获取 Token 失败: {'errcode': 40001, 'errmsg': 'invalid credential, hint: [1769989790609663221462385], from ip: 27.37.46.53, more info at https://open.work.weixin.qq.com/devtool/query?e=40001'}
+2026-02-02 07:49:51 | ERROR    | notifier:_get_access_token:94 - [WeCom] 获取 Token 失败: {'errcode': 40001, 'errmsg': 'invalid credential, hint: [1769989791184593395247945], from ip: 27.37.46.53, more info at https://open.work.weixin.qq.com/devtool/query?e=40001'}
+2026-02-02 07:49:51 | ERROR    | __main__:step_5_notify:275 - [Step 5/5] 消息推送失败: {'success': False, 'voice_sent': False, 'card_sent': False, 'errors': ['图文卡片发送失败', '语音消息发送失败']}
+2026-02-02 07:49:51 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-02 07:49:51 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-02 07:49:51 | INFO     | __main__:run:341 - ⏱️  执行时间: 50.53 秒
+2026-02-02 07:49:51 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-02 07:49:51 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-02 08:03:27 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-02 08:03:27 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-02 08:03:27 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-02 08:03:27 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-02 08:03:27 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-02 08:03:27 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-02 08:03:27 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-02 08:03:27 | INFO     | scraper:fetch:359 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-02 08:03:30 | INFO     | scraper:fetch:468 - [GitHub] 成功抓取 10 个项目
+2026-02-02 08:03:30 | INFO     | scraper:fetch:484 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-02 08:03:33 | INFO     | scraper:fetch:546 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-02 08:03:33 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.CL
+2026-02-02 08:03:37 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.AI
+2026-02-02 08:03:39 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.LG
+2026-02-02 08:03:42 | INFO     | scraper:fetch:636 - [arXiv] 成功抓取 15 篇论文
+2026-02-02 08:03:42 | INFO     | scraper:_fetch_baidu_developer:99 - [ChinaAI] 开始抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-02 08:03:43 | ERROR    | scraper:_fetch_baidu_developer:141 - [ChinaAI] 抓取百度开发者社区失败: 500 Server Error: Internal Server Error for url: https://ai.baidu.com/tech/
+2026-02-02 08:03:43 | INFO     | scraper:_fetch_aliyun_developer:150 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-02 08:03:45 | INFO     | scraper:_fetch_tencent_cloud:201 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-02 08:03:46 | INFO     | scraper:_fetch_huawei_cloud:252 - [ChinaAI] 开始抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-02 08:03:47 | INFO     | scraper:_fetch_csdn:303 - [ChinaAI] 开始抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-02 08:03:48 | ERROR    | scraper:_fetch_csdn:345 - [ChinaAI] 抓取CSDN失败: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-02 08:03:48 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 2 条国内AI资讯
+2026-02-02 08:03:48 | INFO     | scraper:fetch_all_sources:670 - [Scraper] 总计抓取 27 条数据
+2026-02-02 08:03:48 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-02 08:03:48 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-02 08:03:48 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-02 08:03:48 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-02 08:03:48 | INFO     | processor:process:206 - [Processor] 开始处理 27 条内容
+2026-02-02 08:03:55 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-02 08:03:55 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-02 08:03:55 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-02 08:03:55 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-02 08:03:55 | INFO     | __main__:step_2_process:134 -   2. [9.2] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-02 08:03:55 | INFO     | __main__:step_2_process:134 -   3. [8.8] Exploring Reasoning Reward Model for Agents
+2026-02-02 08:03:55 | INFO     | __main__:step_2_process:134 -   4. [8.6] DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-02 08:03:55 | INFO     | __main__:step_2_process:134 -   5. [8.5] UEval: A Benchmark for Unified Multimodal Generation
+2026-02-02 08:03:55 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-02 08:03:55 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-02 08:03:55 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-02 08:03:56 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-02 08:04:00 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-02 08:04:00 | INFO     | writer:write:276 - [Writer] 生成完成，共 871 字符
+2026-02-02 08:04:00 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 871 字符
+2026-02-02 08:04:00 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-02 08:04:00 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-02 08:04:00 | INFO     | __main__:step_3_write:176 - 大家好，欢迎收听本期AI技术播客！今天我要和大家分享几篇来自Archive的最新AI研究论文。
+
+首先，RedSage是一个网络安全领域的专业大语言模型，它解决了现有安全助手LLM的两个关键问题：敏感数据暴露和领域适应性不足。这个模型通过在本地运行和专业知识注入，能够在不泄露敏感信息的情况下，支持网络安全团队的各种工作流程。对于企业来说，这意味着他们可以安全地在内部部署AI助手，提升安全分析效率，...
+2026-02-02 08:04:00 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-02 08:04:00 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-02 08:04:00 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-02 08:04:00 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-02 08:04:00 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 883 字符
+2026-02-02 08:04:00 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-02 08:04:10 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260202_080400.mp3
+2026-02-02 08:04:10 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 1102320 bytes
+2026-02-02 08:04:10 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260202_080400.mp3
+2026-02-02 08:04:10 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-02 08:04:10 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-02 08:04:10 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-02 08:04:11 | ERROR    | notifier:_get_access_token:94 - [WeCom] 获取 Token 失败: {'errcode': 40001, 'errmsg': 'invalid credential, hint: [1769990651201850971733958], from ip: 27.37.46.53, more info at https://open.work.weixin.qq.com/devtool/query?e=40001'}
+2026-02-02 08:04:12 | ERROR    | notifier:_get_access_token:94 - [WeCom] 获取 Token 失败: {'errcode': 40001, 'errmsg': 'invalid credential, hint: [1769990652598872891010683], from ip: 27.37.46.53, more info at https://open.work.weixin.qq.com/devtool/query?e=40001'}
+2026-02-02 08:04:12 | ERROR    | __main__:step_5_notify:275 - [Step 5/5] 消息推送失败: {'success': False, 'voice_sent': False, 'card_sent': False, 'errors': ['图文卡片发送失败', '语音消息发送失败']}
+2026-02-02 08:04:12 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-02 08:04:12 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-02 08:04:12 | INFO     | __main__:run:341 - ⏱️  执行时间: 44.86 秒
+2026-02-02 08:04:12 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-02 08:04:12 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-02 08:12:35 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-02 08:12:35 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-02 08:12:35 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-02 08:12:35 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-02 08:12:35 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-02 08:12:35 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-02 08:12:35 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-02 08:12:35 | INFO     | scraper:fetch:359 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-02 08:12:43 | INFO     | scraper:fetch:468 - [GitHub] 成功抓取 10 个项目
+2026-02-02 08:12:43 | INFO     | scraper:fetch:484 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-02 08:12:46 | INFO     | scraper:fetch:546 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-02 08:12:46 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.CL
+2026-02-02 08:12:49 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.AI
+2026-02-02 08:12:51 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.LG
+2026-02-02 08:12:53 | INFO     | scraper:fetch:636 - [arXiv] 成功抓取 15 篇论文
+2026-02-02 08:12:53 | INFO     | scraper:_fetch_baidu_developer:99 - [ChinaAI] 开始抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-02 08:12:54 | ERROR    | scraper:_fetch_baidu_developer:141 - [ChinaAI] 抓取百度开发者社区失败: 500 Server Error: Internal Server Error for url: https://ai.baidu.com/tech/
+2026-02-02 08:12:54 | INFO     | scraper:_fetch_aliyun_developer:150 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-02 08:12:55 | INFO     | scraper:_fetch_tencent_cloud:201 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-02 08:12:56 | INFO     | scraper:_fetch_huawei_cloud:252 - [ChinaAI] 开始抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-02 08:12:57 | INFO     | scraper:_fetch_csdn:303 - [ChinaAI] 开始抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-02 08:12:58 | ERROR    | scraper:_fetch_csdn:345 - [ChinaAI] 抓取CSDN失败: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-02 08:12:58 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 2 条国内AI资讯
+2026-02-02 08:12:58 | INFO     | scraper:fetch_all_sources:670 - [Scraper] 总计抓取 27 条数据
+2026-02-02 08:12:58 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-02 08:12:58 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-02 08:12:58 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-02 08:12:58 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-02 08:12:59 | INFO     | processor:process:206 - [Processor] 开始处理 27 条内容
+2026-02-02 08:13:07 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-02 08:13:07 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-02 08:13:07 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-02 08:13:07 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-02 08:13:07 | INFO     | __main__:step_2_process:134 -   2. [9.2] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-02 08:13:07 | INFO     | __main__:step_2_process:134 -   3. [8.8] Exploring Reasoning Reward Model for Agents
+2026-02-02 08:13:07 | INFO     | __main__:step_2_process:134 -   4. [8.5] Stable Video Infinity: Infinite-Length Video Generation with Error Recycling
+2026-02-02 08:13:07 | INFO     | __main__:step_2_process:134 -   5. [8.4] DynaWeb: Model-Based Reinforcement Learning of Web Agents
+2026-02-02 08:13:07 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-02 08:13:07 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-02 08:13:07 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-02 08:13:08 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-02 08:13:13 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-02 08:13:13 | INFO     | writer:write:276 - [Writer] 生成完成，共 748 字符
+2026-02-02 08:13:13 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 748 字符
+2026-02-02 08:13:13 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-02 08:13:13 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-02 08:13:13 | INFO     | __main__:step_3_write:176 - 大家好，欢迎收听今天的AI技术播客。今天我们要聊几个最新鲜的AI研究进展。
+
+首先，RedSage是一个针对网络安全领域的专业大语言模型。传统的网络安全助手要么依赖专有数据，要么存在隐私风险。RedSage通过特殊设计，能够在不暴露敏感数据的情况下支持多样化工作流，这对企业安全团队来说是个福音，既能提升安全分析效率，又能保护机密信息。
+
+接下来是关于长上下文处理的研究。传统的Transformer...
+2026-02-02 08:13:13 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-02 08:13:13 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-02 08:13:13 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-02 08:13:13 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-02 08:13:13 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 763 字符
+2026-02-02 08:13:13 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-02 08:13:21 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260202_081313.mp3
+2026-02-02 08:13:21 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 914256 bytes
+2026-02-02 08:13:21 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260202_081313.mp3
+2026-02-02 08:13:21 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-02 08:13:21 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-02 08:13:21 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-02 08:13:22 | INFO     | notifier:_get_access_token:91 - [WeCom] Access Token 获取成功
+2026-02-02 08:13:22 | ERROR    | notifier:send_text_card:185 - [WeCom] 图文卡片发送失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769991202414941708146810], from ip: 27.37.46.53, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-02 08:13:24 | ERROR    | notifier:_upload_media:134 - [WeCom] 媒体上传失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769991203443030447153132], from ip: 27.37.46.53, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-02 08:13:24 | ERROR    | __main__:step_5_notify:275 - [Step 5/5] 消息推送失败: {'success': False, 'voice_sent': False, 'card_sent': False, 'errors': ['图文卡片发送失败', '语音消息发送失败']}
+2026-02-02 08:13:24 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-02 08:13:24 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-02 08:13:24 | INFO     | __main__:run:341 - ⏱️  执行时间: 48.63 秒
+2026-02-02 08:13:24 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-02 08:13:24 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-02 08:23:39 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-02 08:23:39 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-02 08:23:39 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-02 08:23:39 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-02 08:23:39 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-02 08:23:39 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-02 08:23:39 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-02 08:23:39 | INFO     | scraper:fetch:359 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-02 08:23:42 | INFO     | scraper:fetch:468 - [GitHub] 成功抓取 10 个项目
+2026-02-02 08:23:42 | INFO     | scraper:fetch:484 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-02 08:23:46 | INFO     | scraper:fetch:546 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-02 08:23:46 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.CL
+2026-02-02 08:23:54 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.AI
+2026-02-02 08:23:56 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.LG
+2026-02-02 08:23:58 | INFO     | scraper:fetch:636 - [arXiv] 成功抓取 15 篇论文
+2026-02-02 08:23:58 | INFO     | scraper:_fetch_baidu_developer:99 - [ChinaAI] 开始抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-02 08:24:00 | ERROR    | scraper:_fetch_baidu_developer:141 - [ChinaAI] 抓取百度开发者社区失败: 500 Server Error: Internal Server Error for url: https://ai.baidu.com/tech/
+2026-02-02 08:24:00 | INFO     | scraper:_fetch_aliyun_developer:150 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-02 08:24:03 | INFO     | scraper:_fetch_tencent_cloud:201 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-02 08:24:04 | INFO     | scraper:_fetch_huawei_cloud:252 - [ChinaAI] 开始抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-02 08:24:06 | INFO     | scraper:_fetch_csdn:303 - [ChinaAI] 开始抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-02 08:24:08 | ERROR    | scraper:_fetch_csdn:345 - [ChinaAI] 抓取CSDN失败: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-02 08:24:08 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 2 条国内AI资讯
+2026-02-02 08:24:08 | INFO     | scraper:fetch_all_sources:670 - [Scraper] 总计抓取 27 条数据
+2026-02-02 08:24:09 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-02 08:24:09 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-02 08:24:09 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-02 08:24:09 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-02 08:24:09 | INFO     | processor:process:206 - [Processor] 开始处理 27 条内容
+2026-02-02 08:24:16 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-02 08:24:16 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-02 08:24:16 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-02 08:24:16 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-02 08:24:16 | INFO     | __main__:step_2_process:134 -   2. [9.2] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-02 08:24:16 | INFO     | __main__:step_2_process:134 -   3. [8.8] yt-dlp/yt-dlp
+2026-02-02 08:24:16 | INFO     | __main__:step_2_process:134 -   4. [8.5] paperless-ngx/paperless-ngx
+2026-02-02 08:24:16 | INFO     | __main__:step_2_process:134 -   5. [8.7] Exploring Reasoning Reward Model for Agents
+2026-02-02 08:24:16 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-02 08:24:16 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-02 08:24:16 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-02 08:24:17 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-02 08:24:23 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-02 08:24:23 | INFO     | writer:write:276 - [Writer] 生成完成，共 845 字符
+2026-02-02 08:24:23 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 845 字符
+2026-02-02 08:24:23 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-02 08:24:23 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-02 08:24:23 | INFO     | __main__:step_3_write:176 - 大家好，欢迎收听本期AI技术精选。今天我们来聊聊几个值得关注的项目。
+
+首先，RedSage是一个网络安全领域的大语言模型，专门解决网络安全操作中敏感数据暴露的问题。传统的LLM在处理网络安全任务时往往需要暴露敏感数据，而RedSage通过领域适应技术，能够在不泄露数据的情况下支持多样化的工作流程。这对于金融机构、政府部门等高度敏感的行业来说意义重大，既提高了安全性又不影响工作效率。
+
+接下来是关...
+2026-02-02 08:24:23 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-02 08:24:23 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-02 08:24:23 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-02 08:24:23 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-02 08:24:23 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 857 字符
+2026-02-02 08:24:23 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-02 08:24:40 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260202_082423.mp3
+2026-02-02 08:24:40 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 1036656 bytes
+2026-02-02 08:24:40 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260202_082423.mp3
+2026-02-02 08:24:40 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-02 08:24:40 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-02 08:24:40 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-02 08:24:41 | INFO     | notifier:_get_access_token:91 - [WeCom] Access Token 获取成功
+2026-02-02 08:24:42 | ERROR    | notifier:send_text_card:185 - [WeCom] 图文卡片发送失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769991881196732191247242], from ip: 27.37.46.53, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-02 08:24:43 | ERROR    | notifier:_upload_media:134 - [WeCom] 媒体上传失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769991882491622405114783], from ip: 27.37.46.53, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-02 08:24:43 | ERROR    | __main__:step_5_notify:275 - [Step 5/5] 消息推送失败: {'success': False, 'voice_sent': False, 'card_sent': False, 'errors': ['图文卡片发送失败', '语音消息发送失败']}
+2026-02-02 08:24:43 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-02 08:24:43 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-02 08:24:43 | INFO     | __main__:run:341 - ⏱️  执行时间: 64.07 秒
+2026-02-02 08:24:43 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-02 08:24:43 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-02 08:39:34 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-02 08:39:34 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-02 08:39:34 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: False
+2026-02-02 08:39:34 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-02 08:39:34 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-02 08:39:34 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-02 08:39:34 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-02 08:39:34 | INFO     | scraper:fetch:359 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-02 08:39:37 | INFO     | scraper:fetch:468 - [GitHub] 成功抓取 10 个项目
+2026-02-02 08:39:37 | INFO     | scraper:fetch:484 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-02 08:39:40 | INFO     | scraper:fetch:546 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-02 08:39:40 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.CL
+2026-02-02 08:39:44 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.AI
+2026-02-02 08:39:46 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.LG
+2026-02-02 08:39:48 | INFO     | scraper:fetch:636 - [arXiv] 成功抓取 15 篇论文
+2026-02-02 08:39:48 | INFO     | scraper:_fetch_baidu_developer:99 - [ChinaAI] 开始抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-02 08:39:49 | ERROR    | scraper:_fetch_baidu_developer:141 - [ChinaAI] 抓取百度开发者社区失败: 500 Server Error: Internal Server Error for url: https://ai.baidu.com/tech/
+2026-02-02 08:39:49 | INFO     | scraper:_fetch_aliyun_developer:150 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-02 08:39:51 | INFO     | scraper:_fetch_tencent_cloud:201 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-02 08:39:52 | INFO     | scraper:_fetch_huawei_cloud:252 - [ChinaAI] 开始抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-02 08:39:53 | INFO     | scraper:_fetch_csdn:303 - [ChinaAI] 开始抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-02 08:39:54 | ERROR    | scraper:_fetch_csdn:345 - [ChinaAI] 抓取CSDN失败: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-02 08:39:54 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 2 条国内AI资讯
+2026-02-02 08:39:54 | INFO     | scraper:fetch_all_sources:670 - [Scraper] 总计抓取 27 条数据
+2026-02-02 08:39:54 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-02 08:39:54 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-02 08:39:54 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-02 08:39:54 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-02 08:39:55 | INFO     | processor:process:206 - [Processor] 开始处理 27 条内容
+2026-02-02 08:40:03 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-02 08:40:03 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-02 08:40:03 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-02 08:40:03 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-02 08:40:03 | INFO     | __main__:step_2_process:134 -   2. [9.2] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-02 08:40:03 | INFO     | __main__:step_2_process:134 -   3. [8.8] Exploring Reasoning Reward Model for Agents
+2026-02-02 08:40:03 | INFO     | __main__:step_2_process:134 -   4. [8.5] m-bain/whisperX
+2026-02-02 08:40:03 | INFO     | __main__:step_2_process:134 -   5. [8.4] UEval: A Benchmark for Unified Multimodal Generation
+2026-02-02 08:40:03 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-02 08:40:03 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-02 08:40:03 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-02 08:40:04 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-02 08:40:12 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-02 08:40:12 | INFO     | writer:write:276 - [Writer] 生成完成，共 844 字符
+2026-02-02 08:40:12 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 844 字符
+2026-02-02 08:40:12 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-02 08:40:12 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-02 08:40:12 | INFO     | __main__:step_3_write:176 - 大家好，欢迎收听今天的AI技术播客！今天我们要聊几个最新的AI技术突破。
+
+首先，来自Archive的RedSage是一个针对网络安全领域专门优化的大语言模型。传统LLM在处理网络安全任务时存在严重隐私风险，而RedSage通过领域特定的训练和隐私保护机制，解决了这个问题。它能够在不暴露敏感数据的情况下支持多种网络安全工作流程，这对企业安全团队来说是个福音，既提高了效率又保障了数据安全。
+
+第二个...
+2026-02-02 08:40:12 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-02 08:40:12 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-02 08:40:12 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-02 08:40:12 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-02 08:40:12 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 856 字符
+2026-02-02 08:40:12 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-02 08:40:27 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260202_084012.mp3
+2026-02-02 08:40:27 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 1029600 bytes
+2026-02-02 08:40:27 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260202_084012.mp3
+2026-02-02 08:40:27 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-02 08:40:27 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-02 08:40:27 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-02 08:40:28 | INFO     | notifier:_get_access_token:91 - [WeCom] Access Token 获取成功
+2026-02-02 08:40:29 | ERROR    | notifier:send_text_card:185 - [WeCom] 图文卡片发送失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769992829427491629553991], from ip: 27.37.46.53, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-02 08:40:31 | ERROR    | notifier:_upload_media:134 - [WeCom] 媒体上传失败: {'errcode': 60020, 'errmsg': 'not allow to access from your ip, hint: [1769992830184591185441680], from ip: 27.37.46.53, more info at https://open.work.weixin.qq.com/devtool/query?e=60020'}
+2026-02-02 08:40:31 | ERROR    | __main__:step_5_notify:275 - [Step 5/5] 消息推送失败: {'success': False, 'voice_sent': False, 'card_sent': False, 'errors': ['图文卡片发送失败', '语音消息发送失败']}
+2026-02-02 08:40:31 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-02 08:40:31 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-02 08:40:31 | INFO     | __main__:run:341 - ⏱️  执行时间: 57.12 秒
+2026-02-02 08:40:31 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-02 08:40:31 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-02 08:41:01 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-02 08:41:01 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-02 08:41:01 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-02 08:41:01 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-02 08:41:01 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-02 08:41:01 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-02 08:41:01 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-02 08:41:01 | INFO     | scraper:fetch:359 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-02 08:41:04 | INFO     | scraper:fetch:468 - [GitHub] 成功抓取 10 个项目
+2026-02-02 08:41:04 | INFO     | scraper:fetch:484 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-02 08:41:07 | INFO     | scraper:fetch:546 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-02 08:41:07 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.CL
+2026-02-02 08:41:11 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.AI
+2026-02-02 08:41:13 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.LG
+2026-02-02 08:41:15 | INFO     | scraper:fetch:636 - [arXiv] 成功抓取 15 篇论文
+2026-02-02 08:41:15 | INFO     | scraper:_fetch_baidu_developer:99 - [ChinaAI] 开始抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-02 08:41:16 | ERROR    | scraper:_fetch_baidu_developer:141 - [ChinaAI] 抓取百度开发者社区失败: 500 Server Error: Internal Server Error for url: https://ai.baidu.com/tech/
+2026-02-02 08:41:16 | INFO     | scraper:_fetch_aliyun_developer:150 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-02 08:41:20 | INFO     | scraper:_fetch_tencent_cloud:201 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-02 08:41:21 | INFO     | scraper:_fetch_huawei_cloud:252 - [ChinaAI] 开始抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-02 08:41:22 | INFO     | scraper:_fetch_csdn:303 - [ChinaAI] 开始抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-02 08:41:23 | ERROR    | scraper:_fetch_csdn:345 - [ChinaAI] 抓取CSDN失败: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-02 08:41:23 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 2 条国内AI资讯
+2026-02-02 08:41:23 | INFO     | scraper:fetch_all_sources:670 - [Scraper] 总计抓取 27 条数据
+2026-02-02 08:41:23 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-02 08:41:23 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-02 08:41:23 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-02 08:41:23 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-02 08:41:24 | INFO     | processor:process:206 - [Processor] 开始处理 27 条内容
+2026-02-02 08:41:28 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-02 08:41:28 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-02 08:41:28 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-02 08:41:28 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-02 08:41:28 | INFO     | __main__:step_2_process:134 -   2. [9.2] UEval: A Benchmark for Unified Multimodal Generation
+2026-02-02 08:41:28 | INFO     | __main__:step_2_process:134 -   3. [9.0] yt-dlp/yt-dlp
+2026-02-02 08:41:28 | INFO     | __main__:step_2_process:134 -   4. [8.8] paperless-ngx/paperless-ngx
+2026-02-02 08:41:28 | INFO     | __main__:step_2_process:134 -   5. [8.7] m-bain/whisperX
+2026-02-02 08:41:28 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-02 08:41:28 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-02 08:41:28 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-02 08:41:29 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-02 08:41:37 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-02 08:41:37 | INFO     | writer:write:276 - [Writer] 生成完成，共 934 字符
+2026-02-02 08:41:37 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 934 字符
+2026-02-02 08:41:37 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-02 08:41:37 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-02 08:41:37 | INFO     | __main__:step_3_write:176 - 大家好，今天为大家带来几则AI领域的精选技术新闻。首先，让我们来关注RedSage，这是一个专门针对网络安全领域的大语言模型。传统的网络安全LLM往往面临两个主要挑战：敏感数据暴露风险和领域适应性不足。RedSage巧妙地解决了这些问题，它通过本地化部署和定制化训练，既保证了数据安全，又提供了高度专业的安全操作支持。这个模型不仅能识别威胁，还能协助安全分析师完成报告撰写、漏洞分析等多种工作，对于企...
+2026-02-02 08:41:37 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-02 08:41:37 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-02 08:41:37 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-02 08:41:37 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-02 08:41:37 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 944 字符
+2026-02-02 08:41:37 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-02 08:41:50 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260202_084137.mp3
+2026-02-02 08:41:50 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 1137888 bytes
+2026-02-02 08:41:50 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260202_084137.mp3
+2026-02-02 08:41:50 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-02 08:41:50 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-02 08:41:50 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-02 08:41:50 | INFO     | notifier:send_notification:378 - [Notifier] DEBUG 模式: 只打印消息，不实际发送
+2026-02-02 08:41:50 | INFO     | notifier:send_notification:379 - ==================================================
+2026-02-02 08:41:50 | INFO     | notifier:send_notification:380 - 【图文卡片预览】
+2026-02-02 08:41:50 | INFO     | notifier:send_notification:382 - 标题: 🤖 AI每日技术简报 - 02月02日
+2026-02-02 08:41:50 | INFO     | notifier:send_notification:384 - 内容预览:
+2026-02-02 08:41:50 | INFO     | notifier:send_notification:386 -   1. RedSage: A Cybersecurity Generalist LLM
+2026-02-02 08:41:50 | INFO     | notifier:send_notification:386 -   2. UEval: A Benchmark for Unified Multimodal Generation
+2026-02-02 08:41:50 | INFO     | notifier:send_notification:386 -   3. yt-dlp/yt-dlp
+2026-02-02 08:41:50 | INFO     | notifier:send_notification:386 -   4. paperless-ngx/paperless-ngx
+2026-02-02 08:41:50 | INFO     | notifier:send_notification:386 -   5. m-bain/whisperX
+2026-02-02 08:41:50 | INFO     | notifier:send_notification:387 - ==================================================
+2026-02-02 08:41:50 | INFO     | notifier:send_notification:388 - 【语音文件】
+2026-02-02 08:41:50 | INFO     | notifier:send_notification:389 - 路径: output\audio\daily_brief_20260202_084137.mp3
+2026-02-02 08:41:50 | INFO     | notifier:send_notification:390 - ==================================================
+2026-02-02 08:41:50 | INFO     | __main__:step_5_notify:273 - [Step 5/5] 消息推送完成
+2026-02-02 08:41:50 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-02 08:41:50 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-02 08:41:50 | INFO     | __main__:run:341 - ⏱️  执行时间: 49.33 秒
+2026-02-02 08:41:50 | INFO     | __main__:run:342 - 🎯 整体状态: 成功
+2026-02-02 08:41:50 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-02 08:50:36 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-02 08:50:36 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-02 08:50:36 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-02 08:50:36 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-02 08:50:36 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-02 08:50:36 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-02 08:50:36 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-02 08:50:36 | INFO     | scraper:fetch:359 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-02 08:50:40 | INFO     | scraper:fetch:468 - [GitHub] 成功抓取 10 个项目
+2026-02-02 08:50:40 | INFO     | scraper:fetch:484 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-02 08:50:42 | INFO     | scraper:fetch:546 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-02 08:50:42 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.CL
+2026-02-02 08:50:46 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.AI
+2026-02-02 08:50:49 | INFO     | scraper:fetch:567 - [arXiv] 开始抓取 cs.LG
+2026-02-02 08:50:51 | INFO     | scraper:fetch:636 - [arXiv] 成功抓取 15 篇论文
+2026-02-02 08:50:51 | INFO     | scraper:_fetch_baidu_developer:99 - [ChinaAI] 开始抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-02 08:50:52 | ERROR    | scraper:_fetch_baidu_developer:141 - [ChinaAI] 抓取百度开发者社区失败: 500 Server Error: Internal Server Error for url: https://ai.baidu.com/tech/
+2026-02-02 08:50:52 | INFO     | scraper:_fetch_aliyun_developer:150 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-02 08:50:53 | INFO     | scraper:_fetch_tencent_cloud:201 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-02 08:50:54 | INFO     | scraper:_fetch_huawei_cloud:252 - [ChinaAI] 开始抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-02 08:50:56 | INFO     | scraper:_fetch_csdn:303 - [ChinaAI] 开始抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-02 08:50:57 | ERROR    | scraper:_fetch_csdn:345 - [ChinaAI] 抓取CSDN失败: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-02 08:50:57 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 2 条国内AI资讯
+2026-02-02 08:50:57 | INFO     | scraper:fetch_all_sources:670 - [Scraper] 总计抓取 27 条数据
+2026-02-02 08:50:57 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-02 08:50:57 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-02 08:50:57 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-02 08:50:57 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-02 08:50:58 | INFO     | processor:process:206 - [Processor] 开始处理 27 条内容
+2026-02-02 08:51:02 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-02 08:51:02 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-02 08:51:02 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-02 08:51:02 | INFO     | __main__:step_2_process:134 -   1. [9.6] RedSage: A Cybersecurity Generalist LLM
+2026-02-02 08:51:02 | INFO     | __main__:step_2_process:134 -   2. [9.2] Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-02 08:51:02 | INFO     | __main__:step_2_process:134 -   3. [8.8] Exploring Reasoning Reward Model for Agents
+2026-02-02 08:51:02 | INFO     | __main__:step_2_process:134 -   4. [8.7] yt-dlp/yt-dlp
+2026-02-02 08:51:02 | INFO     | __main__:step_2_process:134 -   5. [8.5] paperless-ngx/paperless-ngx
+2026-02-02 08:51:02 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-02 08:51:02 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-02 08:51:02 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-02 08:51:03 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-02 08:51:08 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-02 08:51:08 | INFO     | writer:write:276 - [Writer] 生成完成，共 641 字符
+2026-02-02 08:51:08 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 641 字符
+2026-02-02 08:51:08 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-02 08:51:08 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-02 08:51:08 | INFO     | __main__:step_3_write:176 - 大家好，今天为大家带来几项AI领域的最新进展。首先介绍RedSage，这是一款专门针对网络安全领域的大语言模型。传统LLM在处理安全数据时存在隐私泄露风险，而RedSage通过创新架构实现了数据本地化处理，既能保持专业领域的准确性，又能确保敏感信息不外泄。这项技术对安全运营中心(SOC)来说意义重大，可以让分析师在不违反合规要求的情况下获得AI辅助。
+
+接下来是混合线性注意力机制的研究，解决了Tr...
+2026-02-02 08:51:08 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-02 08:51:08 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-02 08:51:08 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-02 08:51:08 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-02 08:51:08 | INFO     | audio:synthesize:122 - [TTS] 开始合成语音，文本长度: 649 字符
+2026-02-02 08:51:08 | INFO     | audio:synthesize:123 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-02 08:51:16 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260202_085108.mp3
+2026-02-02 08:51:16 | INFO     | audio:synthesize:131 - [TTS] 音频文件生成成功: 798480 bytes
+2026-02-02 08:51:16 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260202_085108.mp3
+2026-02-02 08:51:16 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-02 08:51:16 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-02 08:51:16 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-02 08:51:16 | INFO     | notifier:send_notification:378 - [Notifier] DEBUG 模式: 只打印消息，不实际发送
+2026-02-02 08:51:16 | INFO     | notifier:send_notification:379 - ==================================================
+2026-02-02 08:51:16 | INFO     | notifier:send_notification:380 - 【图文卡片预览】
+2026-02-02 08:51:16 | INFO     | notifier:send_notification:382 - 标题: 🤖 AI每日技术简报 - 02月02日
+2026-02-02 08:51:16 | INFO     | notifier:send_notification:384 - 内容预览:
+2026-02-02 08:51:16 | INFO     | notifier:send_notification:386 -   1. RedSage: A Cybersecurity Generalist LLM
+2026-02-02 08:51:16 | INFO     | notifier:send_notification:386 -   2. Hybrid Linear Attention Done Right: Efficient Distillation and Effective Architectures for Extremely Long Contexts
+2026-02-02 08:51:16 | INFO     | notifier:send_notification:386 -   3. Exploring Reasoning Reward Model for Agents
+2026-02-02 08:51:16 | INFO     | notifier:send_notification:386 -   4. yt-dlp/yt-dlp
+2026-02-02 08:51:16 | INFO     | notifier:send_notification:386 -   5. paperless-ngx/paperless-ngx
+2026-02-02 08:51:16 | INFO     | notifier:send_notification:387 - ==================================================
+2026-02-02 08:51:16 | INFO     | notifier:send_notification:388 - 【语音文件】
+2026-02-02 08:51:16 | INFO     | notifier:send_notification:389 - 路径: output\audio\daily_brief_20260202_085108.mp3
+2026-02-02 08:51:16 | INFO     | notifier:send_notification:390 - ==================================================
+2026-02-02 08:51:16 | INFO     | __main__:step_5_notify:273 - [Step 5/5] 消息推送完成
+2026-02-02 08:51:16 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-02 08:51:16 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-02 08:51:16 | INFO     | __main__:run:341 - ⏱️  执行时间: 39.90 秒
+2026-02-02 08:51:16 | INFO     | __main__:run:342 - 🎯 整体状态: 成功
+2026-02-02 08:51:16 | INFO     | __main__:run:343 - ============================================================
+
