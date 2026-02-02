@@ -95,46 +95,71 @@ class ChinaAIScraper(BaseScraper):
         """抓取百度开发者社区"""
         items = []
         try:
-            url = "https://ai.baidu.com/tech/"
-            logger.info(f"[ChinaAI] 开始抓取百度开发者社区: {url}")
+            # 尝试多个URL
+            urls = [
+                "https://ai.baidu.com/tech/",
+                "https://ai.baidu.com/",
+                "https://www.baidu.com/s?wd=AI%E6%8A%80%E6%9C%AF"
+            ]
             
-            response = self.session.get(url, timeout=15)
-            response.raise_for_status()
-            
-            soup = BeautifulSoup(response.text, 'html.parser')
-            
-            # 查找文章链接
-            links = soup.find_all('a', href=True)
-            
-            seen = set()
-            for link in links:
+            for url in urls:
                 try:
-                    href = link.get('href', '')
-                    if not href or href in seen:
-                        continue
+                    logger.info(f"[ChinaAI] 尝试抓取百度开发者社区: {url}")
                     
-                    # 筛选AI相关链接
-                    if '/tech/' in href or '/blog/' in href:
-                        seen.add(href)
-                        article_url = f"https://ai.baidu.com{href}" if href.startswith('/') else href
-                        
-                        # 提取标题
-                        title = link.get_text(strip=True) or "Unknown"
-                        if len(title) < 8:  # 过滤太短的标题
-                            continue
-                        
-                        items.append(TechItem(
-                            source='baidu_dev',
-                            title=title,
-                            url=article_url,
-                            description="百度AI技术动态"
-                        ))
-                        
-                        if len(items) >= 2:  # 限制数量
-                            break
+                    # 添加更完整的请求头
+                    headers = {
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+                        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+                        'Accept-Encoding': 'gzip, deflate, br',
+                        'Connection': 'keep-alive',
+                        'Upgrade-Insecure-Requests': '1'
+                    }
+                    
+                    response = self.session.get(url, timeout=10, headers=headers)
+                    response.raise_for_status()
+                    
+                    soup = BeautifulSoup(response.text, 'html.parser')
+                    
+                    # 查找文章链接
+                    links = soup.find_all('a', href=True)
+                    
+                    seen = set()
+                    for link in links:
+                        try:
+                            href = link.get('href', '')
+                            if not href or href in seen:
+                                continue
                             
+                            # 筛选AI相关链接
+                            if '/tech/' in href or '/blog/' in href or '/article/' in href:
+                                seen.add(href)
+                                article_url = f"https://ai.baidu.com{href}" if href.startswith('/') else href
+                                
+                                # 提取标题
+                                title = link.get_text(strip=True) or "Unknown"
+                                if len(title) < 8:  # 过滤太短的标题
+                                    continue
+                                
+                                items.append(TechItem(
+                                    source='baidu_dev',
+                                    title=title,
+                                    url=article_url,
+                                    description="百度AI技术动态"
+                                ))
+                                
+                                if len(items) >= 2:  # 限制数量
+                                    break
+                                    
+                        except Exception as e:
+                            logger.warning(f"[ChinaAI] 解析百度开发者社区链接失败: {e}")
+                            continue
+                    
+                    if items:  # 如果成功获取到数据，就不再尝试其他URL
+                        break
+                        
                 except Exception as e:
-                    logger.warning(f"[ChinaAI] 解析百度开发者社区失败: {e}")
+                    logger.warning(f"[ChinaAI] 抓取百度开发者社区URL失败: {url}, 错误: {e}")
                     continue
             
         except Exception as e:
@@ -248,46 +273,72 @@ class ChinaAIScraper(BaseScraper):
         """抓取华为云开发者社区"""
         items = []
         try:
-            url = "https://www.huaweicloud.com/intl/zh-cn/products/ai.html"
-            logger.info(f"[ChinaAI] 开始抓取华为云开发者社区: {url}")
+            # 尝试多个URL
+            urls = [
+                "https://www.huaweicloud.com/intl/zh-cn/products/ai.html",
+                "https://www.huaweicloud.com/product/ai.html",
+                "https://www.huaweicloud.com/zh-cn/product/ai.html",
+                "https://www.huaweicloud.com/"
+            ]
             
-            response = self.session.get(url, timeout=15)
-            response.raise_for_status()
-            
-            soup = BeautifulSoup(response.text, 'html.parser')
-            
-            # 查找文章链接
-            links = soup.find_all('a', href=True)
-            
-            seen = set()
-            for link in links:
+            for url in urls:
                 try:
-                    href = link.get('href', '')
-                    if not href or href in seen:
-                        continue
+                    logger.info(f"[ChinaAI] 尝试抓取华为云开发者社区: {url}")
                     
-                    # 筛选AI相关链接
-                    if '/blog/' in href or '/article/' in href:
-                        seen.add(href)
-                        article_url = href if href.startswith('http') else f"https://www.huaweicloud.com{href}"
-                        
-                        # 提取标题
-                        title = link.get_text(strip=True) or "Unknown"
-                        if len(title) < 8:  # 过滤太短的标题
-                            continue
-                        
-                        items.append(TechItem(
-                            source='huawei_cloud',
-                            title=title,
-                            url=article_url,
-                            description="华为云AI技术动态"
-                        ))
-                        
-                        if len(items) >= 2:  # 限制数量
-                            break
+                    # 添加更完整的请求头
+                    headers = {
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+                        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+                        'Accept-Encoding': 'gzip, deflate, br',
+                        'Connection': 'keep-alive',
+                        'Upgrade-Insecure-Requests': '1'
+                    }
+                    
+                    response = self.session.get(url, timeout=10, headers=headers)
+                    response.raise_for_status()
+                    
+                    soup = BeautifulSoup(response.text, 'html.parser')
+                    
+                    # 查找文章链接
+                    links = soup.find_all('a', href=True)
+                    
+                    seen = set()
+                    for link in links:
+                        try:
+                            href = link.get('href', '')
+                            if not href or href in seen:
+                                continue
                             
+                            # 筛选AI相关链接
+                            if '/blog/' in href or '/article/' in href or '/product/' in href:
+                                seen.add(href)
+                                article_url = href if href.startswith('http') else f"https://www.huaweicloud.com{href}"
+                                
+                                # 提取标题
+                                title = link.get_text(strip=True) or "Unknown"
+                                if len(title) < 8:  # 过滤太短的标题
+                                    continue
+                                
+                                items.append(TechItem(
+                                    source='huawei_cloud',
+                                    title=title,
+                                    url=article_url,
+                                    description="华为云AI技术动态"
+                                ))
+                                
+                                if len(items) >= 2:  # 限制数量
+                                    break
+                                    
+                        except Exception as e:
+                            logger.warning(f"[ChinaAI] 解析华为云开发者社区链接失败: {e}")
+                            continue
+                    
+                    if items:  # 如果成功获取到数据，就不再尝试其他URL
+                        break
+                        
                 except Exception as e:
-                    logger.warning(f"[ChinaAI] 解析华为云开发者社区失败: {e}")
+                    logger.warning(f"[ChinaAI] 抓取华为云开发者社区URL失败: {url}, 错误: {e}")
                     continue
             
         except Exception as e:
@@ -299,46 +350,71 @@ class ChinaAIScraper(BaseScraper):
         """抓取CSDN技术社区"""
         items = []
         try:
-            url = "https://blog.csdn.net/topic/ai"
-            logger.info(f"[ChinaAI] 开始抓取CSDN技术社区: {url}")
+            # 尝试多个URL
+            urls = [
+                "https://blog.csdn.net/topic/ai",
+                "https://www.csdn.net/nav/ai",
+                "https://www.csdn.net/"
+            ]
             
-            response = self.session.get(url, timeout=15)
-            response.raise_for_status()
-            
-            soup = BeautifulSoup(response.text, 'html.parser')
-            
-            # 查找文章链接
-            links = soup.find_all('a', href=True)
-            
-            seen = set()
-            for link in links:
+            for url in urls:
                 try:
-                    href = link.get('href', '')
-                    if not href or href in seen:
-                        continue
+                    logger.info(f"[ChinaAI] 尝试抓取CSDN技术社区: {url}")
                     
-                    # 筛选AI相关链接
-                    if '/article/details/' in href:
-                        seen.add(href)
-                        article_url = href if href.startswith('http') else f"https://blog.csdn.net{href}"
-                        
-                        # 提取标题
-                        title = link.get_text(strip=True) or "Unknown"
-                        if len(title) < 8:  # 过滤太短的标题
-                            continue
-                        
-                        items.append(TechItem(
-                            source='csdn',
-                            title=title,
-                            url=article_url,
-                            description="CSDN AI技术文章"
-                        ))
-                        
-                        if len(items) >= 2:  # 限制数量
-                            break
+                    # 添加更完整的请求头
+                    headers = {
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+                        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+                        'Accept-Encoding': 'gzip, deflate, br',
+                        'Connection': 'keep-alive',
+                        'Upgrade-Insecure-Requests': '1'
+                    }
+                    
+                    response = self.session.get(url, timeout=10, headers=headers)
+                    response.raise_for_status()
+                    
+                    soup = BeautifulSoup(response.text, 'html.parser')
+                    
+                    # 查找文章链接
+                    links = soup.find_all('a', href=True)
+                    
+                    seen = set()
+                    for link in links:
+                        try:
+                            href = link.get('href', '')
+                            if not href or href in seen:
+                                continue
                             
+                            # 筛选AI相关链接
+                            if '/article/details/' in href or '/nav/ai' in href:
+                                seen.add(href)
+                                article_url = href if href.startswith('http') else f"https://blog.csdn.net{href}"
+                                
+                                # 提取标题
+                                title = link.get_text(strip=True) or "Unknown"
+                                if len(title) < 8:  # 过滤太短的标题
+                                    continue
+                                
+                                items.append(TechItem(
+                                    source='csdn',
+                                    title=title,
+                                    url=article_url,
+                                    description="CSDN AI技术文章"
+                                ))
+                                
+                                if len(items) >= 2:  # 限制数量
+                                    break
+                                    
+                        except Exception as e:
+                            logger.warning(f"[ChinaAI] 解析CSDN链接失败: {e}")
+                            continue
+                    
+                    if items:  # 如果成功获取到数据，就不再尝试其他URL
+                        break
+                        
                 except Exception as e:
-                    logger.warning(f"[ChinaAI] 解析CSDN失败: {e}")
+                    logger.warning(f"[ChinaAI] 抓取CSDN URL失败: {url}, 错误: {e}")
                     continue
             
         except Exception as e:
