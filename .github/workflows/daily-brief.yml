@@ -4,9 +4,9 @@ name: AI Daily Brief
 # 版本: 1.0.1
 
 on:
-  # 定时任务：每天早上8点执行
+  # 定时任务：每天早上8点执行（UTC时间0点）
   schedule:
-    - cron: '0 0 * * *'  # UTC时间，对应北京时间8:00
+    - cron: '0 0 * * *'  # UTC时间0点 = 北京时间8点
   # 手动触发
   workflow_dispatch:
 
