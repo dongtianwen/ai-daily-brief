@@ -177,6 +177,156 @@ jobs:
           </html>
           EOF
 
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages-temp
+          token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Merge with existing files
+        run: |
+          # 如果gh-pages分支存在，复制现有文件
+          if [ -d "gh-pages-temp" ] && [ "$(ls -A gh-pages-temp/*.mp3 2>/dev/null)" ]; then
+            echo "Found existing audio files, merging..."
+            cp -n gh-pages-temp/*.mp3 output/audio/ 2>/dev/null || true
+          fi
+          # 列出所有音频文件
+          echo "Audio files in output/audio:"
+          ls -la output/audio/*.mp3 2>/dev/null || echo "No mp3 files found"
+
+      - name: Regenerate index.html with all audio files
+        run: |
+          # 重新生成index.html，包含所有音频文件
+          cat > output/audio/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="zh-CN">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>AI每日简报 - AI Daily Brief</title>
+              <style>
+                  body {
+                      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+                      max-width: 800px;
+                      margin: 0 auto;
+                      padding: 20px;
+                      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                      min-height: 100vh;
+                  }
+                  .container {
+                      background: white;
+                      border-radius: 12px;
+                      padding: 30px;
+                      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+                  }
+                  h1 {
+                      color: #333;
+                      text-align: center;
+                      margin-bottom: 10px;
+                  }
+                  .subtitle {
+                      text-align: center;
+                      color: #666;
+                      margin-bottom: 30px;
+                  }
+                  .audio-list {
+                      list-style: none;
+                      padding: 0;
+                  }
+                  .audio-item {
+                      background: #f8f9fa;
+                      border-radius: 8px;
+                      padding: 15px;
+                      margin-bottom: 15px;
+                      border-left: 4px solid #667eea;
+                  }
+                  .audio-title {
+                      font-weight: bold;
+                      color: #333;
+                      margin-bottom: 10px;
+                  }
+                  audio {
+                      width: 100%;
+                      border-radius: 4px;
+                  }
+                  .download-link {
+                      display: inline-block;
+                      margin-top: 10px;
+                      color: #667eea;
+                      text-decoration: none;
+                  }
+                  .download-link:hover {
+                      text-decoration: underline;
+                  }
+                  .footer {
+                      text-align: center;
+                      margin-top: 30px;
+                      color: #999;
+                      font-size: 14px;
+                  }
+                  .no-audio {
+                      text-align: center;
+                      color: #999;
+                      padding: 40px;
+                      background: #f8f9fa;
+                      border-radius: 8px;
+                  }
+              </style>
+          </head>
+          <body>
+              <div class="container">
+                  <h1>🤖 AI每日简报</h1>
+                  <p class="subtitle">每天早上8点自动生成的AI技术新闻语音播报</p>
+          EOF
+          
+          # 查找所有mp3文件并添加到index.html
+          mp3_files=$(find output/audio -name "*.mp3" -type f 2>/dev/null | sort -r)
+          
+          if [ -n "$mp3_files" ]; then
+              echo "          <ul class=\"audio-list\">" >> output/audio/index.html
+              counter=1
+              for file in $mp3_files; do
+                  filename=$(basename "$file")
+                  # 从文件名提取日期 (格式: daily_brief_YYYYMMDD_HHMMSS.mp3)
+                  file_date=$(echo "$filename" | sed 's/daily_brief_\([0-9]\{4\}\)\([0-9]\{2\}\)\([0-9]\{2\}\)_.*/\1年\2月\3日/')
+                  file_time=$(echo "$filename" | sed 's/daily_brief_[0-9]\{8\}_\([0-9]\{2\}\)\([0-9]\{2\}\).*/\1:\2/')
+                  if [ $counter -eq 1 ]; then
+                      title="📢 最新AI每日简报"
+                  else
+                      title="📢 AI每日简报 #$counter"
+                  fi
+                  echo "              <li class=\"audio-item\">" >> output/audio/index.html
+                  echo "                  <div class=\"audio-title\">$title</div>" >> output/audio/index.html
+                  echo "                  <div style=\"color: #666; font-size: 14px; margin-bottom: 10px;\">📅 生成时间：$file_date $file_time</div>" >> output/audio/index.html
+                  echo "                  <audio controls>" >> output/audio/index.html
+                  echo "                      <source src=\"$filename\" type=\"audio/mpeg\">" >> output/audio/index.html
+                  echo "                      您的浏览器不支持音频播放。" >> output/audio/index.html
+                  echo "                  </audio>" >> output/audio/index.html
+                  echo "                  <br>" >> output/audio/index.html
+                  echo "                  <a href=\"$filename\" download class=\"download-link\">⬇️ 下载音频文件</a>" >> output/audio/index.html
+                  echo "              </li>" >> output/audio/index.html
+                  counter=$((counter + 1))
+              done
+              echo "          </ul>" >> output/audio/index.html
+          else
+              echo "          <div class=\"no-audio\">" >> output/audio/index.html
+              echo "              <p>🎵 暂无音频文件</p>" >> output/audio/index.html
+              echo "              <p>请等待明天早上8点的自动更新，或手动触发workflow生成音频</p>" >> output/audio/index.html
+              echo "          </div>" >> output/audio/index.html
+          fi
+          
+          cat >> output/audio/index.html << 'EOF'
+                  <div class="footer">
+                      <p>由 GitHub Actions 自动生成 | <a href="https://github.com/dongtianwen/ai-daily-brief">查看源码</a></p>
+                      <p>更新时间：每天上午8:00（北京时间）</p>
+                  </div>
+              </div>
+          </body>
+          </html>
+          EOF
+
       - name: Deploy to GitHub Pages
         if: success()
         id: deployment
