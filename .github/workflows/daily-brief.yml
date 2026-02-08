@@ -210,109 +210,270 @@ jobs:
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <title>AI每日简报 - AI Daily Brief</title>
               <style>
+                  :root {
+                      --primary-color: #4f46e5;
+                      --primary-hover: #4338ca;
+                      --secondary-color: #64748b;
+                      --success-color: #10b981;
+                      --background-light: #f8fafc;
+                      --text-primary: #1e293b;
+                      --text-secondary: #64748b;
+                      --border-color: #e2e8f0;
+                  }
+                  
+                  * {
+                      margin: 0;
+                      padding: 0;
+                      box-sizing: border-box;
+                  }
+                  
                   body {
-                      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-                      max-width: 800px;
-                      margin: 0 auto;
-                      padding: 20px;
-                      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+                      font-size: 16px;
+                      line-height: 1.6;
+                      color: var(--text-primary);
+                      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
                       min-height: 100vh;
+                      padding: 20px;
                   }
+                  
                   .container {
+                      max-width: 900px;
+                      margin: 0 auto;
                       background: white;
-                      border-radius: 12px;
-                      padding: 30px;
-                      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+                      border-radius: 16px;
+                      padding: clamp(24px, 5vw, 48px);
+                      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                                  0 2px 4px -1px rgba(0, 0, 0, 0.06);
                   }
+                  
+                  .header {
+                      text-align: center;
+                      margin-bottom: 40px;
+                  }
+                  
                   h1 {
-                      color: #333;
-                      text-align: center;
-                      margin-bottom: 10px;
+                      font-size: clamp(1.5rem, 5vw, 2.5rem);
+                      font-weight: 700;
+                      color: var(--text-primary);
+                      margin-bottom: 12px;
+                      letter-spacing: -0.025em;
                   }
+                  
                   .subtitle {
-                      text-align: center;
-                      color: #666;
-                      margin-bottom: 30px;
+                      color: var(--text-secondary);
+                      font-size: 1rem;
                   }
+                  
                   .audio-list {
                       list-style: none;
-                      padding: 0;
                   }
+                  
                   .audio-item {
-                      background: #f8f9fa;
-                      border-radius: 8px;
-                      padding: 15px;
-                      margin-bottom: 15px;
-                      border-left: 4px solid #667eea;
+                      background: var(--background-light);
+                      border-radius: 12px;
+                      padding: 24px;
+                      margin-bottom: 20px;
+                      border: 1px solid var(--border-color);
+                      transition: all 0.3s ease;
+                      animation: fadeIn 0.5s ease forwards;
                   }
+                  
+                  .audio-item:hover {
+                      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                      transform: translateY(-2px);
+                      border-color: var(--primary-color);
+                  }
+                  
+                  .audio-header {
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      margin-bottom: 16px;
+                  }
+                  
                   .audio-title {
-                      font-weight: bold;
-                      color: #333;
-                      margin-bottom: 10px;
+                      font-size: 1.125rem;
+                      font-weight: 600;
+                      color: var(--text-primary);
+                      display: flex;
+                      align-items: center;
+                      gap: 8px;
                   }
+                  
+                  .time-badge {
+                      display: inline-flex;
+                      align-items: center;
+                      gap: 4px;
+                      padding: 6px 12px;
+                      background: white;
+                      border-radius: 20px;
+                      font-size: 0.875rem;
+                      color: var(--text-secondary);
+                      border: 1px solid var(--border-color);
+                  }
+                  
                   audio {
                       width: 100%;
-                      border-radius: 4px;
-                  }
-                  .download-link {
-                      display: inline-block;
-                      margin-top: 10px;
-                      color: #667eea;
-                      text-decoration: none;
-                  }
-                  .download-link:hover {
-                      text-decoration: underline;
-                  }
-                  .footer {
-                      text-align: center;
-                      margin-top: 30px;
-                      color: #999;
-                      font-size: 14px;
-                  }
-                  .no-audio {
-                      text-align: center;
-                      color: #999;
-                      padding: 40px;
-                      background: #f8f9fa;
                       border-radius: 8px;
+                      margin: 16px 0;
                   }
+                  
+                  .button-group {
+                      display: flex;
+                      gap: 12px;
+                      flex-wrap: wrap;
+                  }
+                  
                   .text-toggle {
-                      display: inline-block;
-                      margin-top: 10px;
-                      margin-left: 10px;
-                      padding: 5px 15px;
-                      background: #667eea;
+                      display: inline-flex;
+                      align-items: center;
+                      gap: 6px;
+                      padding: 10px 20px;
+                      background: var(--primary-color);
                       color: white;
                       border: none;
-                      border-radius: 4px;
+                      border-radius: 8px;
                       cursor: pointer;
-                      font-size: 14px;
+                      font-size: 0.875rem;
+                      font-weight: 500;
+                      transition: all 0.2s ease;
+                      box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
                   }
+                  
                   .text-toggle:hover {
-                      background: #5568d3;
+                      background: var(--primary-hover);
+                      transform: translateY(-1px);
+                      box-shadow: 0 4px 8px rgba(79, 70, 229, 0.3);
                   }
+                  
+                  .download-link {
+                      display: inline-flex;
+                      align-items: center;
+                      gap: 6px;
+                      padding: 10px 20px;
+                      color: var(--primary-color);
+                      text-decoration: none;
+                      border: 1px solid var(--primary-color);
+                      border-radius: 8px;
+                      font-size: 0.875rem;
+                      font-weight: 500;
+                      transition: all 0.2s ease;
+                  }
+                  
+                  .download-link:hover {
+                      background: var(--primary-color);
+                      color: white;
+                  }
+                  
                   .text-content {
                       display: none;
-                      margin-top: 15px;
-                      padding: 15px;
+                      max-height: 0;
+                      overflow: hidden;
+                      margin-top: 16px;
+                      padding: 0 16px;
                       background: white;
-                      border-radius: 6px;
-                      border: 1px solid #e0e0e0;
-                      font-size: 14px;
-                      line-height: 1.6;
-                      color: #333;
-                      white-space: pre-wrap;
-                      word-wrap: break-word;
+                      border-radius: 8px;
+                      border: 1px solid var(--border-color);
+                      font-size: 0.9375rem;
+                      line-height: 1.7;
+                      color: var(--text-primary);
+                      transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+                      opacity: 0;
                   }
+                  
                   .text-content.show {
                       display: block;
+                      max-height: 2000px;
+                      padding: 16px;
+                      opacity: 1;
+                  }
+                  
+                  .footer {
+                      text-align: center;
+                      margin-top: 48px;
+                      padding-top: 24px;
+                      border-top: 1px solid var(--border-color);
+                      color: var(--text-secondary);
+                      font-size: 0.875rem;
+                  }
+                  
+                  .footer a {
+                      color: var(--primary-color);
+                      text-decoration: none;
+                  }
+                  
+                  .footer a:hover {
+                      text-decoration: underline;
+                  }
+                  
+                  .no-audio {
+                      text-align: center;
+                      color: var(--text-secondary);
+                      padding: 60px 40px;
+                      background: var(--background-light);
+                      border-radius: 12px;
+                      border: 1px solid var(--border-color);
+                  }
+                  
+                  @keyframes fadeIn {
+                      from { opacity: 0; transform: translateY(10px); }
+                      to { opacity: 1; transform: translateY(0); }
+                  }
+                  
+                  @media (max-width: 768px) {
+                      body {
+                          padding: 10px;
+                      }
+                      
+                      .container {
+                          padding: 20px;
+                          border-radius: 12px;
+                      }
+                      
+                      .audio-header {
+                          flex-direction: column;
+                          align-items: flex-start;
+                          gap: 12px;
+                      }
+                      
+                      .button-group {
+                          flex-direction: column;
+                      }
+                      
+                      .text-toggle,
+                      .download-link {
+                          width: 100%;
+                          justify-content: center;
+                      }
+                  }
+                  
+                  @media (max-width: 480px) {
+                      .container {
+                          padding: 16px;
+                          border-radius: 8px;
+                      }
+                      
+                      .audio-item {
+                          padding: 16px;
+                      }
+                      
+                      h1 {
+                          font-size: 1.5rem;
+                      }
+                      
+                      .audio-title {
+                          font-size: 1rem;
+                      }
                   }
               </style>
           </head>
           <body>
               <div class="container">
-                  <h1>🤖 AI每日简报</h1>
-                  <p class="subtitle">每天早上8点自动生成的AI技术新闻语音播报</p>
+                  <div class="header">
+                      <h1>🤖 AI每日简报</h1>
+                      <p class="subtitle">每天早上8点自动生成的AI技术新闻语音播报</p>
+                  </div>
           EOF
           
           # 查找所有mp3文件并添加到index.html
@@ -340,19 +501,26 @@ jobs:
                   fi
                   
                   echo "              <li class=\"audio-item\">" >> output/audio/index.html
-                  echo "                  <div class=\"audio-title\">$title</div>" >> output/audio/index.html
-                  echo "                  <div style=\"color: #666; font-size: 14px; margin-bottom: 10px;\">📅 生成时间：$file_date $file_time</div>" >> output/audio/index.html
+                  echo "                  <div class=\"audio-header\">" >> output/audio/index.html
+                  echo "                      <div class=\"audio-title\">$title</div>" >> output/audio/index.html
+                  echo "                      <div class=\"time-badge\">📅 $file_date $file_time</div>" >> output/audio/index.html
+                  echo "                  </div>" >> output/audio/index.html
                   echo "                  <audio controls>" >> output/audio/index.html
                   echo "                      <source src=\"$filename\" type=\"audio/mpeg\">" >> output/audio/index.html
                   echo "                      您的浏览器不支持音频播放。" >> output/audio/index.html
                   echo "                  </audio>" >> output/audio/index.html
-                  echo "                  <br>" >> output/audio/index.html
-                  echo "                  <a href=\"$filename\" download class=\"download-link\">⬇️ 下载音频文件</a>" >> output/audio/index.html
+                  echo "                  <div class=\"button-group\">" >> output/audio/index.html
+                  echo "                      <a href=\"$filename\" download class=\"download-link\">⬇️ 下载音频</a>" >> output/audio/index.html
                   
                   # 如果有文字文件，添加显示文字按钮
                   if [ "$has_text" = "true" ]; then
-                      txt_filename=$(basename "$txt_file")
-                      echo "                  <button class=\"text-toggle\" onclick=\"toggleText('$counter')\">📖 查看文字内容</button>" >> output/audio/index.html
+                      echo "                      <button class=\"text-toggle\" onclick=\"toggleText('$counter')\">📖 查看文字内容</button>" >> output/audio/index.html
+                  fi
+                  
+                  echo "                  </div>" >> output/audio/index.html
+                  
+                  # 如果有文字文件，添加文字内容
+                  if [ "$has_text" = "true" ]; then
                       echo "                  <div id=\"text-$counter\" class=\"text-content\">" >> output/audio/index.html
                       # 读取txt文件内容并转义HTML特殊字符
                       sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g' "$txt_file" | sed 's/^/                      /' >> output/audio/index.html

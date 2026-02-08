@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI每日简报 - AI Daily Brief</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .audio-list {
+            list-style: none;
+            padding: 0;
+        }
+        .audio-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+        .audio-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        audio {
+            width: 100%;
+            border-radius: 4px;
+        }
+        .download-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #667eea;
+            text-decoration: none;
+        }
+        .download-link:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #999;
+            font-size: 14px;
+        }
+        .no-audio {
+            text-align: center;
+            color: #999;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .text-toggle {
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 10px;
+            padding: 5px 15px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .text-toggle:hover {
+            background: #5568d3;
+        }
+        .text-content {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .text-content.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 AI每日简报</h1>
+        <p class="subtitle">每天早上8点自动生成的AI技术新闻语音播报</p>
+        <ul class="audio-list">
+            <li class="audio-item">
+                <div class="audio-title">📢 最新AI每日简报</div>
+                <div style="color: #666; font-size: 14px; margin-bottom: 10px;">📅 生成时间：2026年02月08日 10:44</div>
+                <audio controls>
+                    <source src="daily_brief_20260208_104400.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+                <br>
+                <a href="daily_brief_20260208_104400.mp3" download class="download-link">⬇️ 下载音频文件</a>
+                <button class="text-toggle" onclick="toggleText('1')">📖 查看文字内容</button>
+                <div id="text-1" class="text-content">大家好，欢迎收听今天的AI技术前沿。今天我们要介绍几个近期在AI领域引起广泛关注的项目。
+
+首先，mem0ai/mem0项目获得了惊人的46815个星标，它为AI Agent提供了一个通用的内存层。这个创新项目让AI系统能够更好地记忆和利用上下文信息，大幅提升了AI Agent的实用性和交互能力。它的出现解决了AI应用中长期存在的记忆问题，为构建更智能的AI助手铺平了道路。
+
+接下来是ComposioHQ的Claude技能资源库，拥有32054个星标。这个项目收集了大量Claude AI的自定义技能和工作流资源，对开发者来说价值巨大。它不仅简化了与大语言模型的集成过程，还提供了丰富的代码生成工具，让开发者能够更高效地构建AI应用。
+
+第三个项目是OpenBMB的MiniCPM-o，这是一个在手机端实现的多模态大模型，达到了Gemini 2.5 Flash级别。它支持视觉、语音和全双模态实时流媒体处理，在移动设备上实现了高性能的多模态交互。这个项目特别值得关注，因为它展示了AI技术在移动设备上的强大潜力，让普通手机也能运行复杂的多模态AI应用。
+
+在理论研究方面，一篇关于多令牌预测通过自蒸馏的论文提出了加速语言模型推理的新方法。这项创新技术不需要训练辅助预测模型，却能显著提升大语言模型的推理速度，对优化AI性能具有重要意义。
+
+最后，微软的RD-Agent研发自动化工具获得了10858个星标。这个项目专注于提升工业生产力，特别是在AI时代，它通过自动化研发流程，帮助企业更高效地落地AI技术。这个工具特别适合那些希望将AI技术整合到业务流程中的企业。
+
+总的来说，这些项目涵盖了从基础研究到实际应用的多个层面，展示了AI技术的多样性和实用性。随着这些技术的成熟，我们有理由相信AI将在更多领域发挥重要作用，改变我们的工作和生活方式。感谢收听，我们下期再见！</div>
+            </li>
+        </ul>
+        <div class="footer">
+            <p>由 GitHub Actions 自动生成 | <a href="https://github.com/dongtianwen/ai-daily-brief">查看源码</a></p>
+            <p>更新时间：每天上午8:00（北京时间）</p>
+        </div>
+    </div>
+    <script>
+        function toggleText(id) {
+            var textDiv = document.getElementById('text-' + id);
+            var button = event.target;
+            
+            if (textDiv.classList.contains('show')) {
+                textDiv.classList.remove('show');
+                button.textContent = '📖 查看文字内容';
+            } else {
+                textDiv.classList.add('show');
+                button.textContent = '📕 隐藏文字内容';
+            }
+        }
+    </script>
+</body>
+</html>
