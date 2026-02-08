@@ -191,10 +191,13 @@ jobs:
           if [ -d "gh-pages-temp" ] && [ "$(ls -A gh-pages-temp/*.mp3 2>/dev/null)" ]; then
             echo "Found existing audio files, merging..."
             cp -n gh-pages-temp/*.mp3 output/audio/ 2>/dev/null || true
+            cp -n gh-pages-temp/*.txt output/audio/ 2>/dev/null || true
           fi
           # 列出所有音频文件
           echo "Audio files in output/audio:"
           ls -la output/audio/*.mp3 2>/dev/null || echo "No mp3 files found"
+          echo "Text files in output/audio:"
+          ls -la output/audio/*.txt 2>/dev/null || echo "No txt files found"
 
       - name: Regenerate index.html with all audio files
         run: |
@@ -273,6 +276,37 @@ jobs:
                       background: #f8f9fa;
                       border-radius: 8px;
                   }
+                  .text-toggle {
+                      display: inline-block;
+                      margin-top: 10px;
+                      margin-left: 10px;
+                      padding: 5px 15px;
+                      background: #667eea;
+                      color: white;
+                      border: none;
+                      border-radius: 4px;
+                      cursor: pointer;
+                      font-size: 14px;
+                  }
+                  .text-toggle:hover {
+                      background: #5568d3;
+                  }
+                  .text-content {
+                      display: none;
+                      margin-top: 15px;
+                      padding: 15px;
+                      background: white;
+                      border-radius: 6px;
+                      border: 1px solid #e0e0e0;
+                      font-size: 14px;
+                      line-height: 1.6;
+                      color: #333;
+                      white-space: pre-wrap;
+                      word-wrap: break-word;
+                  }
+                  .text-content.show {
+                      display: block;
+                  }
               </style>
           </head>
           <body>
@@ -297,6 +331,14 @@ jobs:
                   else
                       title="📢 AI每日简报 #$counter"
                   fi
+                  
+                  # 检查是否有对应的txt文件
+                  txt_file="${file%.mp3}.txt"
+                  has_text="false"
+                  if [ -f "$txt_file" ]; then
+                      has_text="true"
+                  fi
+                  
                   echo "              <li class=\"audio-item\">" >> output/audio/index.html
                   echo "                  <div class=\"audio-title\">$title</div>" >> output/audio/index.html
                   echo "                  <div style=\"color: #666; font-size: 14px; margin-bottom: 10px;\">📅 生成时间：$file_date $file_time</div>" >> output/audio/index.html
@@ -306,6 +348,17 @@ jobs:
                   echo "                  </audio>" >> output/audio/index.html
                   echo "                  <br>" >> output/audio/index.html
                   echo "                  <a href=\"$filename\" download class=\"download-link\">⬇️ 下载音频文件</a>" >> output/audio/index.html
+                  
+                  # 如果有文字文件，添加显示文字按钮
+                  if [ "$has_text" = "true" ]; then
+                      txt_filename=$(basename "$txt_file")
+                      echo "                  <button class=\"text-toggle\" onclick=\"toggleText('$counter')\">📖 查看文字内容</button>" >> output/audio/index.html
+                      echo "                  <div id=\"text-$counter\" class=\"text-content\">" >> output/audio/index.html
+                      # 读取txt文件内容并转义HTML特殊字符
+                      sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g' "$txt_file" | sed 's/^/                      /' >> output/audio/index.html
+                      echo "                  </div>" >> output/audio/index.html
+                  fi
+                  
                   echo "              </li>" >> output/audio/index.html
                   counter=$((counter + 1))
               done
@@ -323,6 +376,20 @@ jobs:
                       <p>更新时间：每天上午8:00（北京时间）</p>
                   </div>
               </div>
+              <script>
+                  function toggleText(id) {
+                      var textDiv = document.getElementById('text-' + id);
+                      var button = event.target;
+                      
+                      if (textDiv.classList.contains('show')) {
+                          textDiv.classList.remove('show');
+                          button.textContent = '📖 查看文字内容';
+                      } else {
+                          textDiv.classList.add('show');
+                          button.textContent = '📕 隐藏文字内容';
+                      }
+                  }
+              </script>
           </body>
           </html>
           EOF

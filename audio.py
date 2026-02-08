@@ -90,7 +90,7 @@ class TTSEngine:
             logger.error(f"[TTS] 语音合成失败: {e}")
             return False
     
-    def synthesize(self, text: str, output_path: str = None) -> Optional[str]:
+    def synthesize(self, text: str, output_path: str = None, save_text: bool = True) -> Optional[str]:
         """
         将文本合成为语音
         
@@ -102,6 +102,7 @@ class TTSEngine:
         Args:
             text: 要合成的中文文本
             output_path: 可选，指定输出路径
+            save_text: 是否保存文字内容到文件
             
         Returns:
             生成的音频文件路径，失败返回 None
@@ -129,6 +130,17 @@ class TTSEngine:
             if success and output_file.exists():
                 file_size = output_file.stat().st_size
                 logger.info(f"[TTS] 音频文件生成成功: {file_size} bytes")
+                
+                # 保存文字内容到文件
+                if save_text:
+                    text_file = output_file.with_suffix('.txt')
+                    try:
+                        with open(text_file, 'w', encoding='utf-8') as f:
+                            f.write(text)
+                        logger.info(f"[TTS] 文字内容已保存: {text_file}")
+                    except Exception as e:
+                        logger.warning(f"[TTS] 保存文字内容失败: {e}")
+                
                 return str(output_file)
             else:
                 logger.error("[TTS] 音频文件生成失败")
@@ -162,7 +174,8 @@ class TTSEngine:
 
 def generate_audio(text: str, 
                    output_path: str = None,
-                   voice: str = None) -> Optional[str]:
+                   voice: str = None,
+                   save_text: bool = True) -> Optional[str]:
     """
     便捷函数: 将文本合成为语音
     
@@ -177,12 +190,13 @@ def generate_audio(text: str,
         text: 要合成的中文文本
         output_path: 可选，指定输出路径
         voice: 可选，指定语音角色
+        save_text: 是否保存文字内容到文件
         
     Returns:
         生成的音频文件路径，失败返回 None
     """
     engine = TTSEngine(voice=voice)
-    return engine.synthesize(text, output_path)
+    return engine.synthesize(text, output_path, save_text)
 
 
 def generate_audio_with_metadata(text: str,
