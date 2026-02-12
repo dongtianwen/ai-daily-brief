@@ -107,7 +107,7 @@ class DailyBriefPipeline:
         """
         步骤 2: 智能筛选
         
-        调用 GLM-4 对内容进行评分，选出 Top 5
+        调用 GLM-4 Flash 对内容进行评分，选出 Top 5
         """
         logger.info("=" * 60)
         logger.info("[Step 2/5] 开始智能筛选...")

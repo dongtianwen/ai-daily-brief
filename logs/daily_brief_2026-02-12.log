@@ -1,0 +1,593 @@
+2026-02-12 16:28:37 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-12 16:28:37 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-12 16:28:37 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-12 16:28:37 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-12 16:28:37 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-12 16:28:37 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-12 16:28:37 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-12 16:28:37 | INFO     | scraper:fetch:435 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-12 16:28:41 | INFO     | scraper:fetch:544 - [GitHub] 成功抓取 10 个项目
+2026-02-12 16:28:41 | INFO     | scraper:fetch:560 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-12 16:28:44 | INFO     | scraper:fetch:622 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-12 16:28:44 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.CL
+2026-02-12 16:28:47 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.AI
+2026-02-12 16:28:48 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.LG
+2026-02-12 16:28:50 | INFO     | scraper:fetch:712 - [arXiv] 成功抓取 11 篇论文
+2026-02-12 16:28:50 | INFO     | scraper:_fetch_baidu_developer:107 - [ChinaAI] 尝试抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-12 16:28:52 | INFO     | scraper:_fetch_aliyun_developer:175 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-12 16:28:54 | INFO     | scraper:_fetch_tencent_cloud:226 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-12 16:28:56 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-12 16:28:59 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/product/ai.html
+2026-02-12 16:28:59 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/zh-cn/product/ai.html
+2026-02-12 16:28:59 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/
+2026-02-12 16:28:59 | INFO     | scraper:_fetch_csdn:362 - [ChinaAI] 尝试抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-12 16:29:01 | WARNING  | scraper:_fetch_csdn:417 - [ChinaAI] 抓取CSDN URL失败: https://blog.csdn.net/topic/ai, 错误: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-12 16:29:01 | INFO     | scraper:_fetch_csdn:362 - [ChinaAI] 尝试抓取CSDN技术社区: https://www.csdn.net/nav/ai
+2026-02-12 16:29:04 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 6 条国内AI资讯
+2026-02-12 16:29:04 | INFO     | scraper:fetch_all_sources:746 - [Scraper] 总计抓取 27 条数据
+2026-02-12 16:29:04 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-12 16:29:04 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-12 16:29:04 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-12 16:29:04 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-12 16:29:06 | INFO     | processor:process:206 - [Processor] 开始处理 27 条内容
+2026-02-12 16:30:30 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-12 16:30:30 | WARNING  | processor:_parse_glm_response:170 - [GLM] JSON 解析失败，触发熔断机制。原始响应:
+...
+2026-02-12 16:30:30 | WARNING  | processor:process:217 - [Processor] GLM 返回空结果，使用备用策略
+2026-02-12 16:30:30 | INFO     | processor:process:235 - [Processor] 筛选完成，返回 Top 5
+2026-02-12 16:30:30 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-12 16:30:30 | INFO     | __main__:step_2_process:134 -   1. [21.6] huggingface/transformers
+2026-02-12 16:30:30 | INFO     | __main__:step_2_process:134 -   2. [10.6] sansan0/TrendRadar
+2026-02-12 16:30:30 | INFO     | __main__:step_2_process:134 -   3. [9.1] google/langextract
+2026-02-12 16:30:30 | INFO     | __main__:step_2_process:134 -   4. [8.1] datawhalechina/hello-agents
+2026-02-12 16:30:30 | INFO     | __main__:step_2_process:134 -   5. [7.7] hsliuping/TradingAgents-CN
+2026-02-12 16:30:30 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-12 16:30:30 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-12 16:30:30 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-12 16:30:32 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-12 16:31:21 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-12 16:31:21 | INFO     | writer:write:276 - [Writer] 生成完成，共 0 字符
+2026-02-12 16:31:21 | WARNING  | writer:write:279 - [Writer] 讲稿过短 (0 字符)，可能不符合预期
+2026-02-12 16:31:21 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 0 字符
+2026-02-12 16:31:21 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-12 16:31:21 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-12 16:31:21 | INFO     | __main__:step_3_write:176 - 
+2026-02-12 16:31:21 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-12 16:31:21 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-12 16:31:21 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-12 16:31:21 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-12 16:31:21 | WARNING  | __main__:step_4_audio:199 - [Step 4/5] 无讲稿可合成，跳过
+2026-02-12 16:31:21 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-12 16:31:21 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-12 16:31:21 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-12 16:31:21 | WARNING  | __main__:step_5_notify:252 - [Step 5/5] 无内容可推送，跳过
+2026-02-12 16:31:21 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-12 16:31:21 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-12 16:31:21 | INFO     | __main__:run:341 - ⏱️  执行时间: 164.70 秒
+2026-02-12 16:31:21 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-12 16:31:21 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-12 16:32:02 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-12 16:32:02 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-12 16:32:02 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-12 16:32:02 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-12 16:32:02 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-12 16:32:02 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-12 16:32:02 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-12 16:32:02 | INFO     | scraper:fetch:435 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-12 16:32:06 | INFO     | scraper:fetch:544 - [GitHub] 成功抓取 10 个项目
+2026-02-12 16:32:06 | INFO     | scraper:fetch:560 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-12 16:32:08 | INFO     | scraper:fetch:622 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-12 16:32:08 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.CL
+2026-02-12 16:32:15 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.AI
+2026-02-12 16:32:21 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.LG
+2026-02-12 16:32:27 | INFO     | scraper:fetch:712 - [arXiv] 成功抓取 11 篇论文
+2026-02-12 16:32:27 | INFO     | scraper:_fetch_baidu_developer:107 - [ChinaAI] 尝试抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-12 16:32:29 | INFO     | scraper:_fetch_aliyun_developer:175 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-12 16:32:31 | INFO     | scraper:_fetch_tencent_cloud:226 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-12 16:32:32 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-12 16:32:33 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/product/ai.html
+2026-02-12 16:32:33 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/zh-cn/product/ai.html
+2026-02-12 16:32:33 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/
+2026-02-12 16:32:33 | INFO     | scraper:_fetch_csdn:362 - [ChinaAI] 尝试抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-12 16:32:34 | WARNING  | scraper:_fetch_csdn:417 - [ChinaAI] 抓取CSDN URL失败: https://blog.csdn.net/topic/ai, 错误: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-12 16:32:34 | INFO     | scraper:_fetch_csdn:362 - [ChinaAI] 尝试抓取CSDN技术社区: https://www.csdn.net/nav/ai
+2026-02-12 16:32:37 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 6 条国内AI资讯
+2026-02-12 16:32:37 | INFO     | scraper:fetch_all_sources:746 - [Scraper] 总计抓取 27 条数据
+2026-02-12 16:32:37 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-12 16:32:37 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-12 16:32:37 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-12 16:32:37 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-12 16:32:39 | INFO     | processor:process:207 - [Processor] 开始处理 27 条内容
+2026-02-12 16:33:24 | INFO     | processor:_call_glm_for_scoring:126 - [GLM] 成功获取评分响应
+2026-02-12 16:33:24 | WARNING  | processor:_parse_glm_response:170 - [GLM] JSON 解析失败，触发熔断机制。原始响应:
+...
+2026-02-12 16:33:24 | DEBUG    | processor:_parse_glm_response:171 - [GLM] 完整响应:
+
+2026-02-12 16:33:24 | WARNING  | processor:process:218 - [Processor] GLM 返回空结果，使用备用策略
+2026-02-12 16:33:24 | INFO     | processor:process:236 - [Processor] 筛选完成，返回 Top 5
+2026-02-12 16:33:24 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-12 16:33:24 | INFO     | __main__:step_2_process:134 -   1. [21.6] huggingface/transformers
+2026-02-12 16:33:24 | INFO     | __main__:step_2_process:134 -   2. [10.6] sansan0/TrendRadar
+2026-02-12 16:33:24 | INFO     | __main__:step_2_process:134 -   3. [9.1] google/langextract
+2026-02-12 16:33:24 | INFO     | __main__:step_2_process:134 -   4. [8.1] datawhalechina/hello-agents
+2026-02-12 16:33:24 | INFO     | __main__:step_2_process:134 -   5. [7.7] hsliuping/TradingAgents-CN
+2026-02-12 16:33:24 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-12 16:33:24 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-12 16:33:24 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-12 16:33:26 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-12 16:34:29 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-12 16:34:29 | INFO     | writer:write:276 - [Writer] 生成完成，共 0 字符
+2026-02-12 16:34:29 | WARNING  | writer:write:279 - [Writer] 讲稿过短 (0 字符)，可能不符合预期
+2026-02-12 16:34:29 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 0 字符
+2026-02-12 16:34:29 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-12 16:34:29 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-12 16:34:29 | INFO     | __main__:step_3_write:176 - 
+2026-02-12 16:34:29 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-12 16:34:29 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-12 16:34:29 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-12 16:34:29 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-12 16:34:29 | WARNING  | __main__:step_4_audio:199 - [Step 4/5] 无讲稿可合成，跳过
+2026-02-12 16:34:29 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-12 16:34:29 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-12 16:34:29 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-12 16:34:29 | WARNING  | __main__:step_5_notify:252 - [Step 5/5] 无内容可推送，跳过
+2026-02-12 16:34:29 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-12 16:34:29 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-12 16:34:29 | INFO     | __main__:run:341 - ⏱️  执行时间: 146.81 秒
+2026-02-12 16:34:29 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-12 16:34:29 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-12 16:35:17 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-12 16:35:17 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-12 16:35:17 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-12 16:35:17 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-12 16:35:17 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-12 16:35:17 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-12 16:35:17 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-12 16:35:17 | INFO     | scraper:fetch:435 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-12 16:35:21 | INFO     | scraper:fetch:544 - [GitHub] 成功抓取 10 个项目
+2026-02-12 16:35:21 | INFO     | scraper:fetch:560 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-12 16:35:22 | INFO     | scraper:fetch:622 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-12 16:35:22 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.CL
+2026-02-12 16:35:25 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.AI
+2026-02-12 16:35:26 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.LG
+2026-02-12 16:35:27 | INFO     | scraper:fetch:712 - [arXiv] 成功抓取 11 篇论文
+2026-02-12 16:35:27 | INFO     | scraper:_fetch_baidu_developer:107 - [ChinaAI] 尝试抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-12 16:35:29 | INFO     | scraper:_fetch_aliyun_developer:175 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-12 16:35:31 | INFO     | scraper:_fetch_tencent_cloud:226 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-12 16:35:32 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-12 16:35:33 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/product/ai.html
+2026-02-12 16:35:33 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/zh-cn/product/ai.html
+2026-02-12 16:35:33 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/
+2026-02-12 16:35:33 | INFO     | scraper:_fetch_csdn:362 - [ChinaAI] 尝试抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-12 16:35:34 | WARNING  | scraper:_fetch_csdn:417 - [ChinaAI] 抓取CSDN URL失败: https://blog.csdn.net/topic/ai, 错误: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-12 16:35:34 | INFO     | scraper:_fetch_csdn:362 - [ChinaAI] 尝试抓取CSDN技术社区: https://www.csdn.net/nav/ai
+2026-02-12 16:35:37 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 6 条国内AI资讯
+2026-02-12 16:35:37 | INFO     | scraper:fetch_all_sources:746 - [Scraper] 总计抓取 27 条数据
+2026-02-12 16:35:37 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-12 16:35:37 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-12 16:35:37 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-12 16:35:37 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-12 16:35:37 | INFO     | processor:process:222 - [Processor] 开始处理 27 条内容
+2026-02-12 16:36:57 | INFO     | processor:_call_glm_for_scoring:128 - [GLM] 成功获取评分响应
+2026-02-12 16:36:57 | WARNING  | processor:_parse_glm_response:172 - [GLM] JSON 解析失败，触发熔断机制。原始响应:
+...
+2026-02-12 16:36:57 | DEBUG    | processor:_parse_glm_response:173 - [GLM] 完整响应:
+
+2026-02-12 16:36:57 | INFO     | processor:_parse_glm_response:183 - [GLM] 完整响应已保存到: output\debug\glm5_response_20260212_163657.txt
+2026-02-12 16:36:57 | WARNING  | processor:process:233 - [Processor] GLM 返回空结果，使用备用策略
+2026-02-12 16:36:57 | INFO     | processor:process:251 - [Processor] 筛选完成，返回 Top 5
+2026-02-12 16:36:57 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-12 16:36:57 | INFO     | __main__:step_2_process:134 -   1. [21.6] huggingface/transformers
+2026-02-12 16:36:57 | INFO     | __main__:step_2_process:134 -   2. [10.6] sansan0/TrendRadar
+2026-02-12 16:36:57 | INFO     | __main__:step_2_process:134 -   3. [9.1] google/langextract
+2026-02-12 16:36:57 | INFO     | __main__:step_2_process:134 -   4. [8.1] datawhalechina/hello-agents
+2026-02-12 16:36:57 | INFO     | __main__:step_2_process:134 -   5. [7.7] hsliuping/TradingAgents-CN
+2026-02-12 16:36:57 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-12 16:36:57 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-12 16:36:57 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-12 16:36:58 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-12 16:38:08 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-12 16:38:08 | INFO     | writer:write:276 - [Writer] 生成完成，共 0 字符
+2026-02-12 16:38:08 | WARNING  | writer:write:279 - [Writer] 讲稿过短 (0 字符)，可能不符合预期
+2026-02-12 16:38:08 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 0 字符
+2026-02-12 16:38:08 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-12 16:38:08 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-12 16:38:08 | INFO     | __main__:step_3_write:176 - 
+2026-02-12 16:38:08 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-12 16:38:08 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-12 16:38:08 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-12 16:38:08 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-12 16:38:08 | WARNING  | __main__:step_4_audio:199 - [Step 4/5] 无讲稿可合成，跳过
+2026-02-12 16:38:08 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-12 16:38:08 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-12 16:38:08 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-12 16:38:08 | WARNING  | __main__:step_5_notify:252 - [Step 5/5] 无内容可推送，跳过
+2026-02-12 16:38:08 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-12 16:38:08 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-12 16:38:08 | INFO     | __main__:run:341 - ⏱️  执行时间: 170.63 秒
+2026-02-12 16:38:08 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-12 16:38:08 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-12 16:41:11 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-12 16:41:12 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-12 16:41:12 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-12 16:41:12 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-12 16:41:12 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-12 16:41:12 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-12 16:41:12 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-12 16:41:12 | INFO     | scraper:fetch:435 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-12 16:41:21 | INFO     | scraper:fetch:544 - [GitHub] 成功抓取 10 个项目
+2026-02-12 16:41:21 | INFO     | scraper:fetch:560 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-12 16:41:24 | INFO     | scraper:fetch:622 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-12 16:41:24 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.CL
+2026-02-12 16:41:27 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.AI
+2026-02-12 16:41:29 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.LG
+2026-02-12 16:41:31 | INFO     | scraper:fetch:712 - [arXiv] 成功抓取 11 篇论文
+2026-02-12 16:41:31 | INFO     | scraper:_fetch_baidu_developer:107 - [ChinaAI] 尝试抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-12 16:41:33 | INFO     | scraper:_fetch_aliyun_developer:175 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-12 16:41:35 | INFO     | scraper:_fetch_tencent_cloud:226 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-12 16:41:37 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-12 16:41:38 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/product/ai.html
+2026-02-12 16:41:38 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/zh-cn/product/ai.html
+2026-02-12 16:41:38 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/
+2026-02-12 16:41:38 | INFO     | scraper:_fetch_csdn:362 - [ChinaAI] 尝试抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-12 16:41:40 | WARNING  | scraper:_fetch_csdn:417 - [ChinaAI] 抓取CSDN URL失败: https://blog.csdn.net/topic/ai, 错误: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-12 16:41:40 | INFO     | scraper:_fetch_csdn:362 - [ChinaAI] 尝试抓取CSDN技术社区: https://www.csdn.net/nav/ai
+2026-02-12 16:41:42 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 6 条国内AI资讯
+2026-02-12 16:41:42 | INFO     | scraper:fetch_all_sources:746 - [Scraper] 总计抓取 27 条数据
+2026-02-12 16:41:42 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-12 16:41:42 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-12 16:41:42 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-12 16:41:42 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-12 16:41:43 | INFO     | processor:process:222 - [Processor] 开始处理 27 条内容
+2026-02-12 16:41:56 | INFO     | processor:_call_glm_for_scoring:128 - [GLM] 成功获取评分响应
+2026-02-12 16:41:56 | INFO     | processor:process:251 - [Processor] 筛选完成，返回 Top 5
+2026-02-12 16:41:56 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-12 16:41:56 | INFO     | __main__:step_2_process:134 -   1. [9.5] TrendRadar
+2026-02-12 16:41:56 | INFO     | __main__:step_2_process:134 -   2. [9.0] huggingface/transformers
+2026-02-12 16:41:56 | INFO     | __main__:step_2_process:134 -   3. [8.8] google/langextract
+2026-02-12 16:41:56 | INFO     | __main__:step_2_process:134 -   4. [8.6] cheahjs/free-llm-api-resources
+2026-02-12 16:41:56 | INFO     | __main__:step_2_process:134 -   5. [8.4] hsliuping/TradingAgents-CN
+2026-02-12 16:41:56 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-12 16:41:56 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-12 16:41:57 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-12 16:41:58 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-12 16:42:18 | INFO     | writer:_call_glm_for_writing:170 - [Writer] 成功生成播客讲稿
+2026-02-12 16:42:18 | INFO     | writer:write:276 - [Writer] 生成完成，共 991 字符
+2026-02-12 16:42:18 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 991 字符
+2026-02-12 16:42:18 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-12 16:42:18 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-12 16:42:18 | INFO     | __main__:step_3_write:176 - 大家好，欢迎收听今天的AI技术播客。我是你们的主持人，今天我们来聊聊最近GitHub上的一些热门项目，看看都有哪些新技术和应用正在崛起。
+
+首先，咱们来看看一个叫做TrendRadar的项目。这个项目是个AI驱动的舆情监控和趋势分析工具，它能够帮你从海量的信息中筛选出有用的热点，支持多平台聚合和RSS订阅，还能根据关键词进行精准筛选。它的亮点在于实用性和时效性，目前在GitHub上已经获得了461...
+2026-02-12 16:42:18 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-12 16:42:18 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-12 16:42:18 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-12 16:42:18 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-12 16:42:18 | INFO     | audio:synthesize:123 - [TTS] 开始合成语音，文本长度: 1005 字符
+2026-02-12 16:42:18 | INFO     | audio:synthesize:124 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-12 16:42:26 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260212_164218.mp3
+2026-02-12 16:42:26 | INFO     | audio:synthesize:132 - [TTS] 音频文件生成成功: 1161792 bytes
+2026-02-12 16:42:27 | INFO     | audio:synthesize:140 - [TTS] 文字内容已保存: output\audio\daily_brief_20260212_164218.txt
+2026-02-12 16:42:27 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260212_164218.mp3
+2026-02-12 16:42:27 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-12 16:42:27 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-12 16:42:27 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-12 16:42:27 | INFO     | notifier:send_notification:378 - [Notifier] DEBUG 模式: 只打印消息，不实际发送
+2026-02-12 16:42:27 | INFO     | notifier:send_notification:379 - ==================================================
+2026-02-12 16:42:27 | INFO     | notifier:send_notification:380 - 【图文卡片预览】
+2026-02-12 16:42:27 | INFO     | notifier:send_notification:382 - 标题: 🤖 AI每日技术简报 - 02月12日
+2026-02-12 16:42:27 | INFO     | notifier:send_notification:384 - 内容预览:
+2026-02-12 16:42:27 | INFO     | notifier:send_notification:386 -   1. TrendRadar
+2026-02-12 16:42:27 | INFO     | notifier:send_notification:386 -   2. huggingface/transformers
+2026-02-12 16:42:27 | INFO     | notifier:send_notification:386 -   3. google/langextract
+2026-02-12 16:42:27 | INFO     | notifier:send_notification:386 -   4. cheahjs/free-llm-api-resources
+2026-02-12 16:42:27 | INFO     | notifier:send_notification:386 -   5. hsliuping/TradingAgents-CN
+2026-02-12 16:42:27 | INFO     | notifier:send_notification:387 - ==================================================
+2026-02-12 16:42:27 | INFO     | notifier:send_notification:388 - 【语音文件】
+2026-02-12 16:42:27 | INFO     | notifier:send_notification:389 - 路径: output\audio\daily_brief_20260212_164218.mp3
+2026-02-12 16:42:27 | INFO     | notifier:send_notification:390 - ==================================================
+2026-02-12 16:42:27 | INFO     | __main__:step_5_notify:273 - [Step 5/5] 消息推送完成
+2026-02-12 16:42:27 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-12 16:42:27 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-12 16:42:27 | INFO     | __main__:run:341 - ⏱️  执行时间: 75.07 秒
+2026-02-12 16:42:27 | INFO     | __main__:run:342 - 🎯 整体状态: 成功
+2026-02-12 16:42:27 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-12 16:56:52 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-12 16:56:52 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-12 16:56:52 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-12 16:56:52 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-12 16:56:52 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-12 16:56:52 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-12 16:56:52 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-12 16:56:52 | INFO     | scraper:fetch:435 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-12 16:56:56 | INFO     | scraper:fetch:544 - [GitHub] 成功抓取 10 个项目
+2026-02-12 16:56:56 | INFO     | scraper:fetch:560 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-12 16:56:58 | INFO     | scraper:fetch:622 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-12 16:56:58 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.CL
+2026-02-12 16:57:10 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.AI
+2026-02-12 16:57:13 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.LG
+2026-02-12 16:57:15 | INFO     | scraper:fetch:712 - [arXiv] 成功抓取 11 篇论文
+2026-02-12 16:57:15 | INFO     | scraper:_fetch_baidu_developer:107 - [ChinaAI] 尝试抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-12 16:57:17 | INFO     | scraper:_fetch_aliyun_developer:175 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-12 16:57:19 | INFO     | scraper:_fetch_tencent_cloud:226 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-12 16:57:21 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-12 16:57:22 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/product/ai.html
+2026-02-12 16:57:22 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/zh-cn/product/ai.html
+2026-02-12 16:57:22 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/
+2026-02-12 16:57:22 | INFO     | scraper:_fetch_csdn:362 - [ChinaAI] 尝试抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-12 16:57:23 | WARNING  | scraper:_fetch_csdn:417 - [ChinaAI] 抓取CSDN URL失败: https://blog.csdn.net/topic/ai, 错误: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-12 16:57:23 | INFO     | scraper:_fetch_csdn:362 - [ChinaAI] 尝试抓取CSDN技术社区: https://www.csdn.net/nav/ai
+2026-02-12 16:57:25 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 6 条国内AI资讯
+2026-02-12 16:57:25 | INFO     | scraper:fetch_all_sources:746 - [Scraper] 总计抓取 27 条数据
+2026-02-12 16:57:25 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-12 16:57:25 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-12 16:57:25 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-12 16:57:25 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-12 16:57:26 | INFO     | processor:process:222 - [Processor] 开始处理 27 条内容
+2026-02-12 16:57:33 | ERROR    | processor:_call_glm_for_scoring:132 - [GLM] API 调用失败: Error code: 429, with error text {"error":{"code":"1302","message":"您的账户已达到速率限制，请您控制请求频率"}}
+2026-02-12 16:57:33 | WARNING  | processor:process:233 - [Processor] GLM 返回空结果，使用备用策略
+2026-02-12 16:57:33 | INFO     | processor:process:251 - [Processor] 筛选完成，返回 Top 5
+2026-02-12 16:57:33 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-12 16:57:33 | INFO     | __main__:step_2_process:134 -   1. [21.6] huggingface/transformers
+2026-02-12 16:57:33 | INFO     | __main__:step_2_process:134 -   2. [10.6] sansan0/TrendRadar
+2026-02-12 16:57:33 | INFO     | __main__:step_2_process:134 -   3. [9.1] google/langextract
+2026-02-12 16:57:33 | INFO     | __main__:step_2_process:134 -   4. [8.1] datawhalechina/hello-agents
+2026-02-12 16:57:33 | INFO     | __main__:step_2_process:134 -   5. [7.7] hsliuping/TradingAgents-CN
+2026-02-12 16:57:33 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-12 16:57:33 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-12 16:57:33 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-12 16:57:34 | INFO     | writer:write:263 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-12 16:57:41 | ERROR    | writer:_call_glm_for_writing:174 - [Writer] GLM API 调用失败: Error code: 429, with error text {"error":{"code":"1302","message":"您的账户已达到速率限制，请您控制请求频率"}}
+2026-02-12 16:57:41 | INFO     | writer:write:276 - [Writer] 生成完成，共 231 字符
+2026-02-12 16:57:41 | WARNING  | writer:write:279 - [Writer] 讲稿过短 (231 字符)，可能不符合预期
+2026-02-12 16:57:41 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 231 字符
+2026-02-12 16:57:41 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-12 16:57:41 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-12 16:57:41 | INFO     | __main__:step_3_write:176 - 大家好，欢迎收听AI每日技术简报，今天是02月12日。
+
+今天为大家精选了以下几条AI技术资讯：
+
+1. 【GitHub】huggingface/transformers
+2. 【GitHub】sansan0/TrendRadar
+3. 【GitHub】Google/langextract
+4. 【GitHub】datawhalechina/hello-agents
+5. 【GitHub】hsli...
+2026-02-12 16:57:41 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-12 16:57:41 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-12 16:57:41 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-12 16:57:41 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-12 16:57:41 | INFO     | audio:synthesize:123 - [TTS] 开始合成语音，文本长度: 246 字符
+2026-02-12 16:57:41 | INFO     | audio:synthesize:124 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-12 16:57:45 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260212_165741.mp3
+2026-02-12 16:57:45 | INFO     | audio:synthesize:132 - [TTS] 音频文件生成成功: 186336 bytes
+2026-02-12 16:57:45 | INFO     | audio:synthesize:140 - [TTS] 文字内容已保存: output\audio\daily_brief_20260212_165741.txt
+2026-02-12 16:57:45 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260212_165741.mp3
+2026-02-12 16:57:45 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-12 16:57:45 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-12 16:57:45 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-12 16:57:45 | INFO     | notifier:send_notification:378 - [Notifier] DEBUG 模式: 只打印消息，不实际发送
+2026-02-12 16:57:45 | INFO     | notifier:send_notification:379 - ==================================================
+2026-02-12 16:57:45 | INFO     | notifier:send_notification:380 - 【图文卡片预览】
+2026-02-12 16:57:45 | INFO     | notifier:send_notification:382 - 标题: 🤖 AI每日技术简报 - 02月12日
+2026-02-12 16:57:45 | INFO     | notifier:send_notification:384 - 内容预览:
+2026-02-12 16:57:45 | INFO     | notifier:send_notification:386 -   1. huggingface/transformers
+2026-02-12 16:57:45 | INFO     | notifier:send_notification:386 -   2. sansan0/TrendRadar
+2026-02-12 16:57:45 | INFO     | notifier:send_notification:386 -   3. google/langextract
+2026-02-12 16:57:45 | INFO     | notifier:send_notification:386 -   4. datawhalechina/hello-agents
+2026-02-12 16:57:45 | INFO     | notifier:send_notification:386 -   5. hsliuping/TradingAgents-CN
+2026-02-12 16:57:45 | INFO     | notifier:send_notification:387 - ==================================================
+2026-02-12 16:57:45 | INFO     | notifier:send_notification:388 - 【语音文件】
+2026-02-12 16:57:45 | INFO     | notifier:send_notification:389 - 路径: output\audio\daily_brief_20260212_165741.mp3
+2026-02-12 16:57:45 | INFO     | notifier:send_notification:390 - ==================================================
+2026-02-12 16:57:45 | INFO     | __main__:step_5_notify:273 - [Step 5/5] 消息推送完成
+2026-02-12 16:57:45 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-12 16:57:45 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-12 16:57:45 | INFO     | __main__:run:341 - ⏱️  执行时间: 53.15 秒
+2026-02-12 16:57:45 | INFO     | __main__:run:342 - 🎯 整体状态: 成功
+2026-02-12 16:57:45 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-12 17:04:20 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-12 17:04:20 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-12 17:04:20 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-12 17:04:20 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-12 17:04:20 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-12 17:04:20 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-12 17:04:20 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-12 17:04:20 | INFO     | scraper:fetch:435 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-12 17:04:23 | INFO     | scraper:fetch:544 - [GitHub] 成功抓取 10 个项目
+2026-02-12 17:04:23 | INFO     | scraper:fetch:560 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-12 17:04:25 | INFO     | scraper:fetch:622 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-12 17:04:25 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.CL
+2026-02-12 17:04:28 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.AI
+2026-02-12 17:04:29 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.LG
+2026-02-12 17:04:31 | INFO     | scraper:fetch:712 - [arXiv] 成功抓取 11 篇论文
+2026-02-12 17:04:31 | INFO     | scraper:_fetch_baidu_developer:107 - [ChinaAI] 尝试抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-12 17:04:35 | INFO     | scraper:_fetch_aliyun_developer:175 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-12 17:04:37 | INFO     | scraper:_fetch_tencent_cloud:226 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-12 17:04:37 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-12 17:04:38 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/product/ai.html
+2026-02-12 17:04:38 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/zh-cn/product/ai.html
+2026-02-12 17:04:39 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/
+2026-02-12 17:04:39 | INFO     | scraper:_fetch_csdn:362 - [ChinaAI] 尝试抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-12 17:04:39 | WARNING  | scraper:_fetch_csdn:417 - [ChinaAI] 抓取CSDN URL失败: https://blog.csdn.net/topic/ai, 错误: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-12 17:04:39 | INFO     | scraper:_fetch_csdn:362 - [ChinaAI] 尝试抓取CSDN技术社区: https://www.csdn.net/nav/ai
+2026-02-12 17:04:41 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 6 条国内AI资讯
+2026-02-12 17:04:41 | INFO     | scraper:fetch_all_sources:746 - [Scraper] 总计抓取 27 条数据
+2026-02-12 17:04:41 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-12 17:04:41 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-12 17:04:41 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-12 17:04:41 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-12 17:04:42 | INFO     | processor:process:289 - [Processor] 开始处理 27 条内容
+2026-02-12 17:05:35 | INFO     | processor:_call_glm_for_scoring:137 - [GLM] 成功获取评分响应 (模型: glm-5)
+2026-02-12 17:05:35 | WARNING  | processor:_parse_glm_response:239 - [GLM] JSON 解析失败，触发熔断机制。原始响应:
+...
+2026-02-12 17:05:35 | DEBUG    | processor:_parse_glm_response:240 - [GLM] 完整响应:
+
+2026-02-12 17:05:35 | INFO     | processor:_parse_glm_response:250 - [GLM] 完整响应已保存到: output\debug\glm5_response_20260212_170535.txt
+2026-02-12 17:05:35 | WARNING  | processor:process:300 - [Processor] GLM 返回空结果，使用备用策略
+2026-02-12 17:05:35 | INFO     | processor:process:318 - [Processor] 筛选完成，返回 Top 5
+2026-02-12 17:05:35 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-12 17:05:35 | INFO     | __main__:step_2_process:134 -   1. [21.6] huggingface/transformers
+2026-02-12 17:05:35 | INFO     | __main__:step_2_process:134 -   2. [10.6] sansan0/TrendRadar
+2026-02-12 17:05:35 | INFO     | __main__:step_2_process:134 -   3. [9.1] google/langextract
+2026-02-12 17:05:35 | INFO     | __main__:step_2_process:134 -   4. [8.1] datawhalechina/hello-agents
+2026-02-12 17:05:35 | INFO     | __main__:step_2_process:134 -   5. [7.7] hsliuping/TradingAgents-CN
+2026-02-12 17:05:35 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-12 17:05:35 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-12 17:05:35 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-12 17:05:36 | INFO     | writer:write:330 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-12 17:06:44 | INFO     | writer:_call_glm_for_writing:179 - [Writer] 成功生成播客讲稿 (模型: glm-5)
+2026-02-12 17:06:44 | INFO     | writer:write:343 - [Writer] 生成完成，共 0 字符
+2026-02-12 17:06:44 | WARNING  | writer:write:346 - [Writer] 讲稿过短 (0 字符)，可能不符合预期
+2026-02-12 17:06:44 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 0 字符
+2026-02-12 17:06:44 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-12 17:06:44 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-12 17:06:44 | INFO     | __main__:step_3_write:176 - 
+2026-02-12 17:06:44 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-12 17:06:44 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-12 17:06:44 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-12 17:06:44 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-12 17:06:44 | WARNING  | __main__:step_4_audio:199 - [Step 4/5] 无讲稿可合成，跳过
+2026-02-12 17:06:44 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-12 17:06:44 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-12 17:06:44 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-12 17:06:44 | WARNING  | __main__:step_5_notify:252 - [Step 5/5] 无内容可推送，跳过
+2026-02-12 17:06:44 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-12 17:06:44 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-12 17:06:44 | INFO     | __main__:run:341 - ⏱️  执行时间: 144.01 秒
+2026-02-12 17:06:44 | INFO     | __main__:run:342 - 🎯 整体状态: 失败
+2026-02-12 17:06:44 | INFO     | __main__:run:343 - ============================================================
+
+2026-02-12 17:08:06 | INFO     | __main__:run:295 - 
+============================================================
+2026-02-12 17:08:06 | INFO     | __main__:run:296 - 🚀 AI 每日技术简报机器人启动
+2026-02-12 17:08:06 | INFO     | __main__:run:297 - 🐛 DEBUG 模式: True
+2026-02-12 17:08:06 | INFO     | __main__:run:298 - ============================================================
+
+2026-02-12 17:08:06 | INFO     | __main__:step_1_scrape:86 - ============================================================
+2026-02-12 17:08:06 | INFO     | __main__:step_1_scrape:87 - [Step 1/5] 开始数据采集...
+2026-02-12 17:08:06 | INFO     | __main__:step_1_scrape:88 - ============================================================
+2026-02-12 17:08:06 | INFO     | scraper:fetch:435 - [GitHub] 开始抓取: https://github.com/trending/python?since=daily
+2026-02-12 17:08:09 | INFO     | scraper:fetch:544 - [GitHub] 成功抓取 10 个项目
+2026-02-12 17:08:09 | INFO     | scraper:fetch:560 - [HuggingFace] 开始抓取: https://huggingface.co/papers
+2026-02-12 17:08:11 | INFO     | scraper:fetch:622 - [HuggingFace] 成功抓取 0 篇论文
+2026-02-12 17:08:11 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.CL
+2026-02-12 17:08:13 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.AI
+2026-02-12 17:08:15 | INFO     | scraper:fetch:643 - [arXiv] 开始抓取 cs.LG
+2026-02-12 17:08:16 | INFO     | scraper:fetch:712 - [arXiv] 成功抓取 11 篇论文
+2026-02-12 17:08:16 | INFO     | scraper:_fetch_baidu_developer:107 - [ChinaAI] 尝试抓取百度开发者社区: https://ai.baidu.com/tech/
+2026-02-12 17:08:17 | INFO     | scraper:_fetch_aliyun_developer:175 - [ChinaAI] 开始抓取阿里云开发者社区: https://developer.aliyun.com/ai
+2026-02-12 17:08:20 | INFO     | scraper:_fetch_tencent_cloud:226 - [ChinaAI] 开始抓取腾讯云开发者社区: https://cloud.tencent.com/developer/column/10755
+2026-02-12 17:08:21 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/intl/zh-cn/products/ai.html
+2026-02-12 17:08:22 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/product/ai.html
+2026-02-12 17:08:22 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/zh-cn/product/ai.html
+2026-02-12 17:08:22 | INFO     | scraper:_fetch_huawei_cloud:286 - [ChinaAI] 尝试抓取华为云开发者社区: https://www.huaweicloud.com/
+2026-02-12 17:08:22 | INFO     | scraper:_fetch_csdn:362 - [ChinaAI] 尝试抓取CSDN技术社区: https://blog.csdn.net/topic/ai
+2026-02-12 17:08:23 | WARNING  | scraper:_fetch_csdn:417 - [ChinaAI] 抓取CSDN URL失败: https://blog.csdn.net/topic/ai, 错误: 404 Client Error: Not Found for url: https://blog.csdn.net/topic/ai
+2026-02-12 17:08:23 | INFO     | scraper:_fetch_csdn:362 - [ChinaAI] 尝试抓取CSDN技术社区: https://www.csdn.net/nav/ai
+2026-02-12 17:08:24 | INFO     | scraper:fetch:87 - [ChinaAI] 成功抓取 6 条国内AI资讯
+2026-02-12 17:08:24 | INFO     | scraper:fetch_all_sources:746 - [Scraper] 总计抓取 27 条数据
+2026-02-12 17:08:24 | INFO     | __main__:step_1_scrape:96 - [Step 1/5] 数据采集完成，共 27 条
+2026-02-12 17:08:24 | INFO     | __main__:step_2_process:112 - ============================================================
+2026-02-12 17:08:24 | INFO     | __main__:step_2_process:113 - [Step 2/5] 开始智能筛选...
+2026-02-12 17:08:24 | INFO     | __main__:step_2_process:114 - ============================================================
+2026-02-12 17:08:25 | INFO     | processor:process:297 - [Processor] 开始处理 27 条内容
+2026-02-12 17:08:32 | WARNING  | processor:_call_glm_for_scoring:153 - [GLM] 模型 glm-5 调用失败: Error code: 429, with error text {"error":{"code":"1302","message":"您的账户已达到速率限制，请您控制请求频率"}}
+2026-02-12 17:08:32 | WARNING  | processor:_call_glm_for_scoring:154 - [GLM] 尝试降级到下一个模型...
+2026-02-12 17:11:12 | WARNING  | processor:_call_glm_for_scoring:135 - [GLM] 模型 glm-4.7 返回空内容
+2026-02-12 17:11:12 | WARNING  | processor:_call_glm_for_scoring:137 - [GLM] 尝试降级到下一个模型...
+2026-02-12 17:11:29 | WARNING  | processor:_log_degradation_event:202 - ============================================================
+2026-02-12 17:11:29 | WARNING  | processor:_log_degradation_event:203 - [降级] 模型降级事件
+2026-02-12 17:11:29 | WARNING  | processor:_log_degradation_event:204 - [降级] 时间: 2026-02-12 17:11:29
+2026-02-12 17:11:29 | WARNING  | processor:_log_degradation_event:205 - [降级] 原模型: glm-5
+2026-02-12 17:11:29 | WARNING  | processor:_log_degradation_event:206 - [降级] 新模型: glm-4-flash
+2026-02-12 17:11:29 | WARNING  | processor:_log_degradation_event:207 - [降级] 原因: GLM-5 调用失败，自动降级
+2026-02-12 17:11:29 | WARNING  | processor:_log_degradation_event:208 - ============================================================
+2026-02-12 17:11:29 | INFO     | processor:_call_glm_for_scoring:145 - [GLM] 成功获取评分响应 (模型: glm-4-flash)
+2026-02-12 17:11:29 | INFO     | processor:process:326 - [Processor] 筛选完成，返回 Top 5
+2026-02-12 17:11:29 | INFO     | __main__:step_2_process:130 - [Step 2/5] 智能筛选完成，选出 Top 5
+2026-02-12 17:11:29 | INFO     | __main__:step_2_process:134 -   1. [9.8] TrendRadar
+2026-02-12 17:11:29 | INFO     | __main__:step_2_process:134 -   2. [9.6] huggingface/transformers
+2026-02-12 17:11:29 | INFO     | __main__:step_2_process:134 -   3. [9.4] google/langextract
+2026-02-12 17:11:29 | INFO     | __main__:step_2_process:134 -   4. [9.2] cheahjs/free-llm-api-resources
+2026-02-12 17:11:29 | INFO     | __main__:step_2_process:134 -   5. [9.0] hsliuping/TradingAgents-CN
+2026-02-12 17:11:29 | INFO     | __main__:step_3_write:152 - ============================================================
+2026-02-12 17:11:29 | INFO     | __main__:step_3_write:153 - [Step 3/5] 开始内容生成...
+2026-02-12 17:11:29 | INFO     | __main__:step_3_write:154 - ============================================================
+2026-02-12 17:11:30 | INFO     | writer:write:338 - [Writer] 开始生成播客讲稿，共 5 条内容
+2026-02-12 17:11:36 | WARNING  | writer:_call_glm_for_writing:195 - [Writer] 模型 glm-5 调用失败: Error code: 429, with error text {"error":{"code":"1302","message":"您的账户已达到速率限制，请您控制请求频率"}}
+2026-02-12 17:11:36 | WARNING  | writer:_call_glm_for_writing:196 - [Writer] 尝试降级到下一个模型...
+2026-02-12 17:12:17 | WARNING  | writer:_call_glm_for_writing:177 - [Writer] 模型 glm-4.7 返回空内容
+2026-02-12 17:12:17 | WARNING  | writer:_call_glm_for_writing:179 - [Writer] 尝试降级到下一个模型...
+2026-02-12 17:12:31 | WARNING  | writer:_log_degradation_event:244 - ============================================================
+2026-02-12 17:12:31 | WARNING  | writer:_log_degradation_event:245 - [降级] 模型降级事件
+2026-02-12 17:12:31 | WARNING  | writer:_log_degradation_event:246 - [降级] 时间: 2026-02-12 17:12:31
+2026-02-12 17:12:31 | WARNING  | writer:_log_degradation_event:247 - [降级] 原模型: glm-5
+2026-02-12 17:12:31 | WARNING  | writer:_log_degradation_event:248 - [降级] 新模型: glm-4-flash
+2026-02-12 17:12:31 | WARNING  | writer:_log_degradation_event:249 - [降级] 原因: GLM-5 调用失败，自动降级
+2026-02-12 17:12:31 | WARNING  | writer:_log_degradation_event:250 - ============================================================
+2026-02-12 17:12:31 | INFO     | writer:_call_glm_for_writing:187 - [Writer] 成功生成播客讲稿 (模型: glm-4-flash)
+2026-02-12 17:12:31 | INFO     | writer:write:351 - [Writer] 生成完成，共 863 字符
+2026-02-12 17:12:31 | INFO     | __main__:step_3_write:173 - [Step 3/5] 内容生成完成，共 863 字符
+2026-02-12 17:12:31 | INFO     | __main__:step_3_write:174 - ------------------------------------------------------------
+2026-02-12 17:12:31 | INFO     | __main__:step_3_write:175 - 播客讲稿预览:
+2026-02-12 17:12:31 | INFO     | __main__:step_3_write:176 - 大家好，我是你们的技术播客主持人小智，今天我们要来聊聊一些最近在GitHub上很火的AI技术项目。首先，让我们一起来看看这些项目的亮点和应用价值吧！
+
+首先介绍的是【GitHub】上的TrendRadar项目，这是一个AI驱动的舆情监控和趋势分析工具。它可以通过多平台聚合、RSS订阅和智能提醒，帮助你轻松管理信息过载，及时捕捉热点。这个项目在GitHub上获得了46192个星标，可见社区对其关注程...
+2026-02-12 17:12:31 | INFO     | __main__:step_3_write:177 - ------------------------------------------------------------
+2026-02-12 17:12:31 | INFO     | __main__:step_4_audio:194 - ============================================================
+2026-02-12 17:12:31 | INFO     | __main__:step_4_audio:195 - [Step 4/5] 开始语音合成...
+2026-02-12 17:12:31 | INFO     | __main__:step_4_audio:196 - ============================================================
+2026-02-12 17:12:31 | INFO     | audio:synthesize:123 - [TTS] 开始合成语音，文本长度: 877 字符
+2026-02-12 17:12:31 | INFO     | audio:synthesize:124 - [TTS] 使用语音: zh-CN-XiaoxiaoNeural
+2026-02-12 17:12:44 | INFO     | audio:_synthesize_async:86 - [TTS] 语音合成成功: output\audio\daily_brief_20260212_171231.mp3
+2026-02-12 17:12:44 | INFO     | audio:synthesize:132 - [TTS] 音频文件生成成功: 989280 bytes
+2026-02-12 17:12:44 | INFO     | audio:synthesize:140 - [TTS] 文字内容已保存: output\audio\daily_brief_20260212_171231.txt
+2026-02-12 17:12:44 | INFO     | __main__:step_4_audio:223 - [Step 4/5] 语音合成完成: output\audio\daily_brief_20260212_171231.mp3
+2026-02-12 17:12:44 | INFO     | __main__:step_5_notify:247 - ============================================================
+2026-02-12 17:12:44 | INFO     | __main__:step_5_notify:248 - [Step 5/5] 开始消息推送...
+2026-02-12 17:12:44 | INFO     | __main__:step_5_notify:249 - ============================================================
+2026-02-12 17:12:44 | INFO     | notifier:send_notification:378 - [Notifier] DEBUG 模式: 只打印消息，不实际发送
+2026-02-12 17:12:44 | INFO     | notifier:send_notification:379 - ==================================================
+2026-02-12 17:12:44 | INFO     | notifier:send_notification:380 - 【图文卡片预览】
+2026-02-12 17:12:44 | INFO     | notifier:send_notification:382 - 标题: 🤖 AI每日技术简报 - 02月12日
+2026-02-12 17:12:44 | INFO     | notifier:send_notification:384 - 内容预览:
+2026-02-12 17:12:44 | INFO     | notifier:send_notification:386 -   1. TrendRadar
+2026-02-12 17:12:44 | INFO     | notifier:send_notification:386 -   2. huggingface/transformers
+2026-02-12 17:12:45 | INFO     | notifier:send_notification:386 -   3. google/langextract
+2026-02-12 17:12:45 | INFO     | notifier:send_notification:386 -   4. cheahjs/free-llm-api-resources
+2026-02-12 17:12:45 | INFO     | notifier:send_notification:386 -   5. hsliuping/TradingAgents-CN
+2026-02-12 17:12:45 | INFO     | notifier:send_notification:387 - ==================================================
+2026-02-12 17:12:45 | INFO     | notifier:send_notification:388 - 【语音文件】
+2026-02-12 17:12:45 | INFO     | notifier:send_notification:389 - 路径: output\audio\daily_brief_20260212_171231.mp3
+2026-02-12 17:12:45 | INFO     | notifier:send_notification:390 - ==================================================
+2026-02-12 17:12:45 | INFO     | __main__:step_5_notify:273 - [Step 5/5] 消息推送完成
+2026-02-12 17:12:45 | INFO     | __main__:run:339 - 
+============================================================
+2026-02-12 17:12:45 | INFO     | __main__:run:340 - ✅ 工作流执行完成
+2026-02-12 17:12:45 | INFO     | __main__:run:341 - ⏱️  执行时间: 278.63 秒
+2026-02-12 17:12:45 | INFO     | __main__:run:342 - 🎯 整体状态: 成功
+2026-02-12 17:12:45 | INFO     | __main__:run:343 - ============================================================
+

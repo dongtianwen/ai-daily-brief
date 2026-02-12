@@ -2,11 +2,11 @@
 智能推理 Agent (processor.py)
 
 基于 Agentic Workflow 设计哲学:
-- 原子技能: 纯函数封装，调用 GLM-4 进行评分筛选
+- 原子技能: 纯函数封装，调用 GLM-5 进行评分筛选
 - 熔断机制: JSON 解析失败时直接丢弃该批次，不报错
 
 功能:
-1. 调用 GLM-4 对抓取的内容进行 0-10 分评分
+1. 调用 GLM-5 对抓取的内容进行 0-10 分评分
 2. Agent/Multi-Agent/Tool Use 关键词权重 ×1.5
 3. 输出结构化 JSON (Top 5)
 """
@@ -15,6 +15,8 @@ import os
 import json
 from dataclasses import asdict
 from typing import List, Dict, Any
+from datetime import datetime
+from pathlib import Path
 
 from zhipuai import ZhipuAI
 from loguru import logger
@@ -22,7 +24,7 @@ from loguru import logger
 from scraper import TechItem
 
 
-# GLM-4 评分提示词模板
+# GLM-5 评分提示词模板
 SCORING_PROMPT = """你是一位专业的AI技术内容策展人。请对以下技术新闻进行评分和筛选。
 
 评分标准 (0-10分):
@@ -82,7 +84,11 @@ class ContentProcessor:
             raise ValueError("ZHIPUAI_API_KEY 未设置")
         
         self.client = ZhipuAI(api_key=self.api_key)
-        self.model = "glm-4"  # GLM-4 模型
+        self.primary_model = "glm-5"  # 主模型
+        self.fallback_models = ["glm-4.7", "glm-4-flash"]  # 降级模型列表
+        self.current_model = self.primary_model  # 当前使用的模型
+        self.degraded = False  # 是否已降级
+        self.degradation_start_time = None  # 降级开始时间
     
     def _prepare_items_json(self, items: List[TechItem]) -> str:
         """将 TechItem 列表转换为 JSON 字符串供 GLM 处理"""
@@ -101,7 +107,7 @@ class ContentProcessor:
     
     def _call_glm_for_scoring(self, items_json: str) -> Dict[str, Any]:
         """
-        调用 GLM-4 进行评分
+        调用 GLM 进行评分，支持自动降级
         
         Args:
             items_json: 待评分内容的 JSON 字符串
@@ -111,24 +117,95 @@ class ContentProcessor:
         """
         prompt = SCORING_PROMPT.format(items_json=items_json)
         
-        try:
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=[
-                    {"role": "system", "content": "你是一个专业的AI技术内容策展助手，只返回JSON格式数据。"},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.3,  # 较低温度以获得更稳定的输出
-                max_tokens=2000
-            )
+        for model in [self.current_model] + self.fallback_models:
+            try:
+                response = self.client.chat.completions.create(
+                    model=model,
+                    messages=[
+                        {"role": "system", "content": "你是一个专业的AI技术内容策展助手，只返回JSON格式数据。"},
+                        {"role": "user", "content": prompt}
+                    ],
+                    temperature=0.3,
+                    max_tokens=2000
+                )
+                
+                content = response.choices[0].message.content
+                
+                if not content or not content.strip():
+                    logger.warning(f"[GLM] 模型 {model} 返回空内容")
+                    if model != self.fallback_models[-1]:
+                        logger.warning(f"[GLM] 尝试降级到下一个模型...")
+                        continue
+                    else:
+                        return {"top_items": []}
+                
+                if model != self.primary_model and not self.degraded:
+                    self._log_degradation_event(model)
+                
+                logger.info(f"[GLM] 成功获取评分响应 (模型: {model})")
+                return self._parse_glm_response(content)
+                
+            except Exception as e:
+                error_msg = str(e)
+                should_fallback = self._should_fallback(error_msg)
+                
+                if should_fallback and model != self.fallback_models[-1]:
+                    logger.warning(f"[GLM] 模型 {model} 调用失败: {e}")
+                    logger.warning(f"[GLM] 尝试降级到下一个模型...")
+                    continue
+                elif should_fallback:
+                    logger.error(f"[GLM] 所有模型均失败: {e}")
+                    return {"top_items": []}
+                else:
+                    logger.error(f"[GLM] API 调用失败: {e}")
+                    return {"top_items": []}
+        
+        return {"top_items": []}
+    
+    def _should_fallback(self, error_msg: str) -> bool:
+        """
+        判断是否应该降级
+        
+        Args:
+            error_msg: 错误信息
             
-            content = response.choices[0].message.content
-            logger.info(f"[GLM] 成功获取评分响应")
-            return self._parse_glm_response(content)
-            
-        except Exception as e:
-            logger.error(f"[GLM] API 调用失败: {e}")
-            return {"top_items": []}
+        Returns:
+            是否应该降级
+        """
+        fallback_indicators = [
+            "429",  # 速率限制
+            "500",  # 服务器错误
+            "502",  # 网关错误
+            "503",  # 服务不可用
+            "504",  # 网关超时
+            "timeout",  # 超时
+            "connection",  # 连接错误
+            "service unavailable",  # 服务不可用
+            "rate limit",  # 速率限制
+            "quota",  # 配额限制
+        ]
+        
+        error_msg_lower = error_msg.lower()
+        return any(indicator.lower() in error_msg_lower for indicator in fallback_indicators)
+    
+    def _log_degradation_event(self, new_model: str):
+        """
+        记录降级事件
+        
+        Args:
+            new_model: 降级后的模型
+        """
+        self.degraded = True
+        self.current_model = new_model
+        self.degradation_start_time = datetime.now()
+        
+        logger.warning("=" * 60)
+        logger.warning(f"[降级] 模型降级事件")
+        logger.warning(f"[降级] 时间: {self.degradation_start_time.strftime('%Y-%m-%d %H:%M:%S')}")
+        logger.warning(f"[降级] 原模型: {self.primary_model}")
+        logger.warning(f"[降级] 新模型: {new_model}")
+        logger.warning(f"[降级] 原因: GLM-5 调用失败，自动降级")
+        logger.warning("=" * 60)
     
     def _parse_glm_response(self, content: str) -> Dict[str, Any]:
         """
@@ -167,7 +244,21 @@ class ContentProcessor:
             pass
         
         # 熔断: 所有解析尝试都失败，返回空结果
-        logger.warning(f"[GLM] JSON 解析失败，触发熔断机制。原始响应:\n{content[:500]}...")
+        logger.warning(f"[GLM] JSON 解析失败，触发熔断机制。原始响应:\n{content[:1000]}...")
+        logger.debug(f"[GLM] 完整响应:\n{content}")
+        
+        # 保存完整响应到文件用于调试
+        try:
+            import os
+            debug_dir = Path("output/debug")
+            debug_dir.mkdir(parents=True, exist_ok=True)
+            debug_file = debug_dir / f"glm5_response_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+            with open(debug_file, 'w', encoding='utf-8') as f:
+                f.write(f"GLM-5 响应内容:\n{'='*50}\n\n{content}\n\n{'='*50}\n")
+            logger.info(f"[GLM] 完整响应已保存到: {debug_file}")
+        except Exception as e:
+            logger.warning(f"[GLM] 保存调试文件失败: {e}")
+        
         return {"top_items": []}
     
     def process(self, items: List[TechItem]) -> List[Dict[str, Any]]:

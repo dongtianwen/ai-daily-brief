@@ -114,7 +114,11 @@ class ContentWriter:
             raise ValueError("ZHIPUAI_API_KEY 未设置")
         
         self.client = ZhipuAI(api_key=self.api_key)
-        self.model = "glm-4"
+        self.primary_model = "glm-5"  # 主模型
+        self.fallback_models = ["glm-4.7", "glm-4-flash"]  # 降级模型列表
+        self.current_model = self.primary_model  # 当前使用的模型
+        self.degraded = False  # 是否已降级
+        self.degradation_start_time = None  # 降级开始时间
     
     def _prepare_items_text(self, top_items: List[Dict[str, Any]], 
                            all_items: List[Any]) -> str:
@@ -145,7 +149,7 @@ class ContentWriter:
     
     def _call_glm_for_writing(self, items_text: str) -> str:
         """
-        调用 GLM-4 生成播客讲稿
+        调用 GLM 生成播客讲稿，支持自动降级
         
         Args:
             items_text: 格式化的内容文本
@@ -155,24 +159,95 @@ class ContentWriter:
         """
         prompt = WRITING_PROMPT.format(items_text=items_text)
         
-        try:
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=[
-                    {"role": "system", "content": "你是一位专业的AI技术播客主持人，擅长用通俗易懂的语言讲解技术内容。"},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.7,  # 适中温度以获得自然流畅的文本
-                max_tokens=1500
-            )
+        for model in [self.current_model] + self.fallback_models:
+            try:
+                response = self.client.chat.completions.create(
+                    model=model,
+                    messages=[
+                        {"role": "system", "content": "你是一位专业的AI技术播客主持人，擅长用通俗易懂的语言讲解技术内容。"},
+                        {"role": "user", "content": prompt}
+                    ],
+                    temperature=0.7,
+                    max_tokens=1500
+                )
+                
+                content = response.choices[0].message.content
+                
+                if not content or not content.strip():
+                    logger.warning(f"[Writer] 模型 {model} 返回空内容")
+                    if model != self.fallback_models[-1]:
+                        logger.warning(f"[Writer] 尝试降级到下一个模型...")
+                        continue
+                    else:
+                        return self._generate_fallback_script(items_text)
+                
+                if model != self.primary_model and not self.degraded:
+                    self._log_degradation_event(model)
+                
+                logger.info(f"[Writer] 成功生成播客讲稿 (模型: {model})")
+                return content.strip()
+                
+            except Exception as e:
+                error_msg = str(e)
+                should_fallback = self._should_fallback(error_msg)
+                
+                if should_fallback and model != self.fallback_models[-1]:
+                    logger.warning(f"[Writer] 模型 {model} 调用失败: {e}")
+                    logger.warning(f"[Writer] 尝试降级到下一个模型...")
+                    continue
+                elif should_fallback:
+                    logger.error(f"[Writer] 所有模型均失败: {e}")
+                    return self._generate_fallback_script(items_text)
+                else:
+                    logger.error(f"[Writer] GLM API 调用失败: {e}")
+                    return self._generate_fallback_script(items_text)
+        
+        return self._generate_fallback_script(items_text)
+    
+    def _should_fallback(self, error_msg: str) -> bool:
+        """
+        判断是否应该降级
+        
+        Args:
+            error_msg: 错误信息
             
-            content = response.choices[0].message.content
-            logger.info(f"[Writer] 成功生成播客讲稿")
-            return content.strip()
-            
-        except Exception as e:
-            logger.error(f"[Writer] GLM API 调用失败: {e}")
-            return self._generate_fallback_script(items_text)
+        Returns:
+            是否应该降级
+        """
+        fallback_indicators = [
+            "429",  # 速率限制
+            "500",  # 服务器错误
+            "502",  # 网关错误
+            "503",  # 服务不可用
+            "504",  # 网关超时
+            "timeout",  # 超时
+            "connection",  # 连接错误
+            "service unavailable",  # 服务不可用
+            "rate limit",  # 速率限制
+            "quota",  # 配额限制
+        ]
+        
+        error_msg_lower = error_msg.lower()
+        return any(indicator.lower() in error_msg_lower for indicator in fallback_indicators)
+    
+    def _log_degradation_event(self, new_model: str):
+        """
+        记录降级事件
+        
+        Args:
+            new_model: 降级后的模型
+        """
+        self.degraded = True
+        self.current_model = new_model
+        self.degradation_start_time = datetime.now()
+        
+        logger.warning("=" * 60)
+        logger.warning(f"[降级] 模型降级事件")
+        logger.warning(f"[降级] 时间: {self.degradation_start_time.strftime('%Y-%m-%d %H:%M:%S')}")
+        logger.warning(f"[降级] 原模型: {self.primary_model}")
+        logger.warning(f"[降级] 新模型: {new_model}")
+        logger.warning(f"[降级] 原因: GLM-5 调用失败，自动降级")
+        logger.warning("=" * 60)
     
     def _generate_fallback_script(self, items_text: str) -> str:
         """
