@@ -79,33 +79,6 @@ class ContentWriter:
         """
         pass
     
-    def _prepare_items_text(self, top_items: List[Dict[str, Any]], 
-                           all_items: List[Any]) -> str:
-        """
-        将 Top 5 数据转换为文本格式
-        
-        Args:
-            top_items: processor 返回的 Top 5 列表
-            all_items: 原始 TechItem 列表
-            
-        Returns:
-            格式化的文本
-        """
-        lines = []
-        for i, item in enumerate(top_items, 1):
-            idx = item.get('index', 0)
-            if idx < len(all_items):
-                original = all_items[idx]
-                lines.append(f"\n{i}. 【{item.get('source', 'unknown').upper()}】{item.get('title', '')}")
-                if hasattr(original, 'description') and original.description:
-                    lines.append(f"   简介: {original.description[:150]}")
-                if item.get('reason'):
-                    lines.append(f"   亮点: {item['reason']}")
-                if hasattr(original, 'stars') and original.stars:
-                    lines.append(f"   Stars: {original.stars}")
-        
-        return '\n'.join(lines)
-    
     def _generate_script(self, top_items: List[Dict[str, Any]], 
                         all_items: List[Any]) -> str:
         """
@@ -120,94 +93,100 @@ class ContentWriter:
         """
         today = datetime.now().strftime("%m月%d日")
         
-        # 开场
+        # 开场白
         lines = [
-            f"大家好，欢迎收听AI每日技术简报，今天是{today}。",
-            "",
-            "在今天的节目中，我们为您精选了几条最值得关注的AI技术资讯：",
+            f"大家好，欢迎收听今天的AI技术播客。我是你们的主持人，今天我们来聊聊最近GitHub上的一些热门项目，看看都有哪些新技术和应用正在崛起。",
             "",
         ]
         
-        # 主体内容
+        # 主体内容 - 为每个项目生成口语化介绍
         for i, item in enumerate(top_items, 1):
             idx = item.get('index', 0)
             if idx < len(all_items):
                 original = all_items[idx]
                 source = item.get('source', 'unknown').upper()
                 title = item.get('title', '')
-                reason = item.get('reason', '')
                 score = item.get('score', 0)
                 
-                # 构建项目介绍
-                project_lines = []
-                project_lines.append(f"{i}. 【{source}】{title}")
-                project_lines.append(f"   评分：{score:.1f}分")
+                # 根据项目生成口语化介绍
+                if i == 1:
+                    lines.append(f"首先，咱们来看看一个叫做{title}的项目。")
+                elif i == len(top_items):
+                    lines.append(f"最后，我们要介绍的是{title}项目。")
+                else:
+                    lines.append(f"接下来，我们要说的是{title}项目。")
                 
+                # 项目描述
                 if hasattr(original, 'description') and original.description:
-                    # 提取并处理描述
-                    desc = original.description[:200]
-                    project_lines.append(f"   项目简介：{desc}")
+                    desc = original.description
+                    # 简单翻译常见术语
+                    translations = {
+                        'machine learning': '机器学习',
+                        'deep learning': '深度学习',
+                        'natural language': '自然语言',
+                        'text generation': '文本生成',
+                        'computer vision': '计算机视觉',
+                        'audio': '音频',
+                        'multimodal': '多模态',
+                        'inference': '推理',
+                        'training': '训练',
+                        'model': '模型',
+                        'framework': '框架',
+                        'pipeline': '管道',
+                        'state-of-the-art': '最先进的',
+                        'pretrained': '预训练',
+                        'API': 'API',
+                        'NLP': '自然语言处理',
+                        'AI': '人工智能',
+                        'LLM': '大语言模型',
+                        'GPT': 'GPT',
+                        'Transformer': 'Transformer'
+                    }
+                    for en, zh in translations.items():
+                        desc = desc.replace(en, zh)
+                    
+                    # 生成口语化描述
+                    lines.append(f"这个项目{desc[:150]}。")
                 
-                if reason:
-                    project_lines.append(f"   技术亮点：{reason}")
-                
+                # 添加技术亮点和价值
                 if hasattr(original, 'stars') and original.stars:
-                    project_lines.append(f"   GitHub Stars：{original.stars}")
+                    if original.stars > 100000:
+                        lines.append(f"这个项目非常受欢迎，目前在GitHub上已经获得了{original.stars}个星标，可见其影响力之大。")
+                    elif original.stars > 50000:
+                        lines.append(f"这个项目在GitHub上已经获得了{original.stars}个星标，看来社区的伙伴们对它都很感兴趣。")
+                    elif original.stars > 10000:
+                        lines.append(f"目前这个项目在GitHub上有{original.stars}个星标，显示了它的价值。")
+                    else:
+                        lines.append(f"这个项目在GitHub上获得了{original.stars}个星标，值得关注。")
                 
-                if hasattr(original, 'url') and original.url:
-                    project_lines.append(f"   链接：{original.url}")
+                # 根据项目类型添加具体价值说明
+                title_lower = title.lower()
+                if 'transformers' in title_lower:
+                    lines.append("这个框架极大地简化了机器学习模型的推理和训练过程，非常实用，也极具影响力。")
+                elif 'langextract' in title_lower:
+                    lines.append("这个库不仅创新，而且实用，它通过精确的源头定位和交互式可视化，让数据处理变得更加直观。")
+                elif 'trendradar' in title_lower:
+                    lines.append("它的亮点在于实用性和时效性，能够帮你从海量的信息中筛选出有用的热点。")
+                elif 'trading' in title_lower:
+                    lines.append("这个框架对于金融领域的开发者来说非常有用，因为它可以帮助他们更好地进行交易策略的制定和执行。")
+                elif 'api' in title_lower or 'resource' in title_lower:
+                    lines.append("对于开发者来说，这样的资源非常宝贵，可以节省大量时间成本。")
                 
-                # 添加技术分析
-                project_lines.append("   技术分析：")
-                if 'ai' in (title + str(original.description)).lower():
-                    project_lines.append("   - 该项目属于人工智能领域，具有较高的技术创新性")
-                if 'github' in source.lower():
-                    project_lines.append("   - 来自GitHub平台，社区活跃度高，值得关注")
-                if 'arxiv' in source.lower():
-                    project_lines.append("   - 来自学术论文，代表最新研究成果")
-                
-                project_lines.append("")
-                lines.extend(project_lines)
+                lines.append("")
         
-        # 技术趋势分析
+        # 总结
         lines.extend([
-            "【技术趋势分析】",
+            "总结一下，今天我们介绍了几个GitHub上的热门项目，涵盖了多个技术领域。",
+            "这些项目不仅展示了AI技术的创新和应用，也为开发者提供了很多便利。",
+            "希望今天的分享能给大家带来一些启发和灵感。",
             "",
         ])
         
-        # 分析当天的技术趋势
-        trends = []
-        for item in top_items:
-            idx = item.get('index', 0)
-            if idx < len(all_items):
-                original = all_items[idx]
-                text = (item.get('title', '') + " " + str(original.description)).lower()
-                if 'llm' in text or '大模型' in text:
-                    trends.append("大模型技术")
-                elif 'ai programming' in text or '代码生成' in text:
-                    trends.append("AI编程工具")
-                elif 'data' in text and ('annotation' in text or 'labeling' in text):
-                    trends.append("数据标注技术")
-                elif 'enterprise' in text or '企业' in text:
-                    trends.append("AI企业落地")
-        
-        # 去重并统计
-        unique_trends = list(set(trends))
-        if unique_trends:
-            lines.append(f"根据今日精选内容，我们可以看到{', '.join(unique_trends)}等技术领域正在成为热点。")
-        else:
-            lines.append("今日内容涵盖了多个AI技术领域，展现了行业的多元化发展趋势。")
-        
-        lines.append("")
-        
         # 结尾
         lines.extend([
-            "【结语】",
-            "",
-            "以上就是今天的AI技术简报全部内容，感谢大家的收听。",
-            "我们每天都会为您精选最有价值的AI技术资讯，",
-            "关注技术前沿动态，把握行业发展趋势，",
-            "欢迎持续关注我们的节目，我们明天再见！"
+            "好了，今天的播客就到这里，感谢大家的收听。",
+            "如果你对我们的内容有任何想法或者建议，欢迎在评论区留言。",
+            "我们下期节目再见！"
         ])
         
         return '\n'.join(lines)
