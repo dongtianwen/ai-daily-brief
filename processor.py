@@ -2,13 +2,12 @@
 智能推理 Agent (processor.py)
 
 基于 Agentic Workflow 设计哲学:
-- 原子技能: 纯函数封装，调用 GLM-5 进行评分筛选
-- 熔断机制: JSON 解析失败时直接丢弃该批次，不报错
+- 原子技能: 纯函数封装，无状态，独立运行
+- 强健错误处理: 单个步骤失败不影响整体流程
 
 功能:
-1. 调用 GLM-5 对抓取的内容进行 0-10 分评分
-2. Agent/Multi-Agent/Tool Use 关键词权重 ×1.5
-3. 输出结构化 JSON (Top 5)
+1. 对抓取的内容进行评分筛选
+2. 输出结构化 JSON (Top 5)
 """
 
 import os
@@ -18,49 +17,9 @@ from typing import List, Dict, Any
 from datetime import datetime
 from pathlib import Path
 
-from zhipuai import ZhipuAI
 from loguru import logger
 
 from scraper import TechItem
-
-
-# GLM-5 评分提示词模板
-SCORING_PROMPT = """你是一位专业的AI技术内容策展人。请对以下技术新闻进行评分和筛选。
-
-评分标准 (0-10分):
-- 创新性: 技术或方法的创新程度
-- 实用性: 对开发者和研究者的实际价值
-- 时效性: 内容的时效性和热度
-- 影响力: 在社区中的潜在影响力
-
-特殊权重规则:
-- 如果内容涉及 "LLM", "大模型", "GPT", "Transformer" 等，分数乘以 1.2 倍
-- 如果内容涉及 "Python", "编程", "Code Generation", "AI Programming" 等，分数乘以 1.2 倍
-- 如果内容涉及 "Data Annotation", "数据标注", "Dataset", "数据采集" 等，分数乘以 1.2 倍
-- 如果内容涉及 "Enterprise", "企业", "Business", "落地" 等，分数乘以 1.2 倍
-- 如果内容涉及 "NLP", "自然语言", "Text Generation" 等，分数乘以 1.2 倍
-
-你的任务是:
-1. 对每条内容进行评分 (0-10分)
-2. 选出分数最高的 Top 5
-3. 返回严格的 JSON 格式
-
-输入数据:
-{items_json}
-
-请返回以下格式的 JSON (不要包含任何其他文字):
-{{
-    "top_items": [
-        {{
-            "index": 0,
-            "title": "项目标题",
-            "source": "github/huggingface/arxiv",
-            "score": 8.5,
-            "reason": "简要说明为什么这个项目值得关注的理由"
-        }}
-    ]
-}}
-"""
 
 
 class ContentProcessor:
@@ -72,194 +31,101 @@ class ContentProcessor:
     - 纯函数: 输入 TechItem 列表，输出筛选后的 Top 5
     """
     
-    def __init__(self, api_key: str = None):
+    def __init__(self):
         """
         初始化处理器
+        """
+        pass
+    
+    def _calculate_score(self, item: TechItem) -> float:
+        """
+        计算单个技术新闻的评分
         
         Args:
-            api_key: 智谱 AI API Key，如果不提供则从环境变量读取
-        """
-        self.api_key = api_key or os.getenv('ZHIPUAI_API_KEY')
-        if not self.api_key:
-            raise ValueError("ZHIPUAI_API_KEY 未设置")
-        
-        self.client = ZhipuAI(api_key=self.api_key)
-        self.primary_model = "glm-5"  # 主模型
-        self.fallback_models = ["glm-4.7", "glm-4-flash"]  # 降级模型列表
-        self.current_model = self.primary_model  # 当前使用的模型
-        self.degraded = False  # 是否已降级
-        self.degradation_start_time = None  # 降级开始时间
-    
-    def _prepare_items_json(self, items: List[TechItem]) -> str:
-        """将 TechItem 列表转换为 JSON 字符串供 GLM 处理"""
-        items_data = []
-        for i, item in enumerate(items):
-            items_data.append({
-                "index": i,
-                "source": item.source,
-                "title": item.title,
-                "description": item.description[:300],  # 限制长度
-                "url": item.url,
-                "stars": item.stars,
-                "author": item.author
-            })
-        return json.dumps(items_data, ensure_ascii=False, indent=2)
-    
-    def _call_glm_for_scoring(self, items_json: str) -> Dict[str, Any]:
-        """
-        调用 GLM 进行评分，支持自动降级
-        
-        Args:
-            items_json: 待评分内容的 JSON 字符串
+            item: 技术新闻条目
             
         Returns:
-            GLM 返回的 JSON 解析结果
+            评分 (0-10分)
         """
-        prompt = SCORING_PROMPT.format(items_json=items_json)
+        score = 0.0
         
-        for model in [self.current_model] + self.fallback_models:
-            try:
-                response = self.client.chat.completions.create(
-                    model=model,
-                    messages=[
-                        {"role": "system", "content": "你是一个专业的AI技术内容策展助手，只返回JSON格式数据。"},
-                        {"role": "user", "content": prompt}
-                    ],
-                    temperature=0.3,
-                    max_tokens=2000
-                )
-                
-                content = response.choices[0].message.content
-                
-                if not content or not content.strip():
-                    logger.warning(f"[GLM] 模型 {model} 返回空内容")
-                    if model != self.fallback_models[-1]:
-                        logger.warning(f"[GLM] 尝试降级到下一个模型...")
-                        continue
-                    else:
-                        return {"top_items": []}
-                
-                if model != self.primary_model and not self.degraded:
-                    self._log_degradation_event(model)
-                
-                logger.info(f"[GLM] 成功获取评分响应 (模型: {model})")
-                return self._parse_glm_response(content)
-                
-            except Exception as e:
-                error_msg = str(e)
-                should_fallback = self._should_fallback(error_msg)
-                
-                if should_fallback and model != self.fallback_models[-1]:
-                    logger.warning(f"[GLM] 模型 {model} 调用失败: {e}")
-                    logger.warning(f"[GLM] 尝试降级到下一个模型...")
-                    continue
-                elif should_fallback:
-                    logger.error(f"[GLM] 所有模型均失败: {e}")
-                    return {"top_items": []}
-                else:
-                    logger.error(f"[GLM] API 调用失败: {e}")
-                    return {"top_items": []}
+        # 1. 基础分 (2分)
+        score += 2.0
         
-        return {"top_items": []}
-    
-    def _should_fallback(self, error_msg: str) -> bool:
-        """
-        判断是否应该降级
+        # 2. GitHub Stars 加分 (最高 3分)
+        if item.stars:
+            stars_score = min(item.stars / 10000, 3.0)
+            score += stars_score
         
-        Args:
-            error_msg: 错误信息
-            
-        Returns:
-            是否应该降级
-        """
-        fallback_indicators = [
-            "429",  # 速率限制
-            "500",  # 服务器错误
-            "502",  # 网关错误
-            "503",  # 服务不可用
-            "504",  # 网关超时
-            "timeout",  # 超时
-            "connection",  # 连接错误
-            "service unavailable",  # 服务不可用
-            "rate limit",  # 速率限制
-            "quota",  # 配额限制
+        # 3. 技术关键词加分 (最高 3分)
+        tech_keywords = [
+            # AI/ML 基础
+            'ai', 'ml', 'machine learning', 'deep learning', 'neural network',
+            # 大模型
+            'llm', 'gpt', 'large language model', 'transformer', 'foundation model',
+            'model release', 'new model', 'model launch', 'announce', 'release', 'launch',
+            # 编程和开发
+            'python', 'coding', 'programming', 'developer', 'software engineering',
+            'code generation', 'ai programming', 'developer tools',
+            # 数据标注
+            'data annotation', 'data labeling', 'dataset', 'data collection',
+            # AI 企业落地
+            'enterprise', 'business', 'industry', 'implementation', 'deployment',
+            # 技术趋势
+            'generative ai', 'ai assistant', 'prompt engineering', 'rag',
+            # 中国相关
+            'china', 'chinese', '中文', '中国', '国产化', '国内'
         ]
         
-        error_msg_lower = error_msg.lower()
-        return any(indicator.lower() in error_msg_lower for indicator in fallback_indicators)
-    
-    def _log_degradation_event(self, new_model: str):
-        """
-        记录降级事件
+        text_to_check = (item.title + " " + item.description).lower()
+        keyword_matches = 0
         
-        Args:
-            new_model: 降级后的模型
-        """
-        self.degraded = True
-        self.current_model = new_model
-        self.degradation_start_time = datetime.now()
+        for keyword in tech_keywords:
+            if keyword in text_to_check:
+                keyword_matches += 1
+                if keyword_matches >= 3:
+                    break
         
-        logger.warning("=" * 60)
-        logger.warning(f"[降级] 模型降级事件")
-        logger.warning(f"[降级] 时间: {self.degradation_start_time.strftime('%Y-%m-%d %H:%M:%S')}")
-        logger.warning(f"[降级] 原模型: {self.primary_model}")
-        logger.warning(f"[降级] 新模型: {new_model}")
-        logger.warning(f"[降级] 原因: GLM-5 调用失败，自动降级")
-        logger.warning("=" * 60)
-    
-    def _parse_glm_response(self, content: str) -> Dict[str, Any]:
-        """
-        解析 GLM 返回的内容为 JSON
+        score += keyword_matches
         
-        熔断机制:
-        - 如果 JSON 解析失败，返回空结果，不抛出异常
-        """
-        try:
-            # 尝试直接解析
-            result = json.loads(content)
-            if "top_items" in result:
-                return result
-        except json.JSONDecodeError:
-            pass
+        # 4. 时效性加分 (最高 2分)
+        if hasattr(item, 'published') and item.published:
+            try:
+                from datetime import datetime, timedelta
+                pub_date = datetime.strptime(item.published, '%Y-%m-%d')
+                today = datetime.now().date()
+                pub_date_only = pub_date.date()
+                days_diff = (today - pub_date_only).days
+                
+                if days_diff == 0:
+                    score += 2.0  # 今天发布
+                elif days_diff == 1:
+                    score += 1.5  # 昨天发布
+                elif days_diff == 2:
+                    score += 1.0  # 前天发布
+                elif days_diff <= 7:
+                    score += 0.5  # 一周内
+            except:
+                pass
         
-        # 尝试从 Markdown 代码块中提取 JSON
-        try:
-            import re
-            json_match = re.search(r'```(?:json)?\s*([\s\S]*?)```', content)
-            if json_match:
-                result = json.loads(json_match.group(1))
-                if "top_items" in result:
-                    return result
-        except (json.JSONDecodeError, AttributeError):
-            pass
+        # 5. 来源加权
+        source_weights = {
+            'github': 1.15,
+            'huggingface': 1.15,
+            'arxiv': 1.10,
+            'baidu_dev': 0.95,
+            'aliyun_dev': 0.95,
+            'tencent_cloud': 0.95,
+            'huawei_cloud': 0.95,
+            'csdn': 0.90,
+            'jiqizhixin': 1.05,  # 机器之心
+            'leiphone': 1.00      # 雷锋网
+        }
         
-        # 尝试从文本中提取 JSON 对象
-        try:
-            json_match = re.search(r'\{[\s\S]*"top_items"[\s\S]*\}', content)
-            if json_match:
-                result = json.loads(json_match.group(0))
-                if "top_items" in result:
-                    return result
-        except (json.JSONDecodeError, AttributeError):
-            pass
+        weight = source_weights.get(item.source, 1.0)
+        score *= weight
         
-        # 熔断: 所有解析尝试都失败，返回空结果
-        logger.warning(f"[GLM] JSON 解析失败，触发熔断机制。原始响应:\n{content[:1000]}...")
-        logger.debug(f"[GLM] 完整响应:\n{content}")
-        
-        # 保存完整响应到文件用于调试
-        try:
-            import os
-            debug_dir = Path("output/debug")
-            debug_dir.mkdir(parents=True, exist_ok=True)
-            debug_file = debug_dir / f"glm5_response_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
-            with open(debug_file, 'w', encoding='utf-8') as f:
-                f.write(f"GLM-5 响应内容:\n{'='*50}\n\n{content}\n\n{'='*50}\n")
-            logger.info(f"[GLM] 完整响应已保存到: {debug_file}")
-        except Exception as e:
-            logger.warning(f"[GLM] 保存调试文件失败: {e}")
-        
-        return {"top_items": []}
+        return min(score, 10.0)  # 最高10分
     
     def process(self, items: List[TechItem]) -> List[Dict[str, Any]]:
         """
@@ -296,32 +162,39 @@ class ContentProcessor:
         
         logger.info(f"[Processor] 开始处理 {len(items)} 条内容")
         
-        # 准备输入数据
-        items_json = self._prepare_items_json(items)
+        # 计算每条内容的评分
+        scored_items = []
+        for i, item in enumerate(items):
+            try:
+                score = self._calculate_score(item)
+                scored_items.append((score, i, item))
+            except Exception as e:
+                logger.warning(f"[Processor] 计算评分失败: {e}")
+                continue
         
-        # 调用 GLM 评分
-        result = self._call_glm_for_scoring(items_json)
+        # 按评分排序，取前5
+        scored_items.sort(reverse=True, key=lambda x: x[0])
+        top_items = []
         
-        top_items = result.get("top_items", [])
-        
-        if not top_items:
-            logger.warning("[Processor] GLM 返回空结果，使用备用策略")
-            # 备用策略: 按 stars 排序取前5
-            sorted_items = sorted(
-                enumerate(items), 
-                key=lambda x: x[1].stars or 0, 
-                reverse=True
-            )[:5]
-            top_items = [
-                {
-                    "index": idx,
-                    "title": item.title,
-                    "source": item.source,
-                    "score": 6.0 + (item.stars or 0) / 10000,
-                    "reason": f"GitHub Stars: {item.stars or 'N/A'}"
-                }
-                for idx, item in sorted_items
-            ]
+        for i, (score, original_index, item) in enumerate(scored_items[:5], 1):
+            # 生成评分理由
+            reasons = []
+            if item.stars and item.stars > 5000:
+                reasons.append(f"GitHub Stars: {item.stars}")
+            if 'ai' in (item.title + item.description).lower():
+                reasons.append("AI相关内容")
+            if 'python' in (item.title + item.description).lower():
+                reasons.append("Python相关内容")
+            if not reasons:
+                reasons.append("技术价值高")
+            
+            top_items.append({
+                "index": original_index,
+                "title": item.title,
+                "source": item.source,
+                "score": round(score, 1),
+                "reason": ", ".join(reasons[:2])
+            })
         
         logger.info(f"[Processor] 筛选完成，返回 Top {len(top_items)}")
         return top_items

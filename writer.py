@@ -2,8 +2,8 @@
 内容生成 Agent (writer.py)
 
 基于 Agentic Workflow 设计哲学:
-- 原子技能: 纯函数封装，将 Top 5 内容改写为中文播客讲稿
-- 无状态: 每次调用独立生成
+- 原子技能: 纯函数封装，无状态，独立运行
+- 强健错误处理: 单个步骤失败不影响整体流程
 
 功能:
 1. 将筛选出的 Top 5 内容改写为中文播客讲稿
@@ -17,36 +17,7 @@ import re
 from typing import List, Dict, Any
 from datetime import datetime
 
-from zhipuai import ZhipuAI
 from loguru import logger
-
-
-# 文案生成提示词模板
-WRITING_PROMPT = """你是一位专业的AI技术播客主持人。请将以下精选的AI技术新闻改写成一段自然、流畅的中文播客讲稿。
-
-要求:
-1. 语言风格: 专业但不晦涩，像朋友聊天一样自然，口语化表达
-2. 结构: 
-   - 开场问候 (简短)
-   - 正文: 逐一详细介绍每个项目/论文，突出技术亮点、创新点和应用价值
-   - 结尾 (简短总结和展望)
-3. 长度: 必须控制在 800-1000 个中文字符 (约 4-6 分钟语音)
-4. 内容要求: 
-   - 详细展开每个项目的技术细节、开发意义和商业价值
-   - 加入适当的背景介绍，帮助听众理解技术背景
-   - 重点关注 AI 编程、大模型、数据标注、AI 企业落地等领域
-   - 每个项目至少 150 字的详细介绍
-5. 格式: 纯文本，不需要 Markdown 标记
-6. 发音处理: 保留以下术语的原始写法，系统会自动处理发音
-   - LLM -> 大语言模型
-   - SOTA -> So-tah
-   - arXiv -> Archive
-
-今日精选内容:
-{items_text}
-
-请直接输出播客讲稿文本，确保长度达到 800 字以上，详细介绍每个项目，不要包含任何其他格式或标记。
-"""
 
 
 # TTS 发音矫正映射表
@@ -102,28 +73,16 @@ class ContentWriter:
     - 纯函数: 输入 Top 5 数据，输出中文播客讲稿
     """
     
-    def __init__(self, api_key: str = None):
+    def __init__(self):
         """
         初始化生成器
-        
-        Args:
-            api_key: 智谱 AI API Key，如果不提供则从环境变量读取
         """
-        self.api_key = api_key or os.getenv('ZHIPUAI_API_KEY')
-        if not self.api_key:
-            raise ValueError("ZHIPUAI_API_KEY 未设置")
-        
-        self.client = ZhipuAI(api_key=self.api_key)
-        self.primary_model = "glm-5"  # 主模型
-        self.fallback_models = ["glm-4.7", "glm-4-flash"]  # 降级模型列表
-        self.current_model = self.primary_model  # 当前使用的模型
-        self.degraded = False  # 是否已降级
-        self.degradation_start_time = None  # 降级开始时间
+        pass
     
     def _prepare_items_text(self, top_items: List[Dict[str, Any]], 
                            all_items: List[Any]) -> str:
         """
-        将 Top 5 数据转换为文本格式供 GLM 处理
+        将 Top 5 数据转换为文本格式
         
         Args:
             top_items: processor 返回的 Top 5 列表
@@ -147,134 +106,108 @@ class ContentWriter:
         
         return '\n'.join(lines)
     
-    def _call_glm_for_writing(self, items_text: str) -> str:
+    def _generate_script(self, top_items: List[Dict[str, Any]], 
+                        all_items: List[Any]) -> str:
         """
-        调用 GLM 生成播客讲稿，支持自动降级
+        生成播客讲稿
         
         Args:
-            items_text: 格式化的内容文本
+            top_items: processor 返回的 Top 5 列表
+            all_items: 原始 TechItem 列表
             
         Returns:
             生成的中文播客讲稿
         """
-        prompt = WRITING_PROMPT.format(items_text=items_text)
-        
-        for model in [self.current_model] + self.fallback_models:
-            try:
-                response = self.client.chat.completions.create(
-                    model=model,
-                    messages=[
-                        {"role": "system", "content": "你是一位专业的AI技术播客主持人，擅长用通俗易懂的语言讲解技术内容。"},
-                        {"role": "user", "content": prompt}
-                    ],
-                    temperature=0.7,
-                    max_tokens=1500
-                )
-                
-                content = response.choices[0].message.content
-                
-                if not content or not content.strip():
-                    logger.warning(f"[Writer] 模型 {model} 返回空内容")
-                    if model != self.fallback_models[-1]:
-                        logger.warning(f"[Writer] 尝试降级到下一个模型...")
-                        continue
-                    else:
-                        return self._generate_fallback_script(items_text)
-                
-                if model != self.primary_model and not self.degraded:
-                    self._log_degradation_event(model)
-                
-                logger.info(f"[Writer] 成功生成播客讲稿 (模型: {model})")
-                return content.strip()
-                
-            except Exception as e:
-                error_msg = str(e)
-                should_fallback = self._should_fallback(error_msg)
-                
-                if should_fallback and model != self.fallback_models[-1]:
-                    logger.warning(f"[Writer] 模型 {model} 调用失败: {e}")
-                    logger.warning(f"[Writer] 尝试降级到下一个模型...")
-                    continue
-                elif should_fallback:
-                    logger.error(f"[Writer] 所有模型均失败: {e}")
-                    return self._generate_fallback_script(items_text)
-                else:
-                    logger.error(f"[Writer] GLM API 调用失败: {e}")
-                    return self._generate_fallback_script(items_text)
-        
-        return self._generate_fallback_script(items_text)
-    
-    def _should_fallback(self, error_msg: str) -> bool:
-        """
-        判断是否应该降级
-        
-        Args:
-            error_msg: 错误信息
-            
-        Returns:
-            是否应该降级
-        """
-        fallback_indicators = [
-            "429",  # 速率限制
-            "500",  # 服务器错误
-            "502",  # 网关错误
-            "503",  # 服务不可用
-            "504",  # 网关超时
-            "timeout",  # 超时
-            "connection",  # 连接错误
-            "service unavailable",  # 服务不可用
-            "rate limit",  # 速率限制
-            "quota",  # 配额限制
-        ]
-        
-        error_msg_lower = error_msg.lower()
-        return any(indicator.lower() in error_msg_lower for indicator in fallback_indicators)
-    
-    def _log_degradation_event(self, new_model: str):
-        """
-        记录降级事件
-        
-        Args:
-            new_model: 降级后的模型
-        """
-        self.degraded = True
-        self.current_model = new_model
-        self.degradation_start_time = datetime.now()
-        
-        logger.warning("=" * 60)
-        logger.warning(f"[降级] 模型降级事件")
-        logger.warning(f"[降级] 时间: {self.degradation_start_time.strftime('%Y-%m-%d %H:%M:%S')}")
-        logger.warning(f"[降级] 原模型: {self.primary_model}")
-        logger.warning(f"[降级] 新模型: {new_model}")
-        logger.warning(f"[降级] 原因: GLM-5 调用失败，自动降级")
-        logger.warning("=" * 60)
-    
-    def _generate_fallback_script(self, items_text: str) -> str:
-        """
-        备用策略: 当 GLM 调用失败时生成简单的讲稿
-        
-        Args:
-            items_text: 格式化的内容文本
-            
-        Returns:
-            简单的中文讲稿
-        """
         today = datetime.now().strftime("%m月%d日")
+        
+        # 开场
         lines = [
             f"大家好，欢迎收听AI每日技术简报，今天是{today}。",
             "",
-            "今天为大家精选了以下几条AI技术资讯：",
+            "在今天的节目中，我们为您精选了几条最值得关注的AI技术资讯：",
             "",
         ]
         
-        # 简单解析 items_text
-        for line in items_text.split('\n'):
-            if line.strip().startswith(('1.', '2.', '3.', '4.', '5.')):
-                lines.append(line.strip())
+        # 主体内容
+        for i, item in enumerate(top_items, 1):
+            idx = item.get('index', 0)
+            if idx < len(all_items):
+                original = all_items[idx]
+                source = item.get('source', 'unknown').upper()
+                title = item.get('title', '')
+                reason = item.get('reason', '')
+                score = item.get('score', 0)
+                
+                # 构建项目介绍
+                project_lines = []
+                project_lines.append(f"{i}. 【{source}】{title}")
+                project_lines.append(f"   评分：{score:.1f}分")
+                
+                if hasattr(original, 'description') and original.description:
+                    # 提取并处理描述
+                    desc = original.description[:200]
+                    project_lines.append(f"   项目简介：{desc}")
+                
+                if reason:
+                    project_lines.append(f"   技术亮点：{reason}")
+                
+                if hasattr(original, 'stars') and original.stars:
+                    project_lines.append(f"   GitHub Stars：{original.stars}")
+                
+                if hasattr(original, 'url') and original.url:
+                    project_lines.append(f"   链接：{original.url}")
+                
+                # 添加技术分析
+                project_lines.append("   技术分析：")
+                if 'ai' in (title + str(original.description)).lower():
+                    project_lines.append("   - 该项目属于人工智能领域，具有较高的技术创新性")
+                if 'github' in source.lower():
+                    project_lines.append("   - 来自GitHub平台，社区活跃度高，值得关注")
+                if 'arxiv' in source.lower():
+                    project_lines.append("   - 来自学术论文，代表最新研究成果")
+                
+                project_lines.append("")
+                lines.extend(project_lines)
         
+        # 技术趋势分析
         lines.extend([
+            "【技术趋势分析】",
             "",
-            "以上就是今天的内容，感谢收听，我们明天再见。"
+        ])
+        
+        # 分析当天的技术趋势
+        trends = []
+        for item in top_items:
+            idx = item.get('index', 0)
+            if idx < len(all_items):
+                original = all_items[idx]
+                text = (item.get('title', '') + " " + str(original.description)).lower()
+                if 'llm' in text or '大模型' in text:
+                    trends.append("大模型技术")
+                elif 'ai programming' in text or '代码生成' in text:
+                    trends.append("AI编程工具")
+                elif 'data' in text and ('annotation' in text or 'labeling' in text):
+                    trends.append("数据标注技术")
+                elif 'enterprise' in text or '企业' in text:
+                    trends.append("AI企业落地")
+        
+        # 去重并统计
+        unique_trends = list(set(trends))
+        if unique_trends:
+            lines.append(f"根据今日精选内容，我们可以看到{', '.join(unique_trends)}等技术领域正在成为热点。")
+        else:
+            lines.append("今日内容涵盖了多个AI技术领域，展现了行业的多元化发展趋势。")
+        
+        lines.append("")
+        
+        # 结尾
+        lines.extend([
+            "【结语】",
+            "",
+            "以上就是今天的AI技术简报全部内容，感谢大家的收听。",
+            "我们每天都会为您精选最有价值的AI技术资讯，",
+            "关注技术前沿动态，把握行业发展趋势，",
+            "欢迎持续关注我们的节目，我们明天再见！"
         ])
         
         return '\n'.join(lines)
@@ -337,11 +270,8 @@ class ContentWriter:
         
         logger.info(f"[Writer] 开始生成播客讲稿，共 {len(top_items)} 条内容")
         
-        # 准备输入数据
-        items_text = self._prepare_items_text(top_items, all_items)
-        
-        # 调用 GLM 生成讲稿
-        script = self._call_glm_for_writing(items_text)
+        # 生成讲稿
+        script = self._generate_script(top_items, all_items)
         
         # TTS 前处理
         processed_script = self._apply_tts_preprocessing(script)

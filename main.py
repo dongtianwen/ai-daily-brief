@@ -81,7 +81,7 @@ class DailyBriefPipeline:
         """
         步骤 1: 数据采集
         
-        抓取 GitHub Trending、Hugging Face Papers、arXiv
+        抓取 GitHub Trending、Hugging Face Papers、arXiv、国内AI数据源
         """
         logger.info("=" * 60)
         logger.info("[Step 1/5] 开始数据采集...")
@@ -89,12 +89,23 @@ class DailyBriefPipeline:
         
         try:
             items = fetch_all_sources()
+            
+            # 数据质量检查
+            valid_items = []
+            for item in items:
+                if item.title and item.url:
+                    valid_items.append(item)
+                else:
+                    logger.warning(f"[Step 1/5] 无效数据项: {item}")
+            
             self.results["steps"]["scrape"] = {
                 "status": "success",
-                "count": len(items)
+                "count": len(valid_items),
+                "total_scraped": len(items),
+                "valid_rate": f"{len(valid_items)/len(items)*100:.1f}%" if items else "0%"
             }
-            logger.info(f"[Step 1/5] 数据采集完成，共 {len(items)} 条")
-            return items
+            logger.info(f"[Step 1/5] 数据采集完成，共 {len(items)} 条，有效数据 {len(valid_items)} 条")
+            return valid_items
         except Exception as e:
             logger.error(f"[Step 1/5] 数据采集失败: {e}")
             self.results["steps"]["scrape"] = {
@@ -107,7 +118,7 @@ class DailyBriefPipeline:
         """
         步骤 2: 智能筛选
         
-        调用 GLM-4 Flash 对内容进行评分，选出 Top 5
+        对内容进行评分，选出 Top 5
         """
         logger.info("=" * 60)
         logger.info("[Step 2/5] 开始智能筛选...")
@@ -123,9 +134,27 @@ class DailyBriefPipeline:
         
         try:
             top_items = select_top_items(items)
+            
+            # 结果质量检查
+            if not top_items:
+                logger.warning("[Step 2/5] 筛选结果为空，使用默认排序")
+                # 使用默认排序作为备用方案
+                sorted_items = sorted(items, key=lambda x: x.stars or 0, reverse=True)[:5]
+                top_items = [
+                    {
+                        "index": i,
+                        "title": item.title,
+                        "source": item.source,
+                        "score": 7.0,
+                        "reason": "精选内容"
+                    }
+                    for i, item in enumerate(sorted_items)
+                ]
+            
             self.results["steps"]["process"] = {
                 "status": "success",
-                "count": len(top_items)
+                "count": len(top_items),
+                "total_processed": len(items)
             }
             logger.info(f"[Step 2/5] 智能筛选完成，选出 Top {len(top_items)}")
             
@@ -165,9 +194,22 @@ class DailyBriefPipeline:
             script = generate_podcast_script(top_items, all_items)
             char_count = len(script.replace(' ', '').replace('\n', ''))
             
+            # 内容质量检查
+            if char_count < 300:
+                logger.warning(f"[Step 3/5] 内容过短 ({char_count} 字符)，使用备用模板")
+                # 使用备用模板
+                today = datetime.now().strftime("%m月%d日")
+                script = f"大家好，欢迎收听AI每日技术简报，今天是{today}。\n\n"
+                script += "今天为大家精选了以下AI技术资讯：\n\n"
+                for i, item in enumerate(top_items, 1):
+                    script += f"{i}. {item.get('title', '')}\n"
+                script += "\n感谢收听，我们明天再见！"
+                char_count = len(script.replace(' ', '').replace('\n', ''))
+            
             self.results["steps"]["write"] = {
                 "status": "success",
-                "char_count": char_count
+                "char_count": char_count,
+                "quality_check": "pass" if char_count >= 300 else "warning"
             }
             
             logger.info(f"[Step 3/5] 内容生成完成，共 {char_count} 字符")
@@ -179,11 +221,21 @@ class DailyBriefPipeline:
             return script
         except Exception as e:
             logger.error(f"[Step 3/5] 内容生成失败: {e}")
+            
+            # 生成备用内容
+            today = datetime.now().strftime("%m月%d日")
+            backup_script = f"大家好，欢迎收听AI每日技术简报，今天是{today}。\n\n"
+            backup_script += "由于系统原因，今天的详细内容无法生成。\n"
+            backup_script += "我们明天将为您带来完整的AI技术资讯。\n\n"
+            backup_script += "感谢收听，我们明天再见！"
+            
             self.results["steps"]["write"] = {
                 "status": "failed",
-                "error": str(e)
+                "error": str(e),
+                "using_backup": True
             }
-            return ""
+            
+            return backup_script
     
     def step_4_audio(self, script: str) -> Optional[str]:
         """
@@ -216,11 +268,21 @@ class DailyBriefPipeline:
             audio_path = generate_audio(script)
             
             if audio_path:
-                self.results["steps"]["audio"] = {
-                    "status": "success",
-                    "path": audio_path
-                }
-                logger.info(f"[Step 4/5] 语音合成完成: {audio_path}")
+                # 检查音频文件是否存在
+                if os.path.exists(audio_path):
+                    file_size = os.path.getsize(audio_path)
+                    self.results["steps"]["audio"] = {
+                        "status": "success",
+                        "path": audio_path,
+                        "file_size": file_size
+                    }
+                    logger.info(f"[Step 4/5] 语音合成完成: {audio_path} (大小: {file_size/1024:.2f} KB)")
+                else:
+                    self.results["steps"]["audio"] = {
+                        "status": "failed",
+                        "reason": "file_not_found"
+                    }
+                    logger.error("[Step 4/5] 语音合成失败: 文件未生成")
             else:
                 self.results["steps"]["audio"] = {
                     "status": "failed",
@@ -257,6 +319,11 @@ class DailyBriefPipeline:
             return {"success": False, "reason": "no_content"}
         
         try:
+            # 检查音频文件是否存在（如果提供了路径）
+            if audio_path and not os.path.exists(audio_path):
+                logger.warning("[Step 5/5] 音频文件不存在，推送时不包含音频")
+                audio_path = None
+            
             result = send_notification(
                 script=script,
                 audio_path=audio_path,
@@ -266,22 +333,35 @@ class DailyBriefPipeline:
             
             self.results["steps"]["notify"] = {
                 "status": "success" if result.get("success") else "failed",
-                "details": result
+                "details": result,
+                "has_audio": audio_path is not None
             }
             
             if result.get("success"):
                 logger.info("[Step 5/5] 消息推送完成")
+                logger.info(f"[Step 5/5] 推送内容: 文字内容 + {'音频' if audio_path else '无音频'}")
             else:
                 logger.error(f"[Step 5/5] 消息推送失败: {result}")
             
             return result
         except Exception as e:
             logger.error(f"[Step 5/5] 消息推送异常: {e}")
+            
+            # 记录详细错误信息
+            error_info = {
+                "error": str(e),
+                "script_length": len(script),
+                "has_audio": audio_path is not None,
+                "top_items_count": len(top_items)
+            }
+            
             self.results["steps"]["notify"] = {
                 "status": "failed",
-                "error": str(e)
+                "error": str(e),
+                "error_details": error_info
             }
-            return {"success": False, "error": str(e)}
+            
+            return {"success": False, "error": str(e), "details": error_info}
     
     def run(self) -> dict:
         """

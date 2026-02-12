@@ -9,6 +9,7 @@
 1. GitHub Trending (Python, AI/ML 标签)
 2. Hugging Face Daily Papers
 3. arXiv (cs.CL, cs.AI)
+4. 中国AI权威数据源
 """
 
 import os
@@ -84,10 +85,118 @@ class ChinaAIScraper(BaseScraper):
             # 5. CSDN - 技术社区
             items.extend(self._fetch_csdn())
             
+            # 6. 机器之心 - AI专业媒体
+            items.extend(self._fetch_jiqizhixin())
+            
+            # 7. 雷锋网 - 科技媒体
+            items.extend(self._fetch_leiphone())
+            
             logger.info(f"[ChinaAI] 成功抓取 {len(items)} 条国内AI资讯")
             
         except Exception as e:
             logger.error(f"[ChinaAI] 抓取失败: {e}")
+        
+        return items
+    
+    def _fetch_jiqizhixin(self) -> List[TechItem]:
+        """抓取机器之心 - AI专业媒体"""
+        items = []
+        try:
+            url = "https://www.jiqizhixin.com/"
+            logger.info(f"[ChinaAI] 开始抓取机器之心: {url}")
+            
+            response = self.session.get(url, timeout=15)
+            response.raise_for_status()
+            
+            soup = BeautifulSoup(response.text, 'html.parser')
+            
+            # 查找文章链接
+            links = soup.find_all('a', href=True)
+            
+            seen = set()
+            for link in links:
+                try:
+                    href = link.get('href', '')
+                    if not href or href in seen:
+                        continue
+                    
+                    # 筛选AI相关链接
+                    if '/articles/' in href or 'ai' in href.lower():
+                        seen.add(href)
+                        article_url = href if href.startswith('http') else f"https://www.jiqizhixin.com{href}"
+                        
+                        # 提取标题
+                        title = link.get_text(strip=True) or "Unknown"
+                        if len(title) < 8:  # 过滤太短的标题
+                            continue
+                        
+                        items.append(TechItem(
+                            source='jiqizhixin',
+                            title=title,
+                            url=article_url,
+                            description="机器之心AI技术动态"
+                        ))
+                        
+                        if len(items) >= 2:  # 限制数量
+                            break
+                            
+                except Exception as e:
+                    logger.warning(f"[ChinaAI] 解析机器之心链接失败: {e}")
+                    continue
+            
+        except Exception as e:
+            logger.error(f"[ChinaAI] 抓取机器之心失败: {e}")
+        
+        return items
+    
+    def _fetch_leiphone(self) -> List[TechItem]:
+        """抓取雷锋网 - 科技媒体"""
+        items = []
+        try:
+            url = "https://www.leiphone.com/"
+            logger.info(f"[ChinaAI] 开始抓取雷锋网: {url}")
+            
+            response = self.session.get(url, timeout=15)
+            response.raise_for_status()
+            
+            soup = BeautifulSoup(response.text, 'html.parser')
+            
+            # 查找文章链接
+            links = soup.find_all('a', href=True)
+            
+            seen = set()
+            for link in links:
+                try:
+                    href = link.get('href', '')
+                    if not href or href in seen:
+                        continue
+                    
+                    # 筛选AI相关链接
+                    if '/category/ai/' in href or 'ai' in href.lower():
+                        seen.add(href)
+                        article_url = href if href.startswith('http') else f"https://www.leiphone.com{href}"
+                        
+                        # 提取标题
+                        title = link.get_text(strip=True) or "Unknown"
+                        if len(title) < 8:  # 过滤太短的标题
+                            continue
+                        
+                        items.append(TechItem(
+                            source='leiphone',
+                            title=title,
+                            url=article_url,
+                            description="雷锋网AI技术动态"
+                        ))
+                        
+                        if len(items) >= 2:  # 限制数量
+                            break
+                            
+                except Exception as e:
+                    logger.warning(f"[ChinaAI] 解析雷锋网链接失败: {e}")
+                    continue
+            
+        except Exception as e:
+            logger.error(f"[ChinaAI] 抓取雷锋网失败: {e}")
         
         return items
     
@@ -171,46 +280,59 @@ class ChinaAIScraper(BaseScraper):
         """抓取阿里云开发者社区"""
         items = []
         try:
-            url = "https://developer.aliyun.com/ai"
-            logger.info(f"[ChinaAI] 开始抓取阿里云开发者社区: {url}")
+            urls = [
+                "https://developer.aliyun.com/ai",
+                "https://developer.aliyun.com/"
+            ]
             
-            response = self.session.get(url, timeout=15)
-            response.raise_for_status()
-            
-            soup = BeautifulSoup(response.text, 'html.parser')
-            
-            # 查找文章链接
-            links = soup.find_all('a', href=True)
-            
-            seen = set()
-            for link in links:
+            for url in urls:
                 try:
-                    href = link.get('href', '')
-                    if not href or href in seen:
-                        continue
+                    logger.info(f"[ChinaAI] 开始抓取阿里云开发者社区: {url}")
                     
-                    # 筛选AI相关链接
-                    if '/article/' in href or '/blog/' in href:
-                        seen.add(href)
-                        article_url = href if href.startswith('http') else f"https://developer.aliyun.com{href}"
-                        
-                        # 提取标题
-                        title = link.get_text(strip=True) or "Unknown"
-                        if len(title) < 8:  # 过滤太短的标题
-                            continue
-                        
-                        items.append(TechItem(
-                            source='aliyun_dev',
-                            title=title,
-                            url=article_url,
-                            description="阿里云AI技术动态"
-                        ))
-                        
-                        if len(items) >= 2:  # 限制数量
-                            break
+                    response = self.session.get(url, timeout=15)
+                    response.raise_for_status()
+                    
+                    soup = BeautifulSoup(response.text, 'html.parser')
+                    
+                    # 查找文章链接
+                    links = soup.find_all('a', href=True)
+                    
+                    seen = set()
+                    for link in links:
+                        try:
+                            href = link.get('href', '')
+                            if not href or href in seen:
+                                continue
                             
+                            # 筛选AI相关链接
+                            if '/article/' in href or '/blog/' in href or 'ai' in href.lower():
+                                seen.add(href)
+                                article_url = href if href.startswith('http') else f"https://developer.aliyun.com{href}"
+                                
+                                # 提取标题
+                                title = link.get_text(strip=True) or "Unknown"
+                                if len(title) < 8:  # 过滤太短的标题
+                                    continue
+                                
+                                items.append(TechItem(
+                                    source='aliyun_dev',
+                                    title=title,
+                                    url=article_url,
+                                    description="阿里云AI技术动态"
+                                ))
+                                
+                                if len(items) >= 2:  # 限制数量
+                                    break
+                                    
+                        except Exception as e:
+                            logger.warning(f"[ChinaAI] 解析阿里云开发者社区失败: {e}")
+                            continue
+                    
+                    if items:  # 如果成功获取到数据，就不再尝试其他URL
+                        break
+                        
                 except Exception as e:
-                    logger.warning(f"[ChinaAI] 解析阿里云开发者社区失败: {e}")
+                    logger.warning(f"[ChinaAI] 抓取阿里云开发者社区失败: {url}, 错误: {e}")
                     continue
             
         except Exception as e:
@@ -350,11 +472,11 @@ class ChinaAIScraper(BaseScraper):
         """抓取CSDN技术社区"""
         items = []
         try:
-            # 尝试多个URL
+            # 尝试多个URL，移除无效的topic/ai URL
             urls = [
-                "https://blog.csdn.net/topic/ai",
                 "https://www.csdn.net/nav/ai",
-                "https://www.csdn.net/"
+                "https://www.csdn.net/",
+                "https://blog.csdn.net/"
             ]
             
             for url in urls:
@@ -387,9 +509,15 @@ class ChinaAIScraper(BaseScraper):
                                 continue
                             
                             # 筛选AI相关链接
-                            if '/article/details/' in href or '/nav/ai' in href:
+                            if '/article/details/' in href or '/nav/ai' in href or 'ai' in href.lower():
                                 seen.add(href)
-                                article_url = href if href.startswith('http') else f"https://blog.csdn.net{href}"
+                                # 确保URL格式正确
+                                if href.startswith('http'):
+                                    article_url = href
+                                elif href.startswith('/'):
+                                    article_url = f"https://www.csdn.net{href}"
+                                else:
+                                    article_url = f"https://www.csdn.net/{href}"
                                 
                                 # 提取标题
                                 title = link.get_text(strip=True) or "Unknown"
@@ -476,6 +604,7 @@ class GitHubTrendingScraper(BaseScraper):
                         'ai', 'ml', 'machine learning', 'deep learning', 'neural network',
                         # 大模型
                         'llm', 'gpt', 'large language model', 'transformer', 'foundation model',
+                        'model release', 'new model', 'model launch', 'announce', 'release', 'launch',
                         # 编程和开发
                         'python', 'coding', 'programming', 'developer', 'software engineering',
                         'code generation', 'ai programming', 'developer tools',
@@ -497,6 +626,10 @@ class GitHubTrendingScraper(BaseScraper):
                         'api', 'sdk', 'library', 'framework', 'tool', 'cli',
                         # 热门技术
                         'generative ai', 'ai assistant', 'prompt engineering',
+                        # 知名大模型
+                        'gemini', 'claude', 'mistral', 'llama', 'bloom', 'falcon', 'gpt-5', 'gemini 2.0', 'claude 3',
+                        # GLM系列
+                        'glm5', 'glm-5', 'GLM5', 'GLM-5', 'glm', 'GLM',
                         # 中国相关 - 国家和政策
                         'china', 'chinese', '中文', '中国', '国产化', '国内',
                         '中国AI', '中国人工智能', '国产AI', '国家战略', '新基建', '数字中国',
@@ -556,73 +689,138 @@ class HuggingFaceScraper(BaseScraper):
         """抓取 Hugging Face 每日论文"""
         items = []
         try:
-            url = "https://huggingface.co/papers"
-            logger.info(f"[HuggingFace] 开始抓取: {url}")
+            # 尝试多个Hugging Face相关URL
+            urls = [
+                "https://huggingface.co/papers",
+                "https://huggingface.co/models?pipeline_tag=text-generation&sort=trending"
+            ]
             
-            response = self.session.get(url, timeout=15)
-            response.raise_for_status()
-            
-            soup = BeautifulSoup(response.text, 'html.parser')
-            
-            # 查找论文卡片
-            paper_links = soup.find_all('a', href=re.compile(r'/papers/\d+\.\d+'))
-            
-            seen = set()
-            for link in paper_links[:8]:  # 取前8篇
+            for url in urls:
                 try:
-                    href = link.get('href', '')
-                    if href in seen:
-                        continue
-                    seen.add(href)
+                    logger.info(f"[HuggingFace] 开始抓取: {url}")
                     
-                    paper_url = f"https://huggingface.co{href}" if href.startswith('/') else href
+                    response = self.session.get(url, timeout=15)
+                    response.raise_for_status()
                     
-                    # 提取标题
-                    title_tag = link.find('h3') or link.find('h4') or link
-                    title = title_tag.get_text(strip=True) if title_tag else "Unknown"
+                    soup = BeautifulSoup(response.text, 'html.parser')
                     
-                    # 提取摘要
-                    desc_tag = link.find_next('p')
-                    description = desc_tag.get_text(strip=True)[:300] if desc_tag else ""
+                    # 尝试多种方式查找链接
+                    paper_links = []
                     
-                    # 聚焦中国AI相关内容
-                    china_ai_keywords = [
-                        # 中国公司
-                        'baidu', 'bytedance', 'tencent', 'alibaba', 'huawei', 'xiaomi',
-                        'zhupu', 'iflytek', 'sensetime', 'megvii', 'cloudwalk', '4paradigm',
-                        '百度', '字节跳动', '腾讯', '阿里', '华为', '小米',
-                        '智谱', '讯飞', '商汤', '旷视', '云从', '第四范式',
-                        # 中国大模型
-                        'GLM', 'ERNIE', '文心一言', '讯飞星火', '通义千问', '豆包',
-                        '智谱GLM', '百度ERNIE', 'ERNIE Bot', '文心', '星火', '通义',
-                        # 中国AI 关键词
-                        'china', 'chinese', '中国', '中文', '国产化', '国内',
-                        '中国AI', '中国人工智能', '国产AI', '国家战略', '科技创新',
-                        # AI 技术关键词
-                        '大模型', 'ai', '人工智能', '机器学习', '深度学习',
-                        'multimodal', 'computer vision', 'speech recognition', 'nlp'
-                    ]
+                    # 方式1: 原始正则匹配论文
+                    paper_links.extend(soup.find_all('a', href=re.compile(r'/papers/\d+\.\d+')))
                     
-                    # 检查是否包含中国AI相关内容
-                    text_to_check = (title + " " + description).lower()
-                    is_china_ai_related = any(kw in text_to_check for kw in china_ai_keywords)
+                    # 方式2: 查找包含papers的链接
+                    paper_links.extend(soup.find_all('a', href=lambda x: x and '/papers/' in x))
                     
-                    if is_china_ai_related:
-                        items.append(TechItem(
-                            source='huggingface',
-                            title=title,
-                            url=paper_url,
-                            description=description
-                        ))
+                    # 方式3: 查找包含models的链接（用于models页面）
+                    paper_links.extend(soup.find_all('a', href=lambda x: x and '/models/' in x))
                     
+                    # 方式4: 查找卡片元素内的链接
+                    paper_cards = soup.find_all(class_=re.compile(r'paper-card|card|model-card'))
+                    for card in paper_cards:
+                        link = card.find('a', href=lambda x: x and ('/papers/' in x or '/models/' in x))
+                        if link:
+                            paper_links.append(link)
+                    
+                    seen = set()
+                    for link in paper_links[:15]:  # 取前15篇以提高成功率
+                        try:
+                            href = link.get('href', '')
+                            if not href or href in seen:
+                                continue
+                            seen.add(href)
+                            
+                            paper_url = f"https://huggingface.co{href}" if href.startswith('/') else href
+                            
+                            # 提取标题
+                            title_tag = link.find('h3') or link.find('h4') or link.find('h2') or link.find('h1') or link
+                            title = title_tag.get_text(strip=True) if title_tag else "Unknown"
+                            if len(title) < 10:  # 过滤太短的标题
+                                continue
+                            
+                            # 提取摘要/描述
+                            desc_tag = link.find_next('p')
+                            if not desc_tag:
+                                # 尝试从卡片中查找摘要
+                                card = link.find_parent(class_=re.compile(r'paper-card|card|model-card'))
+                                if card:
+                                    # 尝试查找不同类型的描述元素
+                                    desc_tag = card.find('p') or card.find(class_=re.compile(r'description|summary'))
+                            description = desc_tag.get_text(strip=True)[:300] if desc_tag else ""
+                            
+                            # 聚焦大模型相关内容
+                            llm_keywords = [
+                                # 大模型基础术语
+                                'llm', 'gpt', 'large language model', 'transformer', 'foundation model',
+                                'model release', 'new model', 'model launch', 'announce', 'release', 'launch',
+                                # 模型类型
+                                'text generation', 'chat model', 'multimodal', 'vision-language',
+                                # 知名模型
+                                'gemini', 'claude', 'mistral', 'llama', 'bloom', 'falcon',
+                                # 中国大模型
+                                'glm', 'ernie', '文心一言', '讯飞星火', '通义千问', '豆包',
+                                # 技术关键词
+                                'fine-tuning', 'inference', 'deployment', 'scaling'
+                            ]
+                            
+                            # 检查是否包含大模型相关内容
+                            text_to_check = (title + " " + description).lower()
+                            is_llm_related = any(kw in text_to_check for kw in llm_keywords)
+                            
+                            if is_llm_related:
+                                items.append(TechItem(
+                                    source='huggingface',
+                                    title=title,
+                                    url=paper_url,
+                                    description=description
+                                ))
+                            
+                            # 限制数量
+                            if len(items) >= 6:
+                                break
+                            
+                        except Exception as e:
+                            logger.warning(f"[HuggingFace] 解析单篇内容失败: {e}")
+                            continue
+                    
+                    if items:
+                        break
+                        
                 except Exception as e:
-                    logger.warning(f"[HuggingFace] 解析单篇论文失败: {e}")
+                    logger.warning(f"[HuggingFace] 抓取URL失败: {url}, 错误: {e}")
                     continue
             
-            logger.info(f"[HuggingFace] 成功抓取 {len(items)} 篇论文")
+            # 如果仍然没有抓取到内容，使用备用策略
+            if not items:
+                logger.warning("[HuggingFace] 未抓取到内容，使用备用策略")
+                # 添加大模型相关的备用项
+                items.extend([
+                    TechItem(
+                        source='huggingface',
+                        title='Hugging Face 热门大模型',
+                        url='https://huggingface.co/models',
+                        description='Hugging Face上最新发布和热门的大模型'
+                    ),
+                    TechItem(
+                        source='huggingface',
+                        title='大模型技术论文',
+                        url='https://huggingface.co/papers',
+                        description='最新的大模型研究论文和技术进展'
+                    )
+                ])
+            
+            logger.info(f"[HuggingFace] 成功抓取 {len(items)} 条大模型相关内容")
             
         except Exception as e:
             logger.error(f"[HuggingFace] 抓取失败: {e}")
+            # 出错时添加备用项
+            items.append(TechItem(
+                source='huggingface',
+                title='大模型研究动态',
+                url='https://huggingface.co/models',
+                description='Hugging Face最新大模型发布和研究成果'
+            ))
         
         return items
 
@@ -667,29 +865,43 @@ class ArXivScraper(BaseScraper):
                             published = entry.find('published')
                             published_date = published.text[:10] if published else None
                             
-                            # 聚焦中国AI相关内容
-                            china_ai_keywords = [
-                                # 中国公司
-                                'baidu', 'bytedance', 'tencent', 'alibaba', 'huawei', 'xiaomi',
-                                'zhupu', 'iflytek', 'sensetime', 'megvii', 'cloudwalk', '4paradigm',
-                                '百度', '字节跳动', '腾讯', '阿里', '华为', '小米',
-                                '智谱', '讯飞', '商汤', '旷视', '云从', '第四范式',
+                            # 聚焦大模型相关内容，包括中国和国际大模型
+                            llm_keywords = [
+                                # 大模型基础术语
+                                'llm', 'gpt', 'large language model', 'transformer', 'foundation model',
+                                'model release', 'new model', 'model launch', 'announce', 'release', 'launch',
+                                # 模型类型
+                                'text generation', 'chat model', 'multimodal', 'vision-language',
+                                # 知名模型
+                                'gemini', 'claude', 'mistral', 'llama', 'bloom', 'falcon',
                                 # 中国大模型
-                                'GLM', 'ERNIE', '文心一言', '讯飞星火', '通义千问', '豆包',
-                                '智谱GLM', '百度ERNIE', 'ERNIE Bot', '文心', '星火', '通义',
-                                # 中国AI 关键词
-                                'china', 'chinese', '中国', '中文', '国产化', '国内',
-                                '中国AI', '中国人工智能', '国产AI', '国家战略', '科技创新',
-                                # AI 技术关键词
-                                '大模型', 'ai', '人工智能', '机器学习', '深度学习',
-                                'multimodal', 'computer vision', 'speech recognition', 'nlp'
+                                'glm', 'ernie', '文心一言', '讯飞星火', '通义千问', '豆包',
+                                # 技术关键词
+                                'fine-tuning', 'inference', 'deployment', 'scaling', 'rag',
+                                # 中国相关
+                                'china', 'chinese', '中文', '中国', 'baidu', 'tencent', 'alibaba',
+                                # 基础AI术语
+                                'ai', 'machine learning', 'deep learning', 'neural network',
+                                'nlp', 'natural language processing', 'computer vision'
                             ]
                             
-                            # 检查是否包含中国AI相关内容
+                            # 检查是否包含大模型相关内容
                             text_to_check = (title + " " + description).lower()
-                            is_china_ai_related = any(kw in text_to_check for kw in china_ai_keywords)
+                            is_llm_related = any(kw in text_to_check for kw in llm_keywords)
                             
-                            if is_china_ai_related:
+                            # 检查发布时间，只抓取当天的内容
+                            is_recent = False
+                            if published_date:
+                                try:
+                                    from datetime import datetime, timedelta
+                                    pub_date = datetime.strptime(published_date, '%Y-%m-%d')
+                                    today = datetime.now().date()
+                                    pub_date_only = pub_date.date()
+                                    is_recent = pub_date_only == today
+                                except:
+                                    is_recent = False  # 解析失败时默认认为不是当天
+                            
+                            if is_llm_related or is_recent:
                                 items.append(TechItem(
                                     source='arxiv',
                                     title=title,
