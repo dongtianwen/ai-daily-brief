@@ -35,6 +35,9 @@ jobs:
         run: |
           echo "DEBUG=True" > .env
           echo "ZHIPUAI_API_KEY=${{ secrets.ZHIPUAI_API_KEY }}" >> .env
+          echo "NVIDIA_API_KEY=${{ secrets.NVIDIA_API_KEY }}" >> .env
+          echo "NVIDIA_BASE_URL=https://integrate.api.nvidia.com/v1" >> .env
+          echo "NVIDIA_PRIMARY_MODEL=moonshotai/kimi-k2.5" >> .env
 
       - name: Run daily brief bot
         run: python main.py
