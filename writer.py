@@ -115,16 +115,17 @@ class ContentWriter:
             raise ValueError("ZHIPUAI_API_KEY 未设置")
         
         self.client = ZhipuAI(api_key=self.api_key)
-        self.primary_model = "glm-5"  # 主模型
-        self.fallback_models = ["glm-4.7"]  # GLM降级模型列表
-        self.current_model = self.primary_model  # 当前使用的模型
+        self.glm_primary_model = "glm-4.7"  # GLM主模型
+        self.glm_fallback_models = ["glm-4.7-flash", "glm-4-flash"]  # GLM降级模型列表
+        self.current_model = "nvidia-kimi"  # 当前使用的模型，默认NVIDIA Kimi
         self.degraded = False  # 是否已降级
         self.degradation_start_time = None  # 降级开始时间
         
-        # NVIDIA备用模型配置
+        # NVIDIA模型配置（首选）
         self.nvidia_api_key = os.getenv('NVIDIA_API_KEY')
         self.nvidia_base_url = os.getenv('NVIDIA_BASE_URL', 'https://integrate.api.nvidia.com/v1')
-        self.nvidia_model = "deepseek-ai/deepseek-v3.2"
+        self.nvidia_primary_model = os.getenv('NVIDIA_PRIMARY_MODEL', 'moonshotai/kimi-k2.5')
+        self.nvidia_fallback_model = "deepseek-ai/deepseek-v3.2"
         
         if self.nvidia_api_key:
             self.nvidia_client = OpenAI(
@@ -163,7 +164,8 @@ class ContentWriter:
     
     def _call_glm_for_writing(self, items_text: str) -> str:
         """
-        调用 GLM 生成播客讲稿，支持自动降级
+        调用模型生成播客讲稿，支持自动降级
+        优先级：NVIDIA Kimi -> NVIDIA DeepSeek -> GLM-4.7 -> GLM-4.7-flash -> GLM-4-flash
         
         Args:
             items_text: 格式化的内容文本
@@ -173,7 +175,18 @@ class ContentWriter:
         """
         prompt = WRITING_PROMPT.format(items_text=items_text)
         
-        for model in [self.current_model] + self.fallback_models:
+        # 1. 首先尝试NVIDIA Kimi模型
+        result = self._call_nvidia_kimi_for_writing(prompt)
+        if result:
+            return result
+        
+        # 2. 尝试NVIDIA DeepSeek模型
+        result = self._call_nvidia_deepseek_for_writing(prompt)
+        if result:
+            return result
+        
+        # 3. 尝试GLM模型系列
+        for model in [self.glm_primary_model] + self.glm_fallback_models:
             try:
                 response = self.client.chat.completions.create(
                     model=model,
@@ -189,14 +202,13 @@ class ContentWriter:
                 
                 if not content or not content.strip():
                     logger.warning(f"[Writer] 模型 {model} 返回空内容")
-                    if model != self.fallback_models[-1]:
+                    if model != self.glm_fallback_models[-1]:
                         logger.warning(f"[Writer] 尝试降级到下一个模型...")
                         continue
                     else:
                         return self._generate_fallback_script(items_text)
                 
-                if model != self.primary_model and not self.degraded:
-                    self._log_degradation_event(model, "GLM")
+                self._log_degradation_event(model, "GLM")
                 
                 logger.info(f"[Writer] 成功生成播客讲稿 (模型: {model})")
                 return content.strip()
@@ -205,41 +217,30 @@ class ContentWriter:
                 error_msg = str(e)
                 should_fallback = self._should_fallback(error_msg)
                 
-                if should_fallback and model != self.fallback_models[-1]:
+                if should_fallback and model != self.glm_fallback_models[-1]:
                     logger.warning(f"[Writer] 模型 {model} 调用失败: {e}")
                     logger.warning(f"[Writer] 尝试降级到下一个模型...")
                     continue
                 elif should_fallback:
                     logger.error(f"[Writer] 所有GLM模型均失败: {e}")
-                    # 尝试NVIDIA备用模型
-                    return self._call_nvidia_for_writing(items_text)
+                    return self._generate_fallback_script(items_text)
                 else:
                     logger.error(f"[Writer] GLM API 调用失败: {e}")
                     return self._generate_fallback_script(items_text)
         
         return self._generate_fallback_script(items_text)
     
-    def _call_nvidia_for_writing(self, items_text: str) -> str:
-        """
-        调用 NVIDIA NIM API 生成播客讲稿 (备用)
-        
-        Args:
-            items_text: 格式化的内容文本
-            
-        Returns:
-            生成的中文播客讲稿
-        """
+    def _call_nvidia_kimi_for_writing(self, prompt: str) -> str:
+        """调用NVIDIA Kimi模型生成播客讲稿"""
         if not self.nvidia_client:
-            logger.warning("[NVIDIA] NVIDIA API 未配置，跳过备用模型")
-            return self._generate_fallback_script(items_text)
-        
-        prompt = WRITING_PROMPT.format(items_text=items_text)
+            logger.warning("[NVIDIA-Kimi] NVIDIA API 未配置")
+            return ""
         
         try:
-            logger.info(f"[NVIDIA] 尝试使用 NVIDIA 备用模型: {self.nvidia_model}")
+            logger.info(f"[NVIDIA-Kimi] 尝试使用模型: {self.nvidia_primary_model}")
             
             response = self.nvidia_client.chat.completions.create(
-                model=self.nvidia_model,
+                model=self.nvidia_primary_model,
                 messages=[
                     {"role": "system", "content": "你是一位专业的AI技术播客主持人，擅长用通俗易懂的语言讲解技术内容。"},
                     {"role": "user", "content": prompt}
@@ -251,17 +252,48 @@ class ContentWriter:
             content = response.choices[0].message.content
             
             if not content or not content.strip():
-                logger.warning("[NVIDIA] 模型返回空内容")
-                return self._generate_fallback_script(items_text)
+                logger.warning("[NVIDIA-Kimi] 模型返回空内容")
+                return ""
             
-            self._log_degradation_event(self.nvidia_model, "NVIDIA")
-            
-            logger.info(f"[NVIDIA] 成功生成播客讲稿 (模型: {self.nvidia_model})")
+            logger.info(f"[NVIDIA-Kimi] 成功生成播客讲稿")
             return content.strip()
             
         except Exception as e:
-            logger.error(f"[NVIDIA] API 调用失败: {e}")
-            return self._generate_fallback_script(items_text)
+            logger.warning(f"[NVIDIA-Kimi] 调用失败: {e}")
+            return ""
+    
+    def _call_nvidia_deepseek_for_writing(self, prompt: str) -> str:
+        """调用NVIDIA DeepSeek模型生成播客讲稿"""
+        if not self.nvidia_client:
+            return ""
+        
+        try:
+            logger.info(f"[NVIDIA-DeepSeek] 尝试使用模型: {self.nvidia_fallback_model}")
+            
+            response = self.nvidia_client.chat.completions.create(
+                model=self.nvidia_fallback_model,
+                messages=[
+                    {"role": "system", "content": "你是一位专业的AI技术播客主持人，擅长用通俗易懂的语言讲解技术内容。"},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.7,
+                max_tokens=1500
+            )
+            
+            content = response.choices[0].message.content
+            
+            if not content or not content.strip():
+                logger.warning("[NVIDIA-DeepSeek] 模型返回空内容")
+                return ""
+            
+            self._log_degradation_event(self.nvidia_fallback_model, "NVIDIA")
+            
+            logger.info(f"[NVIDIA-DeepSeek] 成功生成播客讲稿")
+            return content.strip()
+            
+        except Exception as e:
+            logger.warning(f"[NVIDIA-DeepSeek] 调用失败: {e}")
+            return ""
     
     def _should_fallback(self, error_msg: str) -> bool:
         """
