@@ -18,6 +18,7 @@ from typing import List, Dict, Any
 from datetime import datetime
 
 from zhipuai import ZhipuAI
+from openai import OpenAI
 from loguru import logger
 
 
@@ -115,10 +116,23 @@ class ContentWriter:
         
         self.client = ZhipuAI(api_key=self.api_key)
         self.primary_model = "glm-5"  # 主模型
-        self.fallback_models = ["glm-4.7"]  # 降级模型列表
+        self.fallback_models = ["glm-4.7"]  # GLM降级模型列表
         self.current_model = self.primary_model  # 当前使用的模型
         self.degraded = False  # 是否已降级
         self.degradation_start_time = None  # 降级开始时间
+        
+        # NVIDIA备用模型配置
+        self.nvidia_api_key = os.getenv('NVIDIA_API_KEY')
+        self.nvidia_base_url = os.getenv('NVIDIA_BASE_URL', 'https://integrate.api.nvidia.com/v1')
+        self.nvidia_model = "deepseek-ai/deepseek-v3.2"
+        
+        if self.nvidia_api_key:
+            self.nvidia_client = OpenAI(
+                base_url=self.nvidia_base_url,
+                api_key=self.nvidia_api_key
+            )
+        else:
+            self.nvidia_client = None
     
     def _prepare_items_text(self, top_items: List[Dict[str, Any]], 
                            all_items: List[Any]) -> str:
@@ -182,7 +196,7 @@ class ContentWriter:
                         return self._generate_fallback_script(items_text)
                 
                 if model != self.primary_model and not self.degraded:
-                    self._log_degradation_event(model)
+                    self._log_degradation_event(model, "GLM")
                 
                 logger.info(f"[Writer] 成功生成播客讲稿 (模型: {model})")
                 return content.strip()
@@ -196,13 +210,58 @@ class ContentWriter:
                     logger.warning(f"[Writer] 尝试降级到下一个模型...")
                     continue
                 elif should_fallback:
-                    logger.error(f"[Writer] 所有模型均失败: {e}")
-                    return self._generate_fallback_script(items_text)
+                    logger.error(f"[Writer] 所有GLM模型均失败: {e}")
+                    # 尝试NVIDIA备用模型
+                    return self._call_nvidia_for_writing(items_text)
                 else:
                     logger.error(f"[Writer] GLM API 调用失败: {e}")
                     return self._generate_fallback_script(items_text)
         
         return self._generate_fallback_script(items_text)
+    
+    def _call_nvidia_for_writing(self, items_text: str) -> str:
+        """
+        调用 NVIDIA NIM API 生成播客讲稿 (备用)
+        
+        Args:
+            items_text: 格式化的内容文本
+            
+        Returns:
+            生成的中文播客讲稿
+        """
+        if not self.nvidia_client:
+            logger.warning("[NVIDIA] NVIDIA API 未配置，跳过备用模型")
+            return self._generate_fallback_script(items_text)
+        
+        prompt = WRITING_PROMPT.format(items_text=items_text)
+        
+        try:
+            logger.info(f"[NVIDIA] 尝试使用 NVIDIA 备用模型: {self.nvidia_model}")
+            
+            response = self.nvidia_client.chat.completions.create(
+                model=self.nvidia_model,
+                messages=[
+                    {"role": "system", "content": "你是一位专业的AI技术播客主持人，擅长用通俗易懂的语言讲解技术内容。"},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.7,
+                max_tokens=1500
+            )
+            
+            content = response.choices[0].message.content
+            
+            if not content or not content.strip():
+                logger.warning("[NVIDIA] 模型返回空内容")
+                return self._generate_fallback_script(items_text)
+            
+            self._log_degradation_event(self.nvidia_model, "NVIDIA")
+            
+            logger.info(f"[NVIDIA] 成功生成播客讲稿 (模型: {self.nvidia_model})")
+            return content.strip()
+            
+        except Exception as e:
+            logger.error(f"[NVIDIA] API 调用失败: {e}")
+            return self._generate_fallback_script(items_text)
     
     def _should_fallback(self, error_msg: str) -> bool:
         """
@@ -230,12 +289,13 @@ class ContentWriter:
         error_msg_lower = error_msg.lower()
         return any(indicator.lower() in error_msg_lower for indicator in fallback_indicators)
     
-    def _log_degradation_event(self, new_model: str):
+    def _log_degradation_event(self, new_model: str, provider: str = "GLM"):
         """
         记录降级事件
         
         Args:
             new_model: 降级后的模型
+            provider: 模型提供商
         """
         self.degraded = True
         self.current_model = new_model
@@ -244,14 +304,13 @@ class ContentWriter:
         logger.warning("=" * 60)
         logger.warning(f"[降级] 模型降级事件")
         logger.warning(f"[降级] 时间: {self.degradation_start_time.strftime('%Y-%m-%d %H:%M:%S')}")
-        logger.warning(f"[降级] 原模型: {self.primary_model}")
+        logger.warning(f"[降级] 提供商: {provider}")
         logger.warning(f"[降级] 新模型: {new_model}")
-        logger.warning(f"[降级] 原因: GLM-5 调用失败，自动降级")
         logger.warning("=" * 60)
     
     def _generate_fallback_script(self, items_text: str) -> str:
         """
-        备用策略: 当 GLM 调用失败时生成简单的讲稿
+        备用策略: 当所有模型调用失败时生成简单的讲稿
         
         Args:
             items_text: 格式化的内容文本
@@ -340,7 +399,7 @@ class ContentWriter:
         # 准备输入数据
         items_text = self._prepare_items_text(top_items, all_items)
         
-        # 调用 GLM 生成讲稿
+        # 调用模型生成讲稿
         script = self._call_glm_for_writing(items_text)
         
         # TTS 前处理

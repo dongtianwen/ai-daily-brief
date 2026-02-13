@@ -19,6 +19,7 @@ from datetime import datetime
 from pathlib import Path
 
 from zhipuai import ZhipuAI
+from openai import OpenAI
 from loguru import logger
 
 from scraper import TechItem
@@ -85,10 +86,23 @@ class ContentProcessor:
         
         self.client = ZhipuAI(api_key=self.api_key)
         self.primary_model = "glm-5"  # 主模型
-        self.fallback_models = ["glm-4.7"]  # 降级模型列表
+        self.fallback_models = ["glm-4.7"]  # GLM降级模型列表
         self.current_model = self.primary_model  # 当前使用的模型
         self.degraded = False  # 是否已降级
         self.degradation_start_time = None  # 降级开始时间
+        
+        # NVIDIA备用模型配置
+        self.nvidia_api_key = os.getenv('NVIDIA_API_KEY')
+        self.nvidia_base_url = os.getenv('NVIDIA_BASE_URL', 'https://integrate.api.nvidia.com/v1')
+        self.nvidia_model = "deepseek-ai/deepseek-v3.2"
+        
+        if self.nvidia_api_key:
+            self.nvidia_client = OpenAI(
+                base_url=self.nvidia_base_url,
+                api_key=self.nvidia_api_key
+            )
+        else:
+            self.nvidia_client = None
     
     def _prepare_items_json(self, items: List[TechItem]) -> str:
         """将 TechItem 列表转换为 JSON 字符串供 GLM 处理"""
@@ -140,7 +154,7 @@ class ContentProcessor:
                         return {"top_items": []}
                 
                 if model != self.primary_model and not self.degraded:
-                    self._log_degradation_event(model)
+                    self._log_degradation_event(model, "GLM")
                 
                 logger.info(f"[GLM] 成功获取评分响应 (模型: {model})")
                 return self._parse_glm_response(content)
@@ -154,13 +168,58 @@ class ContentProcessor:
                     logger.warning(f"[GLM] 尝试降级到下一个模型...")
                     continue
                 elif should_fallback:
-                    logger.error(f"[GLM] 所有模型均失败: {e}")
-                    return {"top_items": []}
+                    logger.error(f"[GLM] 所有GLM模型均失败: {e}")
+                    # 尝试NVIDIA备用模型
+                    return self._call_nvidia_for_scoring(items_json)
                 else:
                     logger.error(f"[GLM] API 调用失败: {e}")
                     return {"top_items": []}
         
         return {"top_items": []}
+    
+    def _call_nvidia_for_scoring(self, items_json: str) -> Dict[str, Any]:
+        """
+        调用 NVIDIA NIM API 进行评分 (备用)
+        
+        Args:
+            items_json: 待评分内容的 JSON 字符串
+            
+        Returns:
+            NVIDIA 返回的 JSON 解析结果
+        """
+        if not self.nvidia_client:
+            logger.warning("[NVIDIA] NVIDIA API 未配置，跳过备用模型")
+            return {"top_items": []}
+        
+        prompt = SCORING_PROMPT.format(items_json=items_json)
+        
+        try:
+            logger.info(f"[NVIDIA] 尝试使用 NVIDIA 备用模型: {self.nvidia_model}")
+            
+            response = self.nvidia_client.chat.completions.create(
+                model=self.nvidia_model,
+                messages=[
+                    {"role": "system", "content": "你是一个专业的AI技术内容策展助手，只返回JSON格式数据。"},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.3,
+                max_tokens=2000
+            )
+            
+            content = response.choices[0].message.content
+            
+            if not content or not content.strip():
+                logger.warning("[NVIDIA] 模型返回空内容")
+                return {"top_items": []}
+            
+            self._log_degradation_event(self.nvidia_model, "NVIDIA")
+            
+            logger.info(f"[NVIDIA] 成功获取评分响应 (模型: {self.nvidia_model})")
+            return self._parse_glm_response(content)
+            
+        except Exception as e:
+            logger.error(f"[NVIDIA] API 调用失败: {e}")
+            return {"top_items": []}
     
     def _should_fallback(self, error_msg: str) -> bool:
         """
@@ -188,12 +247,13 @@ class ContentProcessor:
         error_msg_lower = error_msg.lower()
         return any(indicator.lower() in error_msg_lower for indicator in fallback_indicators)
     
-    def _log_degradation_event(self, new_model: str):
+    def _log_degradation_event(self, new_model: str, provider: str = "GLM"):
         """
         记录降级事件
         
         Args:
             new_model: 降级后的模型
+            provider: 模型提供商
         """
         self.degraded = True
         self.current_model = new_model
@@ -202,9 +262,8 @@ class ContentProcessor:
         logger.warning("=" * 60)
         logger.warning(f"[降级] 模型降级事件")
         logger.warning(f"[降级] 时间: {self.degradation_start_time.strftime('%Y-%m-%d %H:%M:%S')}")
-        logger.warning(f"[降级] 原模型: {self.primary_model}")
+        logger.warning(f"[降级] 提供商: {provider}")
         logger.warning(f"[降级] 新模型: {new_model}")
-        logger.warning(f"[降级] 原因: GLM-5 调用失败，自动降级")
         logger.warning("=" * 60)
     
     def _parse_glm_response(self, content: str) -> Dict[str, Any]:
@@ -244,20 +303,20 @@ class ContentProcessor:
             pass
         
         # 熔断: 所有解析尝试都失败，返回空结果
-        logger.warning(f"[GLM] JSON 解析失败，触发熔断机制。原始响应:\n{content[:1000]}...")
-        logger.debug(f"[GLM] 完整响应:\n{content}")
+        logger.warning(f"[Processor] JSON 解析失败，触发熔断机制。原始响应:\n{content[:1000]}...")
+        logger.debug(f"[Processor] 完整响应:\n{content}")
         
         # 保存完整响应到文件用于调试
         try:
             import os
             debug_dir = Path("output/debug")
             debug_dir.mkdir(parents=True, exist_ok=True)
-            debug_file = debug_dir / f"glm5_response_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+            debug_file = debug_dir / f"model_response_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
             with open(debug_file, 'w', encoding='utf-8') as f:
-                f.write(f"GLM-5 响应内容:\n{'='*50}\n\n{content}\n\n{'='*50}\n")
-            logger.info(f"[GLM] 完整响应已保存到: {debug_file}")
+                f.write(f"模型响应内容:\n{'='*50}\n\n{content}\n\n{'='*50}\n")
+            logger.info(f"[Processor] 完整响应已保存到: {debug_file}")
         except Exception as e:
-            logger.warning(f"[GLM] 保存调试文件失败: {e}")
+            logger.warning(f"[Processor] 保存调试文件失败: {e}")
         
         return {"top_items": []}
     
@@ -299,13 +358,13 @@ class ContentProcessor:
         # 准备输入数据
         items_json = self._prepare_items_json(items)
         
-        # 调用 GLM 评分
+        # 调用模型评分
         result = self._call_glm_for_scoring(items_json)
         
         top_items = result.get("top_items", [])
         
         if not top_items:
-            logger.warning("[Processor] GLM 返回空结果，使用备用策略")
+            logger.warning("[Processor] 模型返回空结果，使用备用策略")
             # 备用策略: 按 stars 排序取前5
             sorted_items = sorted(
                 enumerate(items), 
