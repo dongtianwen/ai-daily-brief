@@ -85,17 +85,17 @@ class ContentProcessor:
             raise ValueError("ZHIPUAI_API_KEY 未设置")
         
         self.client = ZhipuAI(api_key=self.api_key)
-        self.glm_primary_model = "glm-4.7"  # GLM主模型
-        self.glm_fallback_models = ["glm-4.7-flash", "glm-4-flash"]  # GLM降级模型列表
-        self.current_model = "nvidia-kimi"  # 当前使用的模型，默认NVIDIA Kimi
+        self.glm_primary_model = "glm-4.7-flash"  # GLM主模型
+        self.glm_fallback_models = ["glm-4-flash"]  # GLM降级模型列表
+        self.current_model = "nvidia-deepseek"  # 当前使用的模型
         self.degraded = False  # 是否已降级
         self.degradation_start_time = None  # 降级开始时间
         
         # NVIDIA模型配置（首选）
         self.nvidia_api_key = os.getenv('NVIDIA_API_KEY')
         self.nvidia_base_url = os.getenv('NVIDIA_BASE_URL', 'https://integrate.api.nvidia.com/v1')
-        self.nvidia_primary_model = os.getenv('NVIDIA_PRIMARY_MODEL', 'moonshotai/kimi-k2.5')
-        self.nvidia_fallback_model = "deepseek-ai/deepseek-v3.2"
+        self.nvidia_primary_model = "deepseek-ai/deepseek-v3.2"  # 首选NVIDIA DeepSeek
+        self.nvidia_fallback_model = None  # NVIDIA Kimi 不可用，已移除
         
         if self.nvidia_api_key:
             self.nvidia_client = OpenAI(
@@ -133,15 +133,16 @@ class ContentProcessor:
         """
         prompt = SCORING_PROMPT.format(items_json=items_json)
         
-        # 1. 首先尝试NVIDIA Kimi模型
+        # 1. 首先尝试NVIDIA DeepSeek模型
         result = self._call_nvidia_kimi_for_scoring(prompt)
         if result and result.get("top_items"):
             return result
         
-        # 2. 尝试NVIDIA DeepSeek模型
-        result = self._call_nvidia_deepseek_for_scoring(prompt)
-        if result and result.get("top_items"):
-            return result
+        # 2. 尝试NVIDIA Kimi模型（如已移除则跳过）
+        if self.nvidia_fallback_model:
+            result = self._call_nvidia_deepseek_for_scoring(prompt)
+            if result and result.get("top_items"):
+                return result
         
         # 3. 尝试GLM模型系列
         for model in [self.glm_primary_model] + self.glm_fallback_models:
@@ -157,6 +158,10 @@ class ContentProcessor:
                 )
                 
                 content = response.choices[0].message.content
+                reasoning_content = getattr(response.choices[0].message, 'reasoning_content', None) or ""
+                
+                if reasoning_content and not content:
+                    content = reasoning_content
                 
                 if not content or not content.strip():
                     logger.warning(f"[GLM] 模型 {model} 返回空内容")
@@ -396,23 +401,8 @@ class ContentProcessor:
         top_items = result.get("top_items", [])
         
         if not top_items:
-            logger.warning("[Processor] 模型返回空结果，使用备用策略")
-            # 备用策略: 按 stars 排序取前5
-            sorted_items = sorted(
-                enumerate(items), 
-                key=lambda x: x[1].stars or 0, 
-                reverse=True
-            )[:5]
-            top_items = [
-                {
-                    "index": idx,
-                    "title": item.title,
-                    "source": item.source,
-                    "score": 6.0 + (item.stars or 0) / 10000,
-                    "reason": f"GitHub Stars: {item.stars or 'N/A'}"
-                }
-                for idx, item in sorted_items
-            ]
+            logger.error("[Processor] 所有大模型均失败，无法继续")
+            raise RuntimeError("所有大模型均失败，无法进行智能筛选")
         
         logger.info(f"[Processor] 筛选完成，返回 Top {len(top_items)}")
         return top_items

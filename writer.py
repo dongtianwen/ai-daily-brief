@@ -115,17 +115,17 @@ class ContentWriter:
             raise ValueError("ZHIPUAI_API_KEY 未设置")
         
         self.client = ZhipuAI(api_key=self.api_key)
-        self.glm_primary_model = "glm-4.7"  # GLM主模型
-        self.glm_fallback_models = ["glm-4.7-flash", "glm-4-flash"]  # GLM降级模型列表
-        self.current_model = "nvidia-kimi"  # 当前使用的模型，默认NVIDIA Kimi
+        self.glm_primary_model = "glm-4.7-flash"  # GLM主模型
+        self.glm_fallback_models = ["glm-4-flash"]  # GLM降级模型列表
+        self.current_model = "nvidia-deepseek"  # 当前使用的模型
         self.degraded = False  # 是否已降级
         self.degradation_start_time = None  # 降级开始时间
         
         # NVIDIA模型配置（首选）
         self.nvidia_api_key = os.getenv('NVIDIA_API_KEY')
         self.nvidia_base_url = os.getenv('NVIDIA_BASE_URL', 'https://integrate.api.nvidia.com/v1')
-        self.nvidia_primary_model = os.getenv('NVIDIA_PRIMARY_MODEL', 'moonshotai/kimi-k2.5')
-        self.nvidia_fallback_model = "deepseek-ai/deepseek-v3.2"
+        self.nvidia_primary_model = "deepseek-ai/deepseek-v3.2"  # 首选NVIDIA DeepSeek
+        self.nvidia_fallback_model = None  # NVIDIA Kimi 不可用，已移除
         
         if self.nvidia_api_key:
             self.nvidia_client = OpenAI(
@@ -175,15 +175,16 @@ class ContentWriter:
         """
         prompt = WRITING_PROMPT.format(items_text=items_text)
         
-        # 1. 首先尝试NVIDIA Kimi模型
+        # 1. 首先尝试NVIDIA DeepSeek模型
         result = self._call_nvidia_kimi_for_writing(prompt)
         if result:
             return result
         
-        # 2. 尝试NVIDIA DeepSeek模型
-        result = self._call_nvidia_deepseek_for_writing(prompt)
-        if result:
-            return result
+        # 2. 尝试NVIDIA Kimi模型（如已移除则跳过）
+        if self.nvidia_fallback_model:
+            result = self._call_nvidia_deepseek_for_writing(prompt)
+            if result:
+                return result
         
         # 3. 尝试GLM模型系列
         for model in [self.glm_primary_model] + self.glm_fallback_models:
@@ -199,6 +200,10 @@ class ContentWriter:
                 )
                 
                 content = response.choices[0].message.content
+                reasoning_content = getattr(response.choices[0].message, 'reasoning_content', None) or ""
+                
+                if reasoning_content and not content:
+                    content = reasoning_content
                 
                 if not content or not content.strip():
                     logger.warning(f"[Writer] 模型 {model} 返回空内容")
@@ -206,7 +211,8 @@ class ContentWriter:
                         logger.warning(f"[Writer] 尝试降级到下一个模型...")
                         continue
                     else:
-                        return self._generate_fallback_script(items_text)
+                        logger.error("[Writer] 所有大模型均失败，无法继续")
+                        raise RuntimeError("所有大模型均失败，无法生成播客讲稿")
                 
                 self._log_degradation_event(model, "GLM")
                 
@@ -223,12 +229,13 @@ class ContentWriter:
                     continue
                 elif should_fallback:
                     logger.error(f"[Writer] 所有GLM模型均失败: {e}")
-                    return self._generate_fallback_script(items_text)
+                    raise RuntimeError(f"所有大模型均失败: {e}")
                 else:
                     logger.error(f"[Writer] GLM API 调用失败: {e}")
-                    return self._generate_fallback_script(items_text)
+                    raise RuntimeError(f"大模型调用失败: {e}")
         
-        return self._generate_fallback_script(items_text)
+        logger.error("[Writer] 所有大模型均失败，无法继续")
+        raise RuntimeError("所有大模型均失败，无法生成播客讲稿")
     
     def _call_nvidia_kimi_for_writing(self, prompt: str) -> str:
         """调用NVIDIA Kimi模型生成播客讲稿"""
@@ -339,36 +346,6 @@ class ContentWriter:
         logger.warning(f"[降级] 提供商: {provider}")
         logger.warning(f"[降级] 新模型: {new_model}")
         logger.warning("=" * 60)
-    
-    def _generate_fallback_script(self, items_text: str) -> str:
-        """
-        备用策略: 当所有模型调用失败时生成简单的讲稿
-        
-        Args:
-            items_text: 格式化的内容文本
-            
-        Returns:
-            简单的中文讲稿
-        """
-        today = datetime.now().strftime("%m月%d日")
-        lines = [
-            f"大家好，欢迎收听AI每日技术简报，今天是{today}。",
-            "",
-            "今天为大家精选了以下几条AI技术资讯：",
-            "",
-        ]
-        
-        # 简单解析 items_text
-        for line in items_text.split('\n'):
-            if line.strip().startswith(('1.', '2.', '3.', '4.', '5.')):
-                lines.append(line.strip())
-        
-        lines.extend([
-            "",
-            "以上就是今天的内容，感谢收听，我们明天再见。"
-        ])
-        
-        return '\n'.join(lines)
     
     def _apply_tts_preprocessing(self, script: str) -> str:
         """

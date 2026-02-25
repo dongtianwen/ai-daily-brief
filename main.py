@@ -137,19 +137,8 @@ class DailyBriefPipeline:
             
             # 结果质量检查
             if not top_items:
-                logger.warning("[Step 2/5] 筛选结果为空，使用默认排序")
-                # 使用默认排序作为备用方案
-                sorted_items = sorted(items, key=lambda x: x.stars or 0, reverse=True)[:5]
-                top_items = [
-                    {
-                        "index": i,
-                        "title": item.title,
-                        "source": item.source,
-                        "score": 7.0,
-                        "reason": "精选内容"
-                    }
-                    for i, item in enumerate(sorted_items)
-                ]
+                logger.error("[Step 2/5] 筛选结果为空，所有大模型均失败")
+                raise RuntimeError("所有大模型均失败，无法进行智能筛选")
             
             self.results["steps"]["process"] = {
                 "status": "success",
@@ -194,22 +183,14 @@ class DailyBriefPipeline:
             script = generate_podcast_script(top_items, all_items)
             char_count = len(script.replace(' ', '').replace('\n', ''))
             
-            # 内容质量检查
             if char_count < 300:
-                logger.warning(f"[Step 3/5] 内容过短 ({char_count} 字符)，使用备用模板")
-                # 使用备用模板
-                today = datetime.now().strftime("%m月%d日")
-                script = f"大家好，欢迎收听AI每日技术简报，今天是{today}。\n\n"
-                script += "今天为大家精选了以下AI技术资讯：\n\n"
-                for i, item in enumerate(top_items, 1):
-                    script += f"{i}. {item.get('title', '')}\n"
-                script += "\n感谢收听，我们明天再见！"
-                char_count = len(script.replace(' ', '').replace('\n', ''))
+                logger.error(f"[Step 3/5] 大模型生成内容过短 ({char_count} 字符)，无法继续")
+                raise RuntimeError(f"大模型生成内容过短 ({char_count} 字符)")
             
             self.results["steps"]["write"] = {
                 "status": "success",
                 "char_count": char_count,
-                "quality_check": "pass" if char_count >= 300 else "warning"
+                "quality_check": "pass"
             }
             
             logger.info(f"[Step 3/5] 内容生成完成，共 {char_count} 字符")
@@ -221,21 +202,11 @@ class DailyBriefPipeline:
             return script
         except Exception as e:
             logger.error(f"[Step 3/5] 内容生成失败: {e}")
-            
-            # 生成备用内容
-            today = datetime.now().strftime("%m月%d日")
-            backup_script = f"大家好，欢迎收听AI每日技术简报，今天是{today}。\n\n"
-            backup_script += "由于系统原因，今天的详细内容无法生成。\n"
-            backup_script += "我们明天将为您带来完整的AI技术资讯。\n\n"
-            backup_script += "感谢收听，我们明天再见！"
-            
             self.results["steps"]["write"] = {
                 "status": "failed",
-                "error": str(e),
-                "using_backup": True
+                "error": str(e)
             }
-            
-            return backup_script
+            raise
     
     def step_4_audio(self, script: str) -> Optional[str]:
         """
