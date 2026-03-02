@@ -1,0 +1,11 @@
+大家好，欢迎收听AI每日技术简报，今天是02月23日。
+
+今天为大家精选了以下AI技术资讯：
+
+1. openai/evals
+2. agno-agi/agno
+3. MARS: Margin-Aware Reward-Modeling with Self-Refinement
+4. Sink-Aware Pruning for Diffusion Language Models
+5. FAMOSE: A ReAct Approach to Automated Feature Discovery
+
+感谢收听，我们明天再见！

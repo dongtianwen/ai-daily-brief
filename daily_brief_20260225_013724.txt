@@ -1,0 +1,11 @@
+大家好，欢迎收听AI每日技术简报，今天是02月25日。
+
+今天为大家精选了以下AI技术资讯：
+
+1. OpenBMB/ChatDev
+2. VectifyAI/PageIndex
+3. KNIGHT: Knowledge Graph-Driven Multiple-Choice Question Generation with Adaptive Hardness Calibration
+4. muratcankoylan/Agent-Skills-for-Context-Engineering
+5. To Reason or Not to: Selective Chain-of-Thought in Medical Question Answering
+
+感谢收听，我们明天再见！

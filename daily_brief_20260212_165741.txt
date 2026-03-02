@@ -1,0 +1,11 @@
+大家好，欢迎收听AI每日技术简报，今天是02月12日。
+
+今天为大家精选了以下几条AI技术资讯：
+
+1. 【GitHub】huggingface/transformers
+2. 【GitHub】sansan0/TrendRadar
+3. 【GitHub】Google/langextract
+4. 【GitHub】datawhalechina/hello-agents
+5. 【GitHub】hsliuping/TradingAgents-CN
+
+以上就是今天的内容，感谢收听，我们明天再见。
