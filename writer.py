@@ -124,8 +124,8 @@ class ContentWriter:
         # NVIDIA模型配置（首选）
         self.nvidia_api_key = os.getenv('NVIDIA_API_KEY')
         self.nvidia_base_url = os.getenv('NVIDIA_BASE_URL', 'https://integrate.api.nvidia.com/v1')
-        self.nvidia_primary_model = "deepseek-ai/deepseek-v3.2"  # 首选NVIDIA DeepSeek
-        self.nvidia_fallback_model = None  # NVIDIA Kimi 不可用，已移除
+        self.nvidia_primary_model = os.getenv('NVIDIA_PRIMARY_MODEL', 'deepseek-ai/deepseek-v4-pro')
+        self.nvidia_fallback_model = "deepseek-ai/deepseek-v3.2"
         
         if self.nvidia_api_key:
             self.nvidia_client = OpenAI(
@@ -175,12 +175,12 @@ class ContentWriter:
         """
         prompt = WRITING_PROMPT.format(items_text=items_text)
         
-        # 1. 首先尝试NVIDIA DeepSeek模型
+        # 1. 首先尝试NVIDIA主力模型
         result = self._call_nvidia_kimi_for_writing(prompt)
         if result:
             return result
         
-        # 2. 尝试NVIDIA Kimi模型（如已移除则跳过）
+        # 2. 尝试NVIDIA备用模型
         if self.nvidia_fallback_model:
             result = self._call_nvidia_deepseek_for_writing(prompt)
             if result:
@@ -238,13 +238,13 @@ class ContentWriter:
         raise RuntimeError("所有大模型均失败，无法生成播客讲稿")
     
     def _call_nvidia_kimi_for_writing(self, prompt: str) -> str:
-        """调用NVIDIA Kimi模型生成播客讲稿"""
+        """调用NVIDIA主力模型生成播客讲稿"""
         if not self.nvidia_client:
-            logger.warning("[NVIDIA-Kimi] NVIDIA API 未配置")
+            logger.warning("[NVIDIA-Primary] NVIDIA API 未配置")
             return ""
         
         try:
-            logger.info(f"[NVIDIA-Kimi] 尝试使用模型: {self.nvidia_primary_model}")
+            logger.info(f"[NVIDIA-Primary] 尝试使用模型: {self.nvidia_primary_model}")
             
             response = self.nvidia_client.chat.completions.create(
                 model=self.nvidia_primary_model,
@@ -253,20 +253,21 @@ class ContentWriter:
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0.7,
-                max_tokens=1500
+                max_tokens=1500,
+                extra_body={"chat_template_kwargs": {"thinking": False}}
             )
             
             content = response.choices[0].message.content
             
             if not content or not content.strip():
-                logger.warning("[NVIDIA-Kimi] 模型返回空内容")
+                logger.warning("[NVIDIA-Primary] 模型返回空内容")
                 return ""
             
-            logger.info(f"[NVIDIA-Kimi] 成功生成播客讲稿")
+            logger.info(f"[NVIDIA-Primary] 成功生成播客讲稿")
             return content.strip()
             
         except Exception as e:
-            logger.warning(f"[NVIDIA-Kimi] 调用失败: {e}")
+            logger.warning(f"[NVIDIA-Primary] 调用失败: {e}")
             return ""
     
     def _call_nvidia_deepseek_for_writing(self, prompt: str) -> str:
