@@ -1,0 +1,11 @@
+大家好，欢迎收听AI每日技术简报，今天是02月24日。
+
+今天为大家精选了以下AI技术资讯：
+
+1. SPQ: An Ensemble Technique for Large Language Model Compression
+2. sansan0/TrendRadar
+3. muratcankoylan/Agent-Skills-for-Context-Engineering
+4. VectifyAI/PageIndex
+5. usestrix/strix
+
+感谢收听，我们明天再见！

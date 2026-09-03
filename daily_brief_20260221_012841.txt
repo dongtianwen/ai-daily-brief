@@ -1,0 +1,11 @@
+大家好，欢迎收听AI每日技术简报，今天是02月21日。
+
+今天为大家精选了以下AI技术资讯：
+
+1. google-research/timesfm
+2. Sink-Aware Pruning for Diffusion Language Models
+3. MARS: Margin-Aware Reward-Modeling with Self-Refinement
+4. databricks-solutions/ai-dev-kit
+5. anthropics/claude-plugins-official
+
+感谢收听，我们明天再见！
