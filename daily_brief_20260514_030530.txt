@@ -1,0 +1,13 @@
+嘿，大家好，欢迎收听今天的AI技术播客！今天给大家带来几则最新的AI技术新闻，让我们一起来了解一下吧。
+
+首先，我们来看看GitHub上的一个项目，叫做opendatalab/MinerU。这个项目的主要功能是将复杂的文档，比如PDF和Office文档，转换成LLM就绪的Markdown/JSON格式，方便大模型的数据预处理和Agent工作流。这个项目涉及到数据标注、LLM和Python等技术，实用性强，目前在GitHub上的星数已经达到了62918。
+
+接下来，我们来看看ZhuLinsen/daily_stock_analysis这个项目。这是一个LLM驱动的A/H/美股智能分析系统，它整合了多数据源行情、实时新闻、LLM决策仪表盘和多渠道推送等功能。这个系统可以零成本定时运行，非常适合进行股票分析。这个项目融合了LLM、Python和金融落地应用，创新性和实用性都非常突出，GitHub上的星数也达到了35782。
+
+再来介绍一个来自Anthropic的项目，anthropics/skills。这是一个官方的Agent技能库，旨在推动LLM Agent生态的发展。这个项目涉及到LLM和Python，社区影响力巨大，GitHub上的星数高达133667。
+
+在学术领域，我们来看看arXiv上的两篇论文。第一篇是《Good Agentic Friends Do Not Just Give Verbal Advice: They Can Update Your Weights》，这篇论文提出了多智能体LLM系统通过更新权重而非仅交换文本进行协作的方法。这种方法在LLM和Agent架构上具有高度创新性，可能显著提升效率。
+
+另一篇论文是《人工智能 Harness Engineering: A Runtime Substrate for Foundation-Model Software Agents》，这篇论文提出了基础模型软件代理的运行时基板，从工程角度解决了自主代理的可靠性问题。这个项目涉及到LLM、代码生成和企业级落地，实用性和创新性都非常高。
+
+今天的播客就到这里啦，希望通过这些新闻，大家能对AI技术有更深入的了解。我们下期再见！
