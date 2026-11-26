@@ -1,0 +1,13 @@
+嘿，大家好！欢迎收听今天的AI技术播客。今天我们要聊一聊几个在GitHub上备受关注的AI项目，它们涵盖了从大模型训练到企业级应用等多个领域。让我们一起来看看吧！
+
+首先，我们要介绍的是【GitHub】上的一个项目：jingyaogong/minimind。这个项目叫做“两小时从0训出你的64M大模型”。听起来是不是很酷？没错，它真的可以在两小时内训练出一个64M的大语言模型（大语言模型）。这个项目的亮点在于，它创新性地在短时间内训练出了一个这么大的模型，具有很高的实用性和时效性。而且，它还符合特殊权重规则，对于想要快速构建大模型的朋友来说，这是一个不可多得的好工具。
+
+接下来，我们来看看【GitHub】上的mvanhorn/last30days-skill项目。这个项目叫做“人工智能 agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary”。简单来说，它是一个AI智能体，可以研究Reddit、X、YouTube、HN、Polymarket等平台上的任何话题，并生成有根据的总结。这个项目的亮点在于，它不仅涉及AI编程，还涉及自然语言处理技术，具有很强的实用性和创新性。
+
+再来看看【GitHub】上的HKUDS/CLI-Anything项目。这个项目名为“CLI-Anything: Making ALL Software Agent-Native”，它旨在使所有软件都具备代理原生CLI。简单来说，就是让所有软件都能通过命令行界面（CLI）与AI代理进行交互。这个项目的亮点在于，它具有很高的实用性和时效性，同时涉及编程和AI编程技术。
+
+接下来，我们要介绍的是【GitHub】上的elementalsouls/Claude-BugHunter项目。这个项目为漏洞挖掘和外部红队工作提供了一个代码技能包，包含了82个技能、15个slash命令和681个披露报告模式。这个项目的亮点在于，它具有实用性和创新性，同时涉及企业级应用。
+
+最后，我们要介绍的是【GitHub】上的Tracer-Cloud/opensre项目。这个项目是一个开源的CI/CD可靠性代理，旨在提高CI/CD流程的可靠性。这个项目的亮点在于，它具有实用性和创新性，同时涉及企业级应用。
+
+总的来说，今天的这些项目都在各自的领域展现了很高的实用性和创新性。从大模型训练到企业级应用，这些项目都为AI技术的发展贡献了自己的力量。希望今天的介绍能给大家带来一些启发和灵感。感谢大家的收听，我们下期再见！
